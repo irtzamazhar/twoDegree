@@ -20,7 +20,7 @@
                 </div>
                   @include('admin.admin.message')
                 <div class="box-body">
-                    <form action="{{ url('/createPage') }}" method="post" id="blogpost" enctype="multipart/form-data">
+                    <form action="{{ url('/createPage') }}" method="post" id="page" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group col-xs-6 {{ $errors->has('page_url') ? ' has-error' : '' }}">
                             <label for="pageUrl">Page URL</label>

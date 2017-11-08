@@ -40,7 +40,7 @@ Route::get('/admin/contact/showContact/{id}', 'ContactController@show')->name('s
 Route::get('subscribe','NewsletterController@subscribe')->name('subscribe');
 Route::get('/admin/newsletter', 'NewsletterController@index')->name('newsletter');
 
-//Pages Roue
+//Pages Route
 Route::get('/admin/pages', 'PagesController@index')->name('admin/pages');
 Route::get('/admin/pages/create', 'PagesController@create')->name('createPage');
 Route::post('createPage', 'PagesController@store')->name('createPage');
@@ -87,6 +87,8 @@ Route::get('blog', 'FrontendController@blog');
 Route::get('blog-detail/{id}', 'FrontendController@blogDetail')->name('blog-detail');
 Route::get('events', 'FrontendController@events');
 Route::get('event-detail/{id}', 'FrontendController@eventDetail')->name('event-detail');
+
+Route::get('footer', 'FrontendController@footer');
 
 
 // Route::get('/app-download', 'FrontendController@app')->name('app');

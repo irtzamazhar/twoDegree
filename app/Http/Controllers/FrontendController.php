@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Blog;
 use App\SiteEvent;
 use App\Faq;
+use App\Page;
 use DB;
 
 class FrontendController extends Controller
@@ -15,10 +16,23 @@ class FrontendController extends Controller
     {
     	return view('frontend.index');
     }
+    
+    public function dashboard()
+    {
+        $pages = Page::all();
+    	return view('frontend.include.footer')->with('pages', $pages);
+    }
+    
+    public function header()
+    {
+        
+    	return view('frontend.include.header');
+    }
 
     public function app()
     {
-    	return view('frontend.app-download');
+        $pages = Page::all();
+    	return view('frontend.app-download')->with('pages', $pages);
     }
 
     public function blog()

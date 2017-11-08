@@ -2,10 +2,13 @@
         <div class="container">
             <div class="footer-nav section-start">
                 <ul>
-                    <li><a href="{{ url('/privacy') }}">PRIVACY POLICY </a></li>
-                    <li><a href="{{ url('/terms') }}">TERMS AND CONDITIONS</a></li>
-                    <li><a href="{{ url('/faq') }}">FAQ </a></li>
-                    <li><a href="{{ url('/contact') }}">CONTACT </a></li>
+                    @if(count($pages) > 0)
+                        @foreach($pages as $page)
+                            <li><a href="{{ url($page->page_url) }}">{{ $page->page_title }}</a></li>
+                        @endforeach
+                    @else
+                        <h2>No Page Yet.</h2>
+                    @endif
                 </ul>
             </div>
             <div class="footer-social section-start">
