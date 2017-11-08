@@ -36,7 +36,11 @@
                                 <tr>
                                   <td>{{ $page->page_url }}</td>
                                   <td>{{ $page->page_title }}</td>
-                                  <td>{{ $page->page_status }}</td>
+                                  @if($page->page_status == 1)
+                                  <td>Publish</td>
+                                  @else
+                                  <td>Drafted</td>
+                                  @endif
                                   <td>
                                       @if(!Auth::guest())
                                           <a href="{{ url('/admin/pages/showPage/'.$page->id) }}" class="btn btn-primary btn-flat">View</a>
