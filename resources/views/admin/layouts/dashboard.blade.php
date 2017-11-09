@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>TwoDegree Admin</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- My Custom stylesheet -->
+    <link href="{{ asset('public/css/custom.css') }}" rel="stylesheet">
+    <!-- JQuery UI -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- Bootstrap 3.3.2 -->   
     <link href="{{ asset('public/css/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- FontAwesome 4.3.0 -->    
@@ -47,12 +51,11 @@
         </div>
 
     <!-- jQuery 2.1.3 -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
     <!-- jQuery UI 1.11.2 -->
-    <script src="{{ asset('public/css/plugins/jQuery/jQuery-2.1.3.min.js') }}"></script>
-    <!-- jQuery UI 1.11.2 -->
-    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+   
     <script>
       $.widget.bridge('uibutton', $.ui.button);
     </script>
@@ -99,6 +102,25 @@
         $(window).load(function(){
             setTimeout(function(){ $('.my-message').fadeOut() }, 2000);
         });
+        
+        $( "#draggable p" ).draggable({
+            drag: function(){
+                pos = $(this).offset();
+                parent = $(".droppable").offset();
+//                current = {left: pos.left - parent.left, top: pos.top - parent.top };
+//                $("#pos").html( current.left + ', ' + current.top );
+            }
+        });
+        $( ".droppable" ).droppable({
+            accept: ".my_div",
+            activeClass: "ui-state-hover",
+            hoverClass: "ui-state-active",
+            
+            drop: function () {
+                var dropData =  $(this).append(ui.draggable);
+
+            }
+        }); 
     </script>
 
     
