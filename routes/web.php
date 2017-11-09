@@ -49,6 +49,15 @@ Route::get('/admin/pages/editPage/{id}', 'PagesController@edit')->name('editPage
 Route::post('/admin/pages/update/{id}', 'PagesController@update')->name('updatePage');
 Route::get('/admin/pages/showPage/{id}', 'PagesController@show')->name('showPage');
 
+//Menu Route
+Route::get('/admin/menu', 'MenuController@index')->name('admin/menu');
+Route::get('/admin/menu/create', 'MenuController@create')->name('createMenu');
+Route::post('createMenu', 'MenuController@store')->name('createMenu');
+Route::get('/admin/menu/deleteMenu/{id}', 'MenuController@destroy')->name('deleteMenu');
+Route::get('/admin/menu/editMenu/{id}', 'MenuController@edit')->name('editMenu');
+Route::post('/admin/menu/update/{id}', 'MenuController@update')->name('updateMenu');
+Route::get('/admin/menu/showMenu/{id}', 'MenuController@show')->name('showMenu');
+
 //FAQ's Route
 Route::get('/admin/faq', 'FaqsController@index')->name('admin/faq');
 Route::get('/admin/faq/create', 'FaqsController@create')->name('createFaq');
@@ -78,8 +87,9 @@ Route::post('/update/{id}', 'ProfileController@update')->name('update');
 // frontend routes
 Route::get('/', 'FrontendController@index');
 Route::get('/app-download', 'FrontendController@app');
-Route::get('/privacy', 'FrontendController@privacy');
-Route::get('/terms', 'FrontendController@terms');
+Route::get('{page_url}', 'FrontendController@getPage');
+//Route::get('/privacy', 'FrontendController@privacy');
+//Route::get('/terms', 'FrontendController@terms');
 Route::get('/faq', 'FrontendController@faq');
 Route::get('contact', 'ContactController@create')->name('contact');
 Route::post('createContact', 'ContactController@store')->name('createContact');
@@ -88,7 +98,7 @@ Route::get('blog-detail/{id}', 'FrontendController@blogDetail')->name('blog-deta
 Route::get('events', 'FrontendController@events');
 Route::get('event-detail/{id}', 'FrontendController@eventDetail')->name('event-detail');
 
-Route::get('footer', 'FrontendController@footer');
+//Route::get('footer', 'FrontendController@footer');
 
 
 // Route::get('/app-download', 'FrontendController@app')->name('app');

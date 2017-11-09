@@ -68,6 +68,12 @@
                 <span>Manage FAQ'S</span>
               </a>
             </li>
+            <li class="{{ Request::is('admin/menu') ? 'active' : null }}">
+              <a href="{!!URL::route('admin/menu')!!}">
+                <i class="fa fa-files-o"></i>
+                <span>Manage Menu</span>
+              </a>
+            </li>
             
             <!-- <li class="">
               <a href="#">

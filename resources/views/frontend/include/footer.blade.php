@@ -3,8 +3,8 @@
             <div class="footer-nav section-start">
                 <ul>
                     @if(count($pages) > 0)
-                        @foreach($pages as $page)
-                            <li><a href="{{ url($page->page_url) }}">{{ $page->page_title }}</a></li>
+                        @foreach($pages as $check)
+                            <li><a href="{{ url($check->page_url) }}">{{ $check->page_title }}</a></li>
                         @endforeach
                     @else
                         <h2>No Page Yet.</h2>

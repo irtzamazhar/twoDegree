@@ -14,19 +14,8 @@ class FrontendController extends Controller
 {
     public function index()
     {
-    	return view('frontend.index');
-    }
-    
-    public function dashboard()
-    {
         $pages = Page::all();
-    	return view('frontend.include.footer')->with('pages', $pages);
-    }
-    
-    public function header()
-    {
-        
-    	return view('frontend.include.header');
+    	return view('frontend.index')->with('pages', $pages);
     }
 
     public function app()
@@ -37,25 +26,38 @@ class FrontendController extends Controller
 
     public function blog()
     {
+        $pages = Page::all();
     	$blogs = Blog::orderBy('created_at', 'desc')->paginate(5);
-        return view('frontend.blog', ['blogs' => $blogs])->render();
+        return view('frontend.blog', ['blogs' => $blogs], ['pages' => $pages])->render();
     }
 
     public function blogDetail($id)
     {
+        $pages = Page::all();
     	$blog = Blog::find($id);
-        return view('frontend.blog-detail')->with('blog', $blog);
+        return view('frontend.blog-detail', ['blog' => $blog], ['pages' => $pages])->render();
+    }
+    
+    public function getPage($page_url)
+    {
+        $url = '/' . $page_url;
+        $pages = Page::all();
+//        $pages = Page::where('page_status', 1);
+//        var_dump($pages);
+//        die('vjnfs');
+        $page = Page::where('page_url', '=', $url)->first(); // or create a helper on your model to condense this
+        return view('frontend.app-download', compact('page' , 'pages'));
     }
 
-    public function privacy()
-    {
-    	return view('frontend.privacy');
-    }
+//    public function privacy()
+//    {
+//    	return view('frontend.privacy');
+//    }
 
-    public function terms()
-    {
-    	return view('frontend.terms');
-    }
+//    public function terms()
+//    {
+//    	return view('frontend.terms');
+//    }
 
     public function faq()
     {

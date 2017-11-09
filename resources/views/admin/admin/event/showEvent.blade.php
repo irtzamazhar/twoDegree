@@ -44,11 +44,12 @@
                     </div>
                     <div class="event-location">
                         <h4>Event Location:</h4>
-                        <div>{{ $event->address }}}</div>
+                        <div>{{ $event->address }}</div>
                     </div>
+                    <br><br>
                       @if(!Auth::guest())
-                          <a href="{{ url('/admin/blog/editPost/'.$event->id) }}" class="btn btn-warning btn-flat">Edit</a>
-                          <a href="{{ url('/admin/blog/deletePost/'.$event->id) }}" class="btn btn-danger btn-flat">Delete</a>
+                          <a href="{{ url('/admin/event/editEvent/'.$event->id) }}" class="btn btn-warning btn-flat">Edit</a>
+                          <a href="{{ url('/admin/event/deleteEvent/'.$event->id) }}" class="btn btn-danger btn-flat">Delete</a>
                       @endif
                       <a href="{{ url('admin/event') }}" class="btn btn-primary btn-lg btn-flat pull-right">Go Back</a>
                 </div>

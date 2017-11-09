@@ -63,9 +63,9 @@
                         <div class="form-group col-xs-12">
                             <label for="eventLocation">Event Location</label>
                             <input id="event-location" type="text" name="event-location" class="form-control" autocomplete="on" value="{{ $event->address }}">
-                            <input type="hidden" id="place-lng" name="place-lng" value="">
-                            <input type="hidden" id="place-lat" name="place-lat" value="">
-                            <input type="hidden" id="address" name="address" value="">
+                            <input type="hidden" id="place-lng" name="place-lng" value="{{ $event->place_lng }}">
+                            <input type="hidden" id="place-lat" name="place-lat" value="{{ $event->place_lat }}">
+                            <input type="hidden" id="address" name="address" value="{{ $event->address }}">
                             <p class="contact-er"></p>
                         </div>
                         <div class="form-group col-xs-12">

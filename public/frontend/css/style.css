@@ -525,6 +525,16 @@ footer {
 
 /*app Page*/
 
+/*.page-image{
+    height: 100%;
+    background-size: 100%;
+}
+
+.page-image img{
+    height: 100%;
+    background-size: 100%;
+}*/
+
 .page-header {
     padding: 55px 0px;
     background-attachment: fixed;
