@@ -103,24 +103,39 @@
             setTimeout(function(){ $('.my-message').fadeOut() }, 2000);
         });
         
-        $( "#draggable p" ).draggable({
-            drag: function(){
-                pos = $(this).offset();
-                parent = $(".droppable").offset();
-//                current = {left: pos.left - parent.left, top: pos.top - parent.top };
-//                $("#pos").html( current.left + ', ' + current.top );
-            }
+        $( "#draggable li" ).draggable({
+            revert: 'invalid',
+//            drag: function(){
+//                pos = $(this).offset();
+//                parent = $(".droppable").offset();
+////                current = {left: pos.left - parent.left, top: pos.top - parent.top };
+////                $("#pos").html( current.left + ', ' + current.top );
+//            }
         });
         $( ".droppable" ).droppable({
             accept: ".my_div",
             activeClass: "ui-state-hover",
             hoverClass: "ui-state-active",
+            revert: "invalid",
             
-            drop: function () {
-                var dropData =  $(this).append(ui.draggable);
+            drop: function (event, ui) {
+                $( this )
+                .addClass( "ui-state-highlight" );
+                var myval = jQuery(this).data('myval');
+                console.log(myval);
+//                alert(myval);
+//                var myval = jQuery(this).data('myval');
+//                .find( "li" );
+//                .html( "Dropped!" );
+//                var dropData =  $(this).append(ui.draggable);
 
             }
-        }); 
+        });
+//        function dragging(event) {
+//            var dragDiv = document.getElementById('dragItem');
+//            alert(dragDiv);
+////            document.getElementById("demo").innerHTML = "The p element is being dragged";
+//        }
     </script>
 
     

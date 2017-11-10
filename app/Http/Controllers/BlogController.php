@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Blog;
@@ -51,6 +52,7 @@ class BlogController extends Controller
         $blog = new Blog;
         $blog->title = $request->input('title');
         $blog->editor = $request->input('blog-post');
+        $slug = SlugService::createSlug(Blog::class, 'slug', $blog->title);
         $blog->save();
         
         $request->session()->flash('success', 'Post successful added!');
@@ -102,6 +104,7 @@ class BlogController extends Controller
         $blog = Blog::find($id);
         $blog->title = $request->input('title');
         $blog->editor = $request->input('blog-post');
+        $blog->slug = null;
         $blog->save();
         
         $request->session()->flash('success', 'Post Updated!');

@@ -20,23 +20,16 @@
                 <div class="box-header">
                 </div>
                   @include('admin.admin.message')
-                <div class="box-body">
-                    
-<!--                    <div id="no-drop" class="draggable drag-drop"> #no-drop </div>
-
-                    <div id="yes-drop" class="draggable drag-drop"> #yes-drop </div>
-
-                    <div id="outer-dropzone" class="dropzone">
-                        #outer-dropzone
-                        <div id="inner-dropzone" class="dropzone">#inner-dropzone</div>
-                    </div>-->
-                    
-                    <div class="ui-widget-content dragable-data" id="draggable">
+                <div class="box-body">                    
+                    <ul class="ui-widget-content dragable-data" id="draggable">
                         @foreach($pages as $page)
-                            <p class="my_div ">{{ $page->page_title }}</p>
-                            <div style="display: none;">{{ $page->page_url }}</div>
+                            <li class="my_div dragItem"  id="">
+                                <i class="fa fa-bars" style="margin-right: 5px;" aria-hidden="true"></i>
+                                {{ $page->page_title }}
+                                <div style="display: none;">{{ $page->page_url }}</div>
+                            </li>
                         @endforeach
-                    </div>
+                    </ul>
 
                     <div class="ui-widget-header my_style droppable" >
                         <p>Header Section</p>

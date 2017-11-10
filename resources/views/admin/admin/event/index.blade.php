@@ -53,6 +53,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{$site_events->links()}}
                 </div>
               </div>
             </div>

@@ -31,22 +31,23 @@ class FrontendController extends Controller
         return view('frontend.blog', ['blogs' => $blogs], ['pages' => $pages])->render();
     }
 
-    public function blogDetail($id)
+    public function blogDetail($slug)
     {
         $pages = Page::all();
-    	$blog = Blog::find($id);
-        return view('frontend.blog-detail', ['blog' => $blog], ['pages' => $pages])->render();
+        $blogss = DB::table('blogs')->where('slug', $slug)->get();
+        $data = array(
+            'blogss' => $blogss,
+            'pages' => $pages
+        );
+        return view('frontend.blog-detail', $data)->render();
     }
     
     public function getPage($page_url)
     {
-        $url = '/' . $page_url;
+        $url = '/view/' . $page_url;
         $pages = Page::all();
-//        $pages = Page::where('page_status', 1);
-//        var_dump($pages);
-//        die('vjnfs');
         $page = Page::where('page_url', '=', $url)->first(); // or create a helper on your model to condense this
-        return view('frontend.app-download', compact('page' , 'pages'));
+        return view('frontend.view', compact('page' , 'pages'));
     }
 
 //    public function privacy()
@@ -72,13 +73,20 @@ class FrontendController extends Controller
     
     public function events()
     {
+        $pages = Page::all();
         $events = SiteEvent::orderBy('created_at', 'desc')->paginate(5);
-        return view('frontend.events', ['events' => $events])->render();
+        return view('frontend.events', ['events' => $events], ['pages' => $pages])->render();
     }
     
-    public function eventDetail($id)
+    public function eventDetail($slug)
     {
-        $event = SiteEvent::find($id);
-        return view('frontend.event-detail')->with('event', $event);
+        $pages = Page::all();
+        $eventss = DB::table('site_events')->where('slug', $slug)->get();
+        $data = array(
+            'eventss' => $eventss,
+            'pages' => $pages
+        );
+        return view('frontend.event-detail', $data)->render();
+//        return view('frontend.event-detail')->with('event', $event);
     }
 }

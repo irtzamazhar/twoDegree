@@ -5,6 +5,7 @@
     </div>
     <div class="container">
         <div class="blog-detail blog-content section-start ">
+            @foreach ($blogss as $blog)
             <p class="head-date">{{ date('F d, Y', strtotime($blog->created_at)) }}</p>
             <div class="blog-post section-start">
                 <div class="blog-post-title">
@@ -26,6 +27,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
 
     </div>

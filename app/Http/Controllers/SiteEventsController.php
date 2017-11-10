@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\SiteEvent;
@@ -76,6 +77,8 @@ class SiteEventsController extends Controller
         $event->place_lat = $request->input('place-lat');
         $event->place_lng = $request->input('place-lng');
         $event->address = $request->input('address');
+        $slug = SlugService::createSlug(SiteEvent::class, 'slug', $event->event_title);
+        $newEvent = $event->replicate();
         $event->save();
         
         $request->session()->flash('success', 'Event added!');
@@ -138,6 +141,7 @@ class SiteEventsController extends Controller
         $event->place_lat = $request->input('place-lat');
         $event->place_lng = $request->input('place-lng');
         $event->address = $request->input('address');
+        $event->slug = null;
         $event->save();
         
         $request->session()->flash('success', 'Event Updated!');

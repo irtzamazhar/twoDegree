@@ -34,7 +34,6 @@
 //    });
     
 $(document).ready(function(response){
-    alert('Done');
 	$('#mc-embedded-subscribe-form').on('submit', function(e){  
             e.preventDefault();
             var email = $('#mce-EMAIL').val();

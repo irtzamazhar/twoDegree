@@ -1,11 +1,13 @@
 @include('frontend.include.header')
     <div class="page-header section-start event-header">
+        @foreach ($eventss as $event)
         <h1>{{ $event->event_title }}<br><span class="tagline">MeetUp. StartUp. ScaleUp.</span> </h1>
         
     </div>
 
     <div class="container">
         <div class="event-detail section-start">
+            
             <div class="page-desc">
                 <p class="event-time">
                   <time class="event-meta-heading">{{ date('l', strtotime($event->event_timing1)) }}, {{ date('M d, Y', strtotime($event->event_day)) }}</time><br>
@@ -39,6 +41,7 @@
             </div>
             
             </div>
+            @endforeach
         </div>
 
     </div>

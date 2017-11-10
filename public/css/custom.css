@@ -1,22 +1,25 @@
 .my_div {
     border: 1px solid #DDDDDD !important;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 40px;
     padding: 0.5em;
     float: left;
-    margin: 10px 10px 10px 0;
+    margin: 10px 10px 10px 10px;;
     cursor:move;
+    background-color: #E9E9E9;
+    text-decoration: none;
 }
 
 .dragable-data{
     float: left;
-    height: 400px;
+    height: 450px;
     width: 550px;
+    list-style: none;
 }
 
 .my_style {
     width: 500px;
-    height: 150px;
+    height: 200px;
     padding: 0.5em;
     /*clear: both;*/
     float: left;

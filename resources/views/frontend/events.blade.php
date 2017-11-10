@@ -16,7 +16,7 @@
                             </div>
                             <div class="main-image-wrapper">
 
-                                <a href="{{ url('event-detail/'.$event->id) }}">
+                                <a href="{{ url('event-detail/'.$event->slug) }}">
                                     <div class="main-image">
                                         <img src="{{ asset('storage/app/public/images/'.$event->event_image) }}" />
                                         <div class="hover-affect">
@@ -44,7 +44,7 @@
                                     <p>{{ $event->event_detail }}</p>
                                 </div>
                                 <div class="entry-header">
-                                    <p class="entry-more-link"><a href="{{ url('event-detail/'.$event->id) }}"></a></p>
+                                    <p class="entry-more-link"><a href="{{ url('event-detail/'.$event->slug) }}"></a></p>
                                     <p class="entry-actions"><span class="like-count"><i class="fa fa-share-alt" aria-hidden="true"></i>Share</span></p>
                                     <p class="entry-actions"><span class="like-count"><i class="fa fa-heart" aria-hidden="true"></i>0 Likes</span></p>
 

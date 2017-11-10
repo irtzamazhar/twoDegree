@@ -16,7 +16,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $pages = Page::orderBy('created_at', 'desc')->paginate(5);
+        $pages = Page::all();
+//        $pages = Page::orderBy('created_at', 'desc')->paginate(5);
         return view('admin.admin.menu.index', ['pages' => $pages])->render();
     }
 

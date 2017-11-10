@@ -87,16 +87,16 @@ Route::post('/update/{id}', 'ProfileController@update')->name('update');
 // frontend routes
 Route::get('/', 'FrontendController@index');
 Route::get('/app-download', 'FrontendController@app');
-Route::get('{page_url}', 'FrontendController@getPage');
+Route::get('view/{page_url}', 'FrontendController@getPage');
 //Route::get('/privacy', 'FrontendController@privacy');
 //Route::get('/terms', 'FrontendController@terms');
 Route::get('/faq', 'FrontendController@faq');
 Route::get('contact', 'ContactController@create')->name('contact');
 Route::post('createContact', 'ContactController@store')->name('createContact');
 Route::get('blog', 'FrontendController@blog');
-Route::get('blog-detail/{id}', 'FrontendController@blogDetail')->name('blog-detail');
+Route::get('blog-detail/{slug}', 'FrontendController@blogDetail')->name('blog-detail');
 Route::get('events', 'FrontendController@events');
-Route::get('event-detail/{id}', 'FrontendController@eventDetail')->name('event-detail');
+Route::get('event-detail/{slug}', 'FrontendController@eventDetail')->name('event-detail');
 
 //Route::get('footer', 'FrontendController@footer');
 

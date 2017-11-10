@@ -11,7 +11,7 @@
             <div class="blog-post section-start">
                 <div class="blog-post-title">
 
-                    <h2><a href="{{ url('blog-detail/'.$blog->id) }}">{{ $blog->title }}</a></h2>
+                    <h2><a href="{{ url('blog-detail/'.$blog->slug) }}">{{ $blog->title }}</a></h2>
 
                 </div>
                 <div class="date">
