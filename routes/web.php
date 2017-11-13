@@ -72,7 +72,7 @@ Route::get('/admin', 'HomeController@index')->name('home');
 Route::get('/admin/widgets', 'HomeController@widgets')->name('widgets');
 Route::get('/admin/table', 'HomeController@table')->name('table');
 Route::get('/admin/profile', 'ProfileController@profile')->name('profile');
-Route::post('/update/{id}', 'ProfileController@update')->name('update');
+Route::post('/admin/update/{id}', 'ProfileController@update')->name('update');
 
 
 

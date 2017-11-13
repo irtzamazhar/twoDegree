@@ -5,7 +5,7 @@
           <div class="user-panel">
             <div class="pull-left image">
               <!-- <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" /> -->
-              <img src="{{ asset('public/css/dist/img/user2-160x160.jpg') }} " class="img-circle">
+              
             </div>
             <div class="pull-left info">
               <p>{{ Auth::user()->name }}</p>

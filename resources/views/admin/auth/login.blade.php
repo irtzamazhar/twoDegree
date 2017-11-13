@@ -62,11 +62,7 @@
           </div>
         </form>
 
-        <a href="{{ route('password.request') }}">I forgot my password</a><br>
-        <div class="text-center">
-          <a href="{{ route('register') }}">
-            <h3>Haven't any account</h3]></a>
-        </div>
+<!--        <a href="{{ route('password.request') }}">I forgot my password</a><br>-->
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Page;
+use App\Menu;
 use DB;
 
 class MenuController extends Controller
@@ -39,7 +40,17 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+        $headerMenu = $request->headerItem;
+        $footerMenu = $request->footerItem;
+//        $complete_ca = FinishedCA::find($id);
         
+        $data = new Menu();
+        $data->page_name = $request->headerItem;
+        $data->save();
+        return 'Done';
+//        return response()->json($data);
+//        $headerData = $_POST['headerItem'];
+//        dd($headerData);
     }
 
     /**

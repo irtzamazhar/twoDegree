@@ -22,8 +22,10 @@
                   @include('admin.admin.message')
                 <div class="box-body">                    
                     <ul class="ui-widget-content dragable-data" id="draggable">
+                        
                         @foreach($pages as $page)
-                            <li class="my_div dragItem"  id="">
+                        <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
+                            <li class="my_div dragItem"  id="" data-menuname="{{ $page->page_title }}">
                                 <i class="fa fa-bars" style="margin-right: 5px;" aria-hidden="true"></i>
                                 {{ $page->page_title }}
                                 <div style="display: none;">{{ $page->page_url }}</div>
@@ -31,13 +33,14 @@
                         @endforeach
                     </ul>
 
-                    <div class="ui-widget-header my_style droppable" >
+                    <div class="ui-widget-header my_style droppable" id="myheader-menu" >
                         <p>Header Section</p>
                     </div>
-<!--<div id="pos"></div>-->
-                    <div class="ui-widget-header my_style droppable">
+                    
+                    <div class="ui-widget-header my_style droppable" id="myfooter-menu">
                         <p>Footer Section</p>
                     </div>
+                    <button type="submit" class="btn btn-success btn-flat btn-lg pull-right" id="submit">Submit</button>
                 </div>
               </div>
             </div>

@@ -15,92 +15,112 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
 
-	public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
     
     public function profile()
     {
-      	$login_id = Auth::user()->id;
-   		$data['blog']=User::find($login_id);
+      	$login_id = Auth::User()->id;
+   	$data['user'] = User::find($login_id);
         return view('admin.admin.profile',$data);
     }
 
     public function update(Request $request, $id)
     {
-        $this->validate($request,['name'=>'Required','email' => 'required|email|unique:users']);
+        // Validate User data
+        $this->validate($request, [
+            'name' => 'Required',
+            'email' => 'required|email'
+        ]);
+        
+        // Update Profile
+//        $user = User::find($id);
+//        $user->faq_title = $request->input('faqTitle');
+//        $user->faq_content = $request->input('faq-content');
+//        $user->faq_status = $request->input('faq-status');
+//        $user->save();
+//        
+//        $request->session()->flash('success', 'Profile is Updated!');
+//        
+//        return redirect('prifile');
 
-       if ($request->pass!='')
-			{
-				 $this->validate($request, [
-			        'pass'     => 'required|min:6',
-			        'cpass' => 'required|same:pass',
-			    ]);
+        if($request->pass!='')
+        {
+            $this->validate($request, [
+                'pass'     => 'required|min:6',
+                'cpass' => 'required|same:pass',
+            ]);
 
-			   $change_password=bcrypt($request->pass);
-			   if ($request->file('image')) {
-	            $blog=User::find($id);
+            $change_password = bcrypt($request->pass);
+            if ($request->file('image')) {
+                $user = User::find($id);
 
-	            // Delete old image
-	            File::delete("storage/app/public/$blog->image");
-	            File::delete("storage/app/public/thumbnail/$blog->image");
-	            $name= $request->image->hashName();
- 
-	            Storage::putFile('public',$request->file('image'));
-	            $img = Image::make("storage/app/public/$name");
-	            $img->resize(100, 100, function ($constraint) {
-	                $constraint->aspectRatio();
-	            })->save("storage/app/public/thumbnail/$name");
-	            
-	            $blogUpdate=$request->all();
-	            $blogUpdate['image']=$name;
-	            $blogUpdate['password']=$change_password;
-	            $blog->update($blogUpdate);
-	             return redirect('profile');
-	        }
-	        else
-	        {
-	            $blog=User::find($id);
-	            $blogUpdate=$request->all();
-	            $blogUpdate['image'] =$blog->image ;
-	            $blogUpdate['password']=$change_password;
-	            $blog->update($blogUpdate);
-	            return redirect('profile');
-	        }
-			     
-			}
-			else
-			{
-				if ($request->file('image')) {
-			            $blog=User::find($id);
+                // Delete old image
+                File::delete("storage/app/public/$user->image");
+                File::delete("storage/app/public/thumbnail/$user->image");
+                $name= $request->image->hashName();
 
-			            // Delete old image
-			            File::delete("storage/app/public/$blog->image");
-			            File::delete("storage/app/public/thumbnail/$blog->image");
-			            $name= $request->image->hashName();
-			            Storage::putFile('public',$request->file('image'));
-			            $img = Image::make("storage/app/public/$name");
-			            $img->resize(100, 100, function ($constraint) {
-			                $constraint->aspectRatio();
-			            })->save("storage/app/public/thumbnail/$name");
-			            
-			            $blogUpdate=$request->all();
-			            $blogUpdate['image']=$name;
-			            $blog->update($blogUpdate);
-			             return redirect('profile');
-			        }
-			        else
-			        {
-			            $blog=User::find($id);
-			            $blogUpdate=$request->all();
-			            $blogUpdate['image'] =$blog->image ;
-			            
-			            $blog->update($blogUpdate);
-			            return redirect('profile');
-			        }
-			}
-           
-  		
+                Storage::putFile('public',$request->file('image'));
+                $img = Image::make("storage/app/public/$name");
+                $img->resize(100, 100, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save("storage/app/public/thumbnail/$name");
+
+                $userUpdate = $request->all();
+                $userUpdate['image'] = $name;
+                $userUpdate['password'] = $change_password;
+                $user->update($userUpdate);
+                
+                $request->session()->flash('success', 'Profile is Updated!');
+                return redirect('admin/profile');
+            }
+            else
+            {
+                $user = User::find($id);
+                $userUpdate = $request->all();
+                $userUpdate['image'] = $user->image ;
+                $userUpdate['password'] = $change_password;
+                $user->update($userUpdate);
+                
+                $request->session()->flash('success', 'Profile is Updated!');
+                return redirect('admin/profile');
+            }
+
+        }
+        else
+        {
+            if ($request->file('image')) {
+                $user = User::find($id);
+
+                // Delete old image
+                File::delete("storage/app/public/$user->image");
+                File::delete("storage/app/public/thumbnail/$user->image");
+                $name= $request->image->hashName();
+                Storage::putFile('public',$request->file('image'));
+                $img = Image::make("storage/app/public/$name");
+                $img->resize(100, 100, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save("storage/app/public/thumbnail/$name");
+
+                $userUpdate=$request->all();
+                $userUpdate['image']=$name;
+                $user->update($userUpdate);
+                
+                $request->session()->flash('success', 'Profile is Updated!');
+                return redirect('admin/profile');
+            }
+            else
+            {
+                $user = User::find($id);
+                $userUpdate = $request->all();
+                $userUpdate['image'] = $user->image ;
+                $user->update($userUpdate);
+                
+                $request->session()->flash('success', 'Profile is Updated!');
+                return redirect('admin/profile');
+            }
+        }  		
     }
 }

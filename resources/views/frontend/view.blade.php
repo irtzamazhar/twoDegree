@@ -1,5 +1,6 @@
 @include('frontend.include.header')
-<div class="page-header section-start" style="background-image: url({{ asset('public/images/'$page->page_image) }});">
+
+<div class="page-header section-start" style="background-image: url( {{ url('public/images/' . $page->page_image)}} };">
         
         <h1>{{ $page->page_title }}</h1>
         

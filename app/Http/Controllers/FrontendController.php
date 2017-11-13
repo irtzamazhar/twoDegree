@@ -68,7 +68,9 @@ class FrontendController extends Controller
 
     public function contact()
     {
-    	return view('frontend.contact');
+        $pages = Page::all();
+        dd($pages);
+    	return view('frontend.contact')->with('pages', $pages);
     }
     
     public function events()

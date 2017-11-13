@@ -92,6 +92,9 @@
     <!-- <script src="{{ asset('public/css/dist/js/demo.js') }}"></script> -->
 
     <script type="text/javascript">
+        var headerItems = [];
+        var footerItems = [];
+        
         $(document).ready(function () {
             $('ul.sidebar-menu > li').click(function (e) {
                 e.preventDefault();
@@ -104,7 +107,7 @@
         });
         
         $( "#draggable li" ).draggable({
-            revert: 'invalid',
+//            revert: 'invalid',
 //            drag: function(){
 //                pos = $(this).offset();
 //                parent = $(".droppable").offset();
@@ -116,26 +119,57 @@
             accept: ".my_div",
             activeClass: "ui-state-hover",
             hoverClass: "ui-state-active",
-            revert: "invalid",
+            
             
             drop: function (event, ui) {
-                $( this )
-                .addClass( "ui-state-highlight" );
-                var myval = jQuery(this).data('myval');
-                console.log(myval);
-//                alert(myval);
-//                var myval = jQuery(this).data('myval');
-//                .find( "li" );
-//                .html( "Dropped!" );
-//                var dropData =  $(this).append(ui.draggable);
-
+                $( this ).addClass( "ui-state-highlight" );
+                var dragItem = ui.draggable.attr("data-menuname");
+                var dropInto = $(this).attr("id");
+                
+                if(dropInto == "myheader-menu") {
+                    headerItems.push(dragItem);
+                    console.log(dragItem + " drag into header");
+                } else if(dropInto == "myfooter-menu") {
+                    footerItems.push(dragItem);
+                    console.log(dragItem + " drag into footer");
+                }
             }
         });
-//        function dragging(event) {
-//            var dragDiv = document.getElementById('dragItem');
-//            alert(dragDiv);
-////            document.getElementById("demo").innerHTML = "The p element is being dragged";
-//        }
+        
+//        $("#draggable li").sortable();
+//        $("#draggable li").disableSelection();
+        
+        $("#submit").click(function(e){
+            e.preventDefault();
+            // csrf token
+            var token = $('input[name=_token]').val();
+            
+            $.ajaxSetup({
+                headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: 'createMenu',
+                type: 'get',
+                data: {
+                    _token: token,
+                    headerItem: "one",
+                    footerItem: "two"
+                },
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(err){
+                    alert(JSON.stringify(err));
+                    console.log(headerItems);
+                    console.log(footerItems);
+                    console.log('Something went wrong', status, err);
+                }
+            });
+//            console.log(headerItems);
+//            console.log(footerItems);
+        });
     </script>
 
     
