@@ -34,17 +34,6 @@ class ProfileController extends Controller
             'name' => 'Required',
             'email' => 'required|email'
         ]);
-        
-        // Update Profile
-//        $user = User::find($id);
-//        $user->faq_title = $request->input('faqTitle');
-//        $user->faq_content = $request->input('faq-content');
-//        $user->faq_status = $request->input('faq-status');
-//        $user->save();
-//        
-//        $request->session()->flash('success', 'Profile is Updated!');
-//        
-//        return redirect('prifile');
 
         if($request->pass!='')
         {
@@ -73,7 +62,7 @@ class ProfileController extends Controller
                 $userUpdate['password'] = $change_password;
                 $user->update($userUpdate);
                 
-                $request->session()->flash('success', 'Profile is Updated!');
+                $request->session()->flash('success', 'Profile has been Updated!');
                 return redirect('admin/profile');
             }
             else
@@ -84,7 +73,7 @@ class ProfileController extends Controller
                 $userUpdate['password'] = $change_password;
                 $user->update($userUpdate);
                 
-                $request->session()->flash('success', 'Profile is Updated!');
+                $request->session()->flash('success', 'Profile has been Updated!');
                 return redirect('admin/profile');
             }
 
@@ -108,7 +97,7 @@ class ProfileController extends Controller
                 $userUpdate['image']=$name;
                 $user->update($userUpdate);
                 
-                $request->session()->flash('success', 'Profile is Updated!');
+                $request->session()->flash('success', 'Profile has been Updated!');
                 return redirect('admin/profile');
             }
             else
@@ -118,7 +107,7 @@ class ProfileController extends Controller
                 $userUpdate['image'] = $user->image ;
                 $user->update($userUpdate);
                 
-                $request->session()->flash('success', 'Profile is Updated!');
+                $request->session()->flash('success', 'Profile has been Updated!');
                 return redirect('admin/profile');
             }
         }  		

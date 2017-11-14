@@ -556,6 +556,7 @@ footer {
     display: inline-block;
     margin: 0;
     color: #fff;
+    
 }
 
 .page-header p {
@@ -738,7 +739,7 @@ footer {
     top: 0px !important;
 }
 
-.accordion-toggle,
+.accordion-toggle1,
 .accordion-toggle2,
 .accordion-toggle3,
 .accordion-toggle4,
@@ -767,7 +768,7 @@ footer {
     line-height: 24px;
 }
 
-.accordion-toggle.on,
+.accordion-toggle1.on,
 .accordion-toggle2.on,
 .accordion-toggle3.on,
 .accordion-toggle4.on,

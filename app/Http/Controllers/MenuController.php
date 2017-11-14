@@ -29,7 +29,15 @@ class MenuController extends Controller
      */
     public function create()
     {
-        return view('admin.admin.menu.create');
+        $pages = Page::all();
+        $headerMenu = Menu::where('page_place', '=', 'header')->get();
+        $footerMenu = Menu::where('page_place', '=', 'footer')->get();
+        $data = array(
+            'pages' => $pages,
+            'headerMenu' => $headerMenu,
+            'footerMenu' => $footerMenu,
+        );
+        return view('admin.admin.menu.index', $data)->render();
     }
 
     /**
@@ -40,14 +48,72 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        $headerMenu = $request->headerItem;
-        $footerMenu = $request->footerItem;
-//        $complete_ca = FinishedCA::find($id);
+        $headerTitleVar = $request->headerMenuTitle;
+        $headerUrlVar = $request->headerMenuUrl;
+        $footerTitleVar = $request->footerMenuTitle;
+        $footerUrlVar = $request->footerMenuUrl;
+                
+        for($i=0; $i<count($headerTitleVar); $i++){
+            $headerData = new Menu;
+            $headerData->page_place = 'header';
+            $headerData->page_name = $headerTitleVar[$i];
+            $headerData->page_url = $headerUrlVar[$i];
+            $headerData->page_value = 1;
+            $headerData->save();
+        }
         
-        $data = new Menu();
-        $data->page_name = $request->headerItem;
-        $data->save();
+        for($i=0; $i<count($footerTitleVar); $i++){
+            $footerData = new Menu;
+            $footerData->page_place = 'footer';
+            $footerData->page_name = $footerTitleVar[$i];
+            $footerData->page_url = $footerUrlVar[$i];
+            $footerData->page_value = 0;
+            $footerData->save();
+        }
         return 'Done';
+//        $headerMenu = $request->headerItem;
+//        $footerMenu = $request->footerItem;
+//        
+//        dd($request->all());
+//        
+//        foreach($request->headerMenu as $headerValues){
+//            $headerResult[]   = $headerValues;
+//        }
+//        foreach($request->footerMenu as $footerValues){
+//            $footerResult[] = $footerValues;
+//        }
+//        
+//        $j = 0;
+//        while($j < count($request->headerMenu)) {
+//            $IdResult                 = $fieldsIdResult[$j];
+//            $ValResult                = $fieldsValueResult[$j];
+//            $formValue                = new Formvalue;
+//            $formValue->form_field_id = $IdResult;
+//            $formValue->value         = $ValResult;
+//            $formValue->save();
+//            $j++;
+//        }
+//        
+////        $values = array();
+//        foreach ($request->all() as $value){
+//            $data = new Menu();
+//            $data->page_place = $value->
+//            
+//            $values = array(
+//                'page_place' => $headerMenu,
+//                'page_url' => 'testUrl',
+//                'page_value' => 1,
+//            );
+//        }
+            
+//        $data = array(
+//            'page_place' => $headerMenu,
+//            'page_place' => $footerMenu
+//        );
+//        $data = $data->ToArray();
+//        DB::table('menu')->insert($values);
+//        $data->save();
+//        return 'Work Done';
 //        return response()->json($data);
 //        $headerData = $_POST['headerItem'];
 //        dd($headerData);

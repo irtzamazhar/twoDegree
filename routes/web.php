@@ -50,13 +50,14 @@ Route::post('/admin/pages/update/{id}', 'PagesController@update')->name('updateP
 Route::get('/admin/pages/showPage/{id}', 'PagesController@show')->name('showPage');
 
 //Menu Route
-Route::get('/admin/menu', 'MenuController@index')->name('admin/menu');
-Route::get('/admin/menu/create', 'MenuController@create')->name('createMenu');
-Route::post('createMenu', 'MenuController@store')->name('createMenu');
-Route::get('/admin/menu/deleteMenu/{id}', 'MenuController@destroy')->name('deleteMenu');
-Route::get('/admin/menu/editMenu/{id}', 'MenuController@edit')->name('editMenu');
-Route::post('/admin/menu/update/{id}', 'MenuController@update')->name('updateMenu');
-Route::get('/admin/menu/showMenu/{id}', 'MenuController@show')->name('showMenu');
+//Route::get('/admin/menu', 'MenuController@index')->name('admin/menu');
+//Route::resource('/admin/menu', 'MenuController');
+Route::get('/admin/menu', 'MenuController@create')->name('admin/menu');
+Route::post('/insertData', 'MenuController@store')->name('insertData1');
+//Route::get('/admin/menu/deleteMenu/{id}', 'MenuController@destroy')->name('deleteMenu');
+//Route::get('/admin/menu/editMenu/{id}', 'MenuController@edit')->name('editMenu');
+//Route::post('/admin/menu/update/{id}', 'MenuController@update')->name('updateMenu');
+//Route::get('/admin/menu/showMenu/{id}', 'MenuController@show')->name('showMenu');
 
 //FAQ's Route
 Route::get('/admin/faq', 'FaqsController@index')->name('admin/faq');

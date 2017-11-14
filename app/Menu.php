@@ -12,4 +12,10 @@ class Menu extends Model
     public $primaryKey = 'id';
     // Timestamps
     public $timestamps = true;
+    
+//    public function menuValues()
+//    {
+//        return $this->belongsTo('App\Page');
+//    }
+    
 }

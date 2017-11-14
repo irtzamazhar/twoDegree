@@ -92,8 +92,8 @@
     <!-- <script src="{{ asset('public/css/dist/js/demo.js') }}"></script> -->
 
     <script type="text/javascript">
-        var headerItems = [];
-        var footerItems = [];
+//        var headerItems = [];
+//        var footerItems = [];
         
         $(document).ready(function () {
             $('ul.sidebar-menu > li').click(function (e) {
@@ -106,8 +106,9 @@
             setTimeout(function(){ $('.my-message').fadeOut() }, 2000);
         });
         
+//        Drag and Drop
         $( "#draggable li" ).draggable({
-//            revert: 'invalid',
+            revert: 'invalid',
 //            drag: function(){
 //                pos = $(this).offset();
 //                parent = $(".droppable").offset();
@@ -123,15 +124,23 @@
             
             drop: function (event, ui) {
                 $( this ).addClass( "ui-state-highlight" );
-                var dragItem = ui.draggable.attr("data-menuname");
+                var dragItemTitle = ui.draggable.attr("data-menuname");
+                var dragItemUrl = $('#page-url').text();
+                console.log(dragItemUrl);
                 var dropInto = $(this).attr("id");
                 
                 if(dropInto == "myheader-menu") {
-                    headerItems.push(dragItem);
-                    console.log(dragItem + " drag into header");
+                    $('#myheader-menu').append("<input value='"+ dragItemTitle +"' name='headerMenuTitle[]' id='headerMenuTitle' type='hidden'>");
+                    $('#myheader-menu').append("<input value='"+ dragItemUrl +"' name='headerMenuUrl[]' id='headerMenuUrl' type='hidden'>");
+//                    headerItems.push(dragItem);
+//                    console.log(headerItems);
+                    console.log(dragItemTitle + " drag into header");
                 } else if(dropInto == "myfooter-menu") {
-                    footerItems.push(dragItem);
-                    console.log(dragItem + " drag into footer");
+                    $('#myfooter-menu').append("<input value='"+ dragItemTitle +"' name='footerMenuTitle[]' id='footerMenuTitle' type='hidden'>");
+                    $('#myfooter-menu').append("<input value='"+ dragItemUrl +"' name='footerMenuUrl[]' id='headerMenuUrl' type='hidden'>");
+//                    footerItems.push(dragItem);
+//                    console.log(footerItems[0]);
+                    console.log(dragItemTitle + " drag into footer");
                 }
             }
         });
@@ -139,37 +148,29 @@
 //        $("#draggable li").sortable();
 //        $("#draggable li").disableSelection();
         
-        $("#submit").click(function(e){
-            e.preventDefault();
-            // csrf token
-            var token = $('input[name=_token]').val();
-            
-            $.ajaxSetup({
-                headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                url: 'createMenu',
-                type: 'get',
-                data: {
-                    _token: token,
-                    headerItem: "one",
-                    footerItem: "two"
-                },
-                success: function(data){
-                    console.log(data);
-                },
-                error: function(err){
-                    alert(JSON.stringify(err));
-                    console.log(headerItems);
-                    console.log(footerItems);
-                    console.log('Something went wrong', status, err);
-                }
-            });
-//            console.log(headerItems);
-//            console.log(footerItems);
-        });
+//        $("#submit").click(function(e){
+//            e.preventDefault();
+//            $.ajax({
+//                method: "POST",
+//                url: "{{ url('insertData') }}",
+//                data: {
+////                    _token: token,
+//                    headerItem: headerItems,
+//                    footerItem: footerItems
+//                },
+//                success: function(data){
+//                    console.log(data);
+//                },
+//                error: function(err){
+//                    alert(JSON.stringify(err));
+//                    console.log(headerItems);
+//                    console.log(footerItems);
+//                    console.log('Something went wrong', status, err);
+//                }
+//            });
+////            console.log(headerItems);
+////            console.log(footerItems);
+//        });
     </script>
 
     

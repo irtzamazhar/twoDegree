@@ -12,4 +12,9 @@ class Page extends Model
     public $primaryKey = 'id';
     // Timestamps
     public $timestamps = true;
+    
+//    public function menuValues()
+//    {
+//        return $this->oneToMany('App\Page');
+//    }
 }
