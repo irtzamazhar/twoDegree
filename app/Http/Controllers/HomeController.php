@@ -8,6 +8,7 @@ use App\Blog;
 use App\Contact;
 use App\SiteEvent;
 use App\Newsletter;
+use App\Section;
 use Carbon\Carbon;
 use DB;
 
@@ -45,24 +46,6 @@ class HomeController extends Controller
         
         return view('admin.admin.home', $data)->render();
     }
-
-    public function widgets()
-    {
-        return view('admin.admin.widgets');
-    }
     
-    public function contact()
-    {
-        return view('admin.admin.contact');
-    }
-
-    public function newsletter()
-    {
-        return view('admin.admin.newsletter');
-    }
-
-    public function table()
-    {
-        return view('admin.admin.table');
-    }
+    
 }

@@ -86,13 +86,15 @@
     <script src="{{ asset('public/css/plugins/fastclick/fastclick.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('public/css/dist/js/app.min.js') }}"></script>
-    <script src="{{ asset('public/css/dist/js/custom.js') }}"></script>
 
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('public/css/dist/js/pages/dashboard.js') }}"></script>
     <!-- <script src="{{ asset('public/css/dist/js/demo.js') }}"></script> -->
 
     <script type="text/javascript">
+//        var headerItems = [];
+//        var footerItems = [];
+        
         $(document).ready(function () {
             $('ul.sidebar-menu > li').click(function (e) {
                 e.preventDefault();
@@ -103,89 +105,73 @@
         $(window).load(function(){
             setTimeout(function(){ $('.my-message').fadeOut() }, 2000);
         });
-        $( "#sortable1" ).sortable({
-                
-            });
-        $( function() {
-            
-
-            $( "ul.dropfalse" ).sortable({
-                connectWith: "ul",
-                dropOnEmpty: false
-            });
-
-            $( "#sortable1, #sortable2, #sortable3, #sortable4, #sortable4" ).disableSelection();
-        } );
         
-        
-        var a=1;
-       
-    $( ".drag .drag_li_listing" ).each(function(){
-        $(this).draggable({
-            helper: "clone",
-   containment: [0,100,10000,10000], 
-   
-      
-       appendTo: "body",
-     start: function(e, ui)
- {
-  $(ui.helper).addClass("ui-draggable-helper");
- }
-    
-  
+//        Drag and Drop
+        $( "#draggable li" ).draggable({
+            revert: 'invalid',
+//            drag: function(){
+//                pos = $(this).offset();
+//                parent = $(".droppable").offset();
+////                current = {left: pos.left - parent.left, top: pos.top - parent.top };
+////                $("#pos").html( current.left + ', ' + current.top );
+//            }
         });
- 
-    });
-
-    $( ".droppable" ).droppable({
-       
-        accept: ":not(.ui-sortable-helper)",
-        drop: function( event, ui ) {
-  
-  var b = a++;
-   var c = 'dragged'+b;
-   var m = 'dragged_'+b;
-   var targetElem = $(this).attr("id");
-   $( ui.draggable ).clone().appendTo( this ).attr("id",m);
-  $(ui.draggable).draggable('disable');
-           
-   
-  
-            ui.draggable.attr("id",c);
-    var d='#dragged'+b;
-    var n='#'+m;
-       console.log(n);     
-   
-   $(n).draggable({
-   
-    helper: 'original',
-        tolerance: 'fit',
-        containment: [0,100,10000,10000],
-      appendTo: "body",
-      zindex:10000,
-      
-            });
-  $( ".after_drop" ).droppable({
-   accept: ":not(.ui-sortable-helper)",
-   accept: ".drag_li_listing ",
-   drop: function (event, ui) {
-   var n =  $(ui.draggable).attr('id');
-   var res = n.split("_");
-   var r = '#dragged'+res[1];
-  
-   $(r).draggable('enable');
-    $(ui.draggable).removeAttr("id");
-    $(ui.draggable).remove();
-    
-    
-   
-   }
- }) 
-
- }
- 
-    });
-
+        $( ".droppable" ).droppable({
+            accept: ".my_div",
+            activeClass: "ui-state-hover",
+            hoverClass: "ui-state-active",
+            
+            
+            drop: function (event, ui) {
+                $( this ).addClass( "ui-state-highlight" );
+                var dragItemTitle = ui.draggable.attr("data-menuname");
+                var dragItemUrl = ui.draggable.attr("data-pageurl");
+//                var dragItemUrl = $('#page-url').text();
+                console.log(dragItemUrl);
+                var dropInto = $(this).attr("id");
+                
+                if(dropInto == "myheader-menu") {
+                    $('#myheader-menu').append("<input value='"+ dragItemTitle +"' name='headerMenuTitle[]' id='headerMenuTitle' type='hidden'>");
+                    $('#myheader-menu').append("<input value='"+ dragItemUrl +"' name='headerMenuUrl[]' id='headerMenuUrl' type='hidden'>");
+//                    headerItems.push(dragItem);
+//                    console.log(headerItems);
+                    console.log(dragItemTitle + " drag into header");
+                } else if(dropInto == "myfooter-menu") {
+                    $('#myfooter-menu').append("<input value='"+ dragItemTitle +"' name='footerMenuTitle[]' id='footerMenuTitle' type='hidden'>");
+                    $('#myfooter-menu').append("<input value='"+ dragItemUrl +"' name='footerMenuUrl[]' id='headerMenuUrl' type='hidden'>");
+//                    footerItems.push(dragItem);
+//                    console.log(footerItems[0]);
+                    console.log(dragItemTitle + " drag into footer");
+                }
+            }
+        });
+        
+//        $("#draggable li").sortable();
+//        $("#draggable li").disableSelection();
+        
+//        $("#submit").click(function(e){
+//            e.preventDefault();
+//            $.ajax({
+//                method: "POST",
+//                url: "{{ url('insertData') }}",
+//                data: {
+////                    _token: token,
+//                    headerItem: headerItems,
+//                    footerItem: footerItems
+//                },
+//                success: function(data){
+//                    console.log(data);
+//                },
+//                error: function(err){
+//                    alert(JSON.stringify(err));
+//                    console.log(headerItems);
+//                    console.log(footerItems);
+//                    console.log('Something went wrong', status, err);
+//                }
+//            });
+////            console.log(headerItems);
+////            console.log(footerItems);
+//        });
     </script>
 
     

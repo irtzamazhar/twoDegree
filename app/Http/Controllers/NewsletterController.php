@@ -11,6 +11,11 @@ use Config;
 
 class NewsletterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
 //    protected $mailchimp;
 //    protected $listId = '537f1a7d8b';
 //    public $apiKey = '6d1e9b2229282d24aeb0c51a82bfca29-us17';

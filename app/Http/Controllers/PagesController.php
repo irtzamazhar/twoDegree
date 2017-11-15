@@ -9,6 +9,11 @@ use DB;
 
 class PagesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -71,7 +76,7 @@ class PagesController extends Controller
         
         // Create Event
         $page = new Page;
-        $page->page_url = $request->input('page_url');
+        $page->page_url = "/view/".$request->input('page_url');
         $page->page_title = $request->input('page_title');
         $page->page_status = $request->input('page_status');
         $page->page_content = $request->input('page_content');

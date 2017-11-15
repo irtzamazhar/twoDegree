@@ -37,12 +37,17 @@
                                 <span class="help-block">{{ $errors->first('page_title') }}</span>
                             @endif
                         </div>
-                        <div class="form-group col-xs-6 {{ $errors->has('page-image') ? ' has-error' : '' }}">
+                        <div class="form-group col-xs-4 {{ $errors->has('page-image') ? ' has-error' : '' }}">
                             <label for="pageImage">Page Image</label>
                             <input type="file" class="form-control" value="{{ old('page-image') }}" id="page-image" name="page-image">
                             @if($errors->has('page-image'))
                                 <span class="help-block">{{ $errors->first('page-image') }}</span>
                             @endif
+                        </div>
+                        <div class="form-group col-xs-2">
+                            <td>
+                                <img src="{{ asset('storage/app/public/images/'.$page->page_image) }}" alt="alt" width="160" height="70">
+                            </td>
                         </div>
                         <div class="form-group col-xs-6 {{ $errors->has('page_status') ? ' has-error' : '' }}">
                             <label for="pageStatus">Page Status</label>

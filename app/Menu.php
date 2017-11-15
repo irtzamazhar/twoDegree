@@ -13,9 +13,12 @@ class Menu extends Model
     // Timestamps
     public $timestamps = true;
     
-//    public function menuValues()
-//    {
-//        return $this->belongsTo('App\Page');
-//    }
+    public static function header() {
+        return static::where('page_place', '=', 'header')->get()->toArray();
+    }
+    
+    public static function footer() {
+        return static::where('page_place', '=', 'footer')->get()->toArray();
+    }
     
 }

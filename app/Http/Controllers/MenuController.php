@@ -5,11 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Page;
+use App\Section;
 use App\Menu;
 use DB;
 
 class MenuController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -18,8 +24,9 @@ class MenuController extends Controller
     public function index()
     {
         $pages = Page::all();
+        $sections = Section::all();
 //        $pages = Page::orderBy('created_at', 'desc')->paginate(5);
-        return view('admin.admin.menu.index', ['pages' => $pages])->render();
+        return view('admin.admin.menu.index', ['pages' => $pages], ['sections' => $sections])->render();
     }
 
     /**
@@ -30,12 +37,14 @@ class MenuController extends Controller
     public function create()
     {
         $pages = Page::all();
+        $sections = Section::all();
         $headerMenu = Menu::where('page_place', '=', 'header')->get();
         $footerMenu = Menu::where('page_place', '=', 'footer')->get();
         $data = array(
             'pages' => $pages,
             'headerMenu' => $headerMenu,
             'footerMenu' => $footerMenu,
+            'sections' => $sections,
         );
         return view('admin.admin.menu.index', $data)->render();
     }

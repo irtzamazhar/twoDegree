@@ -8,36 +8,32 @@ use App\Blog;
 use App\SiteEvent;
 use App\Faq;
 use App\Page;
+use App\Menu;
 use DB;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        $pages = Page::all();
-    	return view('frontend.index')->with('pages', $pages);
+    	return view('frontend.index');
     }
 
     public function app()
     {
-        $pages = Page::all();
-    	return view('frontend.app-download')->with('pages', $pages);
+    	return view('frontend.app-download');
     }
 
     public function blog()
     {
-        $pages = Page::all();
     	$blogs = Blog::orderBy('created_at', 'desc')->paginate(5);
-        return view('frontend.blog', ['blogs' => $blogs], ['pages' => $pages])->render();
+        return view('frontend.blog', ['blogs' => $blogs])->render();
     }
 
     public function blogDetail($slug)
     {
-        $pages = Page::all();
         $blogss = DB::table('blogs')->where('slug', $slug)->get();
         $data = array(
             'blogss' => $blogss,
-            'pages' => $pages
         );
         return view('frontend.blog-detail', $data)->render();
     }
@@ -47,7 +43,7 @@ class FrontendController extends Controller
         $url = '/view/' . $page_url;
         $pages = Page::all();
         $page = Page::where('page_url', '=', $url)->first(); // or create a helper on your model to condense this
-        return view('frontend.view', compact('page' , 'pages'));
+        return view('frontend.view', compact('page'));
     }
 
 //    public function privacy()
@@ -68,27 +64,21 @@ class FrontendController extends Controller
 
     public function contact()
     {
-        $pages = Page::all();
-        dd($pages);
-    	return view('frontend.contact')->with('pages', $pages);
+    	return view('frontend.contact');
     }
     
     public function events()
     {
-        $pages = Page::all();
         $events = SiteEvent::orderBy('created_at', 'desc')->paginate(5);
-        return view('frontend.events', ['events' => $events], ['pages' => $pages])->render();
+        return view('frontend.events', ['events' => $events])->render();
     }
     
     public function eventDetail($slug)
     {
-        $pages = Page::all();
         $eventss = DB::table('site_events')->where('slug', $slug)->get();
         $data = array(
             'eventss' => $eventss,
-            'pages' => $pages
         );
         return view('frontend.event-detail', $data)->render();
-//        return view('frontend.event-detail')->with('event', $event);
     }
 }

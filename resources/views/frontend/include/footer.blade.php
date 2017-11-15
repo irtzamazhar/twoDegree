@@ -2,13 +2,9 @@
         <div class="container">
             <div class="footer-nav section-start">
                 <ul>
-                    @if(count($pages) > 0)
-                        @foreach($pages as $check)
-                            <li><a href="{{ url($check->page_url) }}">{{ $check->page_title }}</a></li>
-                        @endforeach
-                    @else
-                        <h2>No Page Yet.</h2>
-                    @endif
+                    @foreach($footer as $check)
+                        <li><a href="{{ url($check['page_url']) }}">{{ $check['page_name'] }}</a></li>
+                    @endforeach
                 </ul>
             </div>
             <div class="footer-social section-start">

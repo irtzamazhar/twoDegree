@@ -24,7 +24,7 @@
                         {{ csrf_field() }}
                         <div class="form-group col-xs-6 {{ $errors->has('page_url') ? ' has-error' : '' }}">
                             <label for="pageUrl">Page URL</label>
-                            <input type="text" class="form-control" value="/view" id="page_url" name="page_url" placeholder="Enter Page Url">
+                            <input type="text" class="form-control" id="page_url" name="page_url" placeholder="Enter Page Url">
                             @if($errors->has('page_url'))
                                 <span class="help-block">{{ $errors->first('page_url') }}</span>
                             @endif

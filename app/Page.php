@@ -13,6 +13,10 @@ class Page extends Model
     // Timestamps
     public $timestamps = true;
     
+//    public static function footer() {
+//        return static::all();
+//    }
+    
 //    public function menuValues()
 //    {
 //        return $this->oneToMany('App\Page');

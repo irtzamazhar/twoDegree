@@ -18,20 +18,19 @@
 
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span> 
+                    </button>
                     <div class="logo">
                        <a href="{{ url('/') }}">  <img src="{{ asset('public/frontend/images/logo.png') }}" /></a>
-
                     </div>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ url('/app-download') }}"> App</a></li>
-                        <li><a href="{{ url('/blog') }}">Blog</a></li>
+                        @foreach($header as $check)
+                            <li><a href="{{ url($check['page_url']) }}">{{ $check['page_name'] }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
 
