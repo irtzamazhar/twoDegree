@@ -1,5 +1,7 @@
 @include('frontend.include.header')
-    <div class="page-header section-start event-header">
+@foreach($eventImage as $image)
+    <div class="page-header section-start event-header2" style="background-image: url( {{ url('public/images/' . $image['banner_image'])}} );">
+@endforeach
         @foreach ($eventss as $event)
         <h1>{{ $event->event_title }}<br><span class="tagline">MeetUp. StartUp. ScaleUp.</span> </h1>
         
@@ -7,7 +9,9 @@
 
     <div class="container">
         <div class="event-detail section-start">
-            
+            @foreach($eventImage as $image)
+                <div style="display: none;" id="page-image">{{ $image['banner_image'] }}</div>
+            @endforeach
             <div class="page-desc">
                 <p class="event-time">
                   <time class="event-meta-heading">{{ date('l', strtotime($event->event_timing1)) }}, {{ date('M d, Y', strtotime($event->event_day)) }}</time><br>
@@ -63,4 +67,10 @@
 
     </script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyApozjbWyK5N9aq4Kc8DIpTxJg2DHuLVDU&callback=initMap"></script>
+    <script type="text/javascript">
+        var image = $('#page-image').text();
+        var addres = "../storage/app/public/images/" + image ;
+        console.log(addres);
+        $(".event-header2").css('background-image', 'url(' + addres + ')');
+    </script>
 </body>

@@ -1,10 +1,15 @@
 @include('frontend.include.header')
-    <div class="page-header section-start contact-header">
+    @foreach($contactImage as $image)
+    <div class="page-header section-start contact-header2">
         <h1>Contact</h1>
     </div>
+    @endforeach
 
     <div class="container">
         <div class="support-page section-start">
+            @foreach($contactImage as $image)
+                <div style="display: none;" id="page-image">{{ $image['banner_image'] }}</div>
+            @endforeach
             <div class="col-md-7 col-sm-8 col-xs-12 centerize">
                 <form id="contactData" method="post" action="{{ url('/createContact') }}">
                     <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
@@ -154,6 +159,12 @@ $(document).ready(function() {
         return true;
     }
  }
-</script>	
+</script>
+<script type="text/javascript">
+    var image = $('#page-image').text();
+    var addres = "storage/app/public/images/" + image ;
+    console.log(addres);
+    $(".contact-header2").css('background-image', 'url(' + addres + ')');
+</script>
     
 </body>

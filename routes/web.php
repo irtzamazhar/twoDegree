@@ -21,6 +21,8 @@ Route::get('/admin/blog/deletePost/{id}', 'BlogController@destroy')->name('delet
 Route::get('/admin/blog/editPost/{id}', 'BlogController@edit')->name('editBlogPost');
 Route::post('/admin/blog/update/{id}', 'BlogController@update')->name('updateBlogPost');
 Route::get('/admin/blog/showPost/{id}', 'BlogController@show')->name('showBlogPost');
+Route::get('/admin/blog/addBanner', 'BlogController@addBanner')->name('addBanner');
+Route::post('/admin/blog/addBanner{id}', 'BlogController@storeBanner')->name('storeBlogBanner');
 
 //Site Event Route
 Route::get('/admin/event', 'SiteEventsController@index')->name('admin/event');
@@ -30,11 +32,15 @@ Route::get('/admin/event/editEvent/{id}', 'SiteEventsController@edit')->name('ed
 Route::post('/admin/event/update/{id}', 'SiteEventsController@update')->name('updateEvent');
 Route::get('/admin/event/showEvent/{id}', 'SiteEventsController@show')->name('showEvent');
 Route::get('/admin/event/deleteEvent/{id}', 'SiteEventsController@destroy')->name('deleteEvent');
+Route::get('/admin/event/addBanner', 'SiteEventsController@addBanner')->name('addBanner');
+Route::post('/admin/event/addBanner{id}', 'SiteEventsController@storeBanner')->name('storeEventBanner');
 
 //Contact Route
 Route::get('/admin/contact', 'ContactController@index')->name('admin/contact');
 Route::get('/admin/contact/delete/{id}', 'ContactController@destroy')->name('deleteContact');
 Route::get('/admin/contact/showContact/{id}', 'ContactController@show')->name('showContact');
+Route::get('/admin/contact/addBanner', 'ContactController@addBanner')->name('addBanner');
+Route::post('/admin/contact/addBanner{id}', 'ContactController@storeBanner')->name('storeContactBanner');
 
 //Newsletter Route
 Route::get('subscribe','NewsletterController@subscribe')->name('subscribe');
@@ -48,6 +54,15 @@ Route::get('/admin/pages/deletePage/{id}', 'PagesController@destroy')->name('del
 Route::get('/admin/pages/editPage/{id}', 'PagesController@edit')->name('editPage');
 Route::post('/admin/pages/update/{id}', 'PagesController@update')->name('updatePage');
 Route::get('/admin/pages/showPage/{id}', 'PagesController@show')->name('showPage');
+
+//Homepage Route
+Route::get('/admin/home', 'HomeController@index')->name('admin/home');
+Route::get('/admin/home/create', 'HomeController@create')->name('createHome');
+Route::post('createHomePost', 'HomeController@store')->name('createHomePage');
+Route::get('/admin/home/deletePost/{id}', 'HomeController@destroy')->name('deleteBlog');
+Route::get('/admin/home/editPost/{id}', 'HomeController@edit')->name('editBlogPost');
+Route::post('/admin/home/update/{id}', 'HomeController@update')->name('updateBlogPost');
+Route::get('/admin/home/showPost/{id}', 'HomeController@show')->name('showBlogPost');
 
 //Menu Route
 //Route::get('/admin/menu', 'MenuController@index')->name('admin/menu');
@@ -67,6 +82,8 @@ Route::get('/admin/faq/deleteFaq/{id}', 'FaqsController@destroy')->name('deleteF
 Route::get('/admin/faq/editFaq/{id}', 'FaqsController@edit')->name('editFaq');
 Route::post('/admin/faq/update/{id}', 'FaqsController@update')->name('updateFaq');
 Route::get('/admin/faq/showFaq/{id}', 'FaqsController@show')->name('showFaq');
+Route::get('/admin/faq/addBanner', 'FaqsController@addBanner')->name('addBanner');
+Route::post('/admin/faq/addBanner{id}', 'FaqsController@storeBanner')->name('storeFaqBanner');
 
 //Home Route
 Route::get('/admin', 'HomeController@index')->name('home');
@@ -89,10 +106,8 @@ Route::post('/admin/update/{id}', 'ProfileController@update')->name('update');
 Route::get('/', 'FrontendController@index');
 Route::get('/app-download', 'FrontendController@app');
 Route::get('view/{page_url}', 'FrontendController@getPage');
-//Route::get('/privacy', 'FrontendController@privacy');
-//Route::get('/terms', 'FrontendController@terms');
 Route::get('/faq', 'FrontendController@faq');
-Route::get('contact', 'ContactController@create')->name('contact');
+Route::get('contact', 'FrontendController@contact')->name('contact');
 Route::post('createContact', 'ContactController@store')->name('createContact');
 Route::get('blog', 'FrontendController@blog');
 Route::get('blog-detail/{slug}', 'FrontendController@blogDetail')->name('blog-detail');

@@ -18,6 +18,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
+                  <a class="btn btn-primary btn-flat btn-lg pull-left" href="{{ url('admin/faq/addBanner') }}">FAQ Banner</a>
                   <a class="btn btn-success btn-flat btn-lg pull-right" href="{{ url('admin/faq/create') }}">Create A New FAQ</a>
                 </div>
                   @include('admin.admin.message')

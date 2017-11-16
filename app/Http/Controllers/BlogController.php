@@ -6,6 +6,8 @@ use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Blog;
+use App\SiteBanner;
+use File;
 use DB;
 
 class BlogController extends Controller
@@ -63,8 +65,6 @@ class BlogController extends Controller
         $request->session()->flash('success', 'Post successful added!');
         
         return redirect('/admin/blog/');
-        
-        // Redirect to next page
     }
 
     /**
@@ -129,6 +129,48 @@ class BlogController extends Controller
 
         $blog->delete();
         return redirect('/admin/blog')->with('danger', 'Post Removed!');
+    }
+    
+    public function addBanner() {
+        $siteBanner = SiteBanner::where('page_name', '=', 'blog')->get()->toArray();
+        return view('admin.admin.blog.addBanner', ['siteBanner' => $siteBanner])->render();
+    }
+    
+    public function storeBanner(Request $request, $id)
+    {        
+        // Validate the banner image
+        $this->validate($request, [
+            'banner-image' => 'required|image|nullable|max:1999',
+        ], [
+            'banner-image.required' => 'Image is Required',
+            'banner-image.image' => 'Must be an Image.',
+        ]);
+        
+        // Handle file upload
+        if ($request->hasFile('banner-image')) {
+            // Get file with the extention
+            $fileNameWithExt = $request->file('banner-image')->getClientOriginalName();
+            // Get just name of image
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get extention of image
+            $extension = $request->file('banner-image')->getClientOriginalExtension();
+            // Filename to store the image
+            $fileNameToStore = $fileName.'-'.time().'.'.$extension;
+            // Upload image
+            $path = $request->file('banner-image')->storeAs('public/images', $fileNameToStore);
+        }
+        
+        // Create Blog Post
+        $blogBanner = SiteBanner::find($id);
+        File::delete("storage/app/public/images/$blogBanner->banner_image");
+        if($request->hasFile('banner-image')){
+            $blogBanner->banner_image = $fileNameToStore;            
+        }
+        $blogBanner->page_name = $request->input('page-name');
+        $blogBanner->save();
+        
+        $request->session()->flash('success', 'Banner added successfully!');
+        return redirect('/admin/blog/addBanner');
     }
     
     public function set_active($route) {

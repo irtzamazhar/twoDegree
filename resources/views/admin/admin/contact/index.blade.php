@@ -19,6 +19,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
+                    <a class="btn btn-primary btn-flat btn-lg pull-left" href="{{ url('admin/contact/addBanner') }}">Contact Banner</a>
                 </div>
                   @include('admin.admin.message')
                 <div class="box-body">

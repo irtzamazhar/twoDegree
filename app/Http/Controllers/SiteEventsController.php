@@ -6,6 +6,8 @@ use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\SiteEvent;
+use App\SiteBanner;
+use File;
 use DB;
 
 class SiteEventsController extends Controller
@@ -161,5 +163,47 @@ class SiteEventsController extends Controller
 
         $site_event->delete();
         return redirect('/admin/event')->with('danger', 'Event Removed!');
+    }
+    
+    public function addBanner() {
+        $siteBanner = SiteBanner::where('page_name', '=', 'event')->get()->toArray();
+        return view('admin.admin.event.addBanner', ['siteBanner' => $siteBanner])->render();
+    }
+    
+    public function storeBanner(Request $request, $id)
+    {        
+        // Validate the banner image
+        $this->validate($request, [
+            'banner-image' => 'required|image|nullable|max:1999',
+        ], [
+            'banner-image.required' => 'Image is Required',
+            'banner-image.image' => 'Must be an Image.',
+        ]);
+        
+        // Handle file upload
+        if ($request->hasFile('banner-image')) {
+            // Get file with the extention
+            $fileNameWithExt = $request->file('banner-image')->getClientOriginalName();
+            // Get just name of image
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get extention of image
+            $extension = $request->file('banner-image')->getClientOriginalExtension();
+            // Filename to store the image
+            $fileNameToStore = $fileName.'-'.time().'.'.$extension;
+            // Upload image
+            $path = $request->file('banner-image')->storeAs('public/images', $fileNameToStore);
+        }
+        
+        // Create Blog Post
+        $eventBanner = SiteBanner::find($id);
+        File::delete("storage/app/public/images/$eventBanner->banner_image");
+        if($request->hasFile('banner-image')){
+            $eventBanner->banner_image = $fileNameToStore;            
+        }
+        $eventBanner->page_name = $request->input('page-name');
+        $eventBanner->save();
+        
+        $request->session()->flash('success', 'Banner added successfully!');
+        return redirect('/admin/event/addBanner');
     }
 }

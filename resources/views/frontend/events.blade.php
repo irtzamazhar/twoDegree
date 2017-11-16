@@ -1,9 +1,14 @@
 @include('frontend.include.header')
-<div class="page-header section-start event-header">
+@foreach($eventImage as $image)
+<div class="page-header section-start event-header2" style="background-image: url( {{ url('public/images/' . $image['banner_image'])}} );">
     <h1>Upcoming Events</h1>
 </div>
+@endforeach
 <div class="container">
     <div class="event-page section-start">
+        @foreach($eventImage as $image)
+            <div style="display: none;" id="page-image">{{ $image['banner_image'] }}</div>
+        @endforeach
         @if(count($events) > 0)
         @php $i = 1 @endphp
         @foreach($events as $event)
@@ -89,4 +94,10 @@
         }
     </script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyApozjbWyK5N9aq4Kc8DIpTxJg2DHuLVDU&callback=initMap"></script>
+    <script type="text/javascript">
+        var image = $('#page-image').text();
+        var addres = "storage/app/public/images/" + image ;
+        console.log(addres);
+        $(".event-header2").css('background-image', 'url(' + addres + ')');
+    </script>
 </body>

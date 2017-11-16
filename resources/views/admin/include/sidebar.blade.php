@@ -74,6 +74,12 @@
                 <span>Manage Menu</span>
               </a>
             </li>
+            <li class="{{ Request::is('admin/home') ? 'active' : null }}">
+              <a href="{!!URL::route('admin/home')!!}">
+                <i class="fa fa-files-o"></i>
+                <span>Manage HomePage</span>
+              </a>
+            </li>
             
             <!-- <li class="">
               <a href="#">

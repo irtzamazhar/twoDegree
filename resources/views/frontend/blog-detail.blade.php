@@ -1,9 +1,14 @@
 @include('frontend.include.header')
-    <div class="page-header section-start blog-header">
+    @foreach($siteBanner as $image)
+    <div class="page-header section-start blog-header2" style="background-image: url( {{ url('public/images/' . $image['banner_image'])}} );">
         <h1>Blog</h1>
         
     </div>
+    @endforeach
     <div class="container">
+        @foreach($siteBanner as $image)
+            <div style="display: none;" id="page-image">{{ $image['banner_image'] }}</div>
+        @endforeach
         <div class="blog-detail blog-content section-start ">
             @foreach ($blogss as $blog)
             <p class="head-date">{{ date('F d, Y', strtotime($blog->created_at)) }}</p>
@@ -34,4 +39,10 @@
 @include('frontend.include.footer')
     <script src="{{ asset('public/frontend/js/jquery.min.js') }}"></script>
     <script src="{{ asset('public/frontend/js/bootstrap.js') }}"></script>
+    <script type="text/javascript">
+        var image = $('#page-image').text();
+        var addres = "../storage/app/public/images/" + image ;
+        console.log(addres);
+        $(".blog-header2").css('background-image', 'url(' + addres + ')');
+    </script>
 </body>

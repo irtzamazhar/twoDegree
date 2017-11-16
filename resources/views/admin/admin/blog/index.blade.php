@@ -19,6 +19,7 @@
               <div class="box">
                 <div class="box-header">
                   <a class="btn btn-success btn-flat btn-lg pull-right" href="{{ url('admin/blog/create') }}">Create A New Blog Post</a>
+                  <a class="btn btn-primary btn-flat btn-lg pull-left" href="{{ url('admin/blog/addBanner') }}">Blog Banner</a>
                 </div>
                   @include('admin.admin.message')
                 <div class="box-body">

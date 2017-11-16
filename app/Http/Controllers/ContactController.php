@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Contact;
+use App\SiteBanner;
+use File;
 use DB;
 
 class ContactController extends Controller
@@ -87,5 +89,48 @@ class ContactController extends Controller
 
         $contact->delete();
         return redirect('/admin/contact')->with('danger', 'Contact Removed!');
+    }
+    
+    public function addBanner() {
+        $siteBanner = SiteBanner::where('page_name', '=', 'contact')->get()->toArray();
+        return view('admin.admin.contact.addBanner', ['siteBanner' => $siteBanner])->render();
+    }
+    
+    public function storeBanner(Request $request, $id)
+    {        
+        // Validate the banner image
+        $this->validate($request, [
+            'banner-image' => 'required|image|nullable|max:1999'
+        ], [
+            'banner-image.required' => 'Image is Required',
+            'banner-image.image' => 'Must be an Image.',
+        ]);
+        
+        // Handle file upload
+        if ($request->hasFile('banner-image')) {
+            // Get file with the extention
+            $fileNameWithExt = $request->file('banner-image')->getClientOriginalName();
+            // Get just name of image
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get extention of image
+            $extension = $request->file('banner-image')->getClientOriginalExtension();
+            // Filename to store the image
+            $fileNameToStore = $fileName.'-'.time().'.'.$extension;
+            // Upload image
+            $path = $request->file('banner-image')->storeAs('public/images', $fileNameToStore);
+        }
+        
+        // Create Blog Post
+        $contactBanner = SiteBanner::find($id);
+        File::delete("storage/app/public/images/$contactBanner->banner_image");
+        $contactBanner->page_name = $request->input('page-name');
+        if($request->hasFile('banner-image')){
+            $contactBanner->banner_image = $fileNameToStore;            
+        }
+        
+        $contactBanner->save();
+        
+        $request->session()->flash('success', 'Banner added successfully!');
+        return redirect('/admin/contact/addBanner');
     }
 }

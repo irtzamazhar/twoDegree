@@ -10,16 +10,20 @@
     text-decoration: none;
 }
 
+/*.page-listing{
+    border: 1px solid #DDDDDD !important;
+}*/
+
 .dragable-data{
     float: left;
-    height: 250px;
+    height: auto;
     width: 550px;
     list-style: none;
 }
 
 .my_style {
     width: 500px;
-    height: 200px;
+    height: auto;
     padding: 0.5em;
     /*clear: both;*/
     float: left;
