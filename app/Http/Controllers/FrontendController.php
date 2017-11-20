@@ -10,13 +10,22 @@ use App\Faq;
 use App\Page;
 use App\Menu;
 use App\SiteBanner;
+use App\HomePage;
 use DB;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-    	return view('frontend.index');
+        $topSection = HomePage::where('section_name', '=' , 'Top Section')->get()->toArray();
+        $middleSection = HomePage::where('section_name', '=' , 'Middle Section')->get()->toArray();
+        $bottomSection = HomePage::where('section_name', '=' , 'Bottom Section')->get()->toArray();
+        $data = array(
+            'topSection' => $topSection,
+            'middleSection' => $middleSection,
+            'bottomSection' => $bottomSection,
+        );
+    	return view('frontend.index', $data)->render();
     }
 
     public function app()

@@ -56,13 +56,13 @@ Route::post('/admin/pages/update/{id}', 'PagesController@update')->name('updateP
 Route::get('/admin/pages/showPage/{id}', 'PagesController@show')->name('showPage');
 
 //Homepage Route
-Route::get('/admin/home', 'HomeController@index')->name('admin/home');
-Route::get('/admin/home/create', 'HomeController@create')->name('createHome');
-Route::post('createHomePost', 'HomeController@store')->name('createHomePage');
-Route::get('/admin/home/deletePost/{id}', 'HomeController@destroy')->name('deleteBlog');
-Route::get('/admin/home/editPost/{id}', 'HomeController@edit')->name('editBlogPost');
-Route::post('/admin/home/update/{id}', 'HomeController@update')->name('updateBlogPost');
-Route::get('/admin/home/showPost/{id}', 'HomeController@show')->name('showBlogPost');
+Route::get('/admin/home', 'HomePageController@index')->name('admin/home');
+Route::get('/admin/home/create', 'HomePageController@create')->name('createSection');
+Route::post('createSection', 'HomePageController@store')->name('createSection');
+Route::get('/admin/home/delete/{id}', 'HomePageController@destroy')->name('deleteSection');
+Route::get('/admin/home/edit/{id}', 'HomePageController@edit')->name('editSection');
+Route::post('/admin/home/update/{id}', 'HomePageController@update')->name('updateSection');
+Route::get('/admin/home/show/{id}', 'HomePageController@show')->name('showSection');
 
 //Menu Route
 //Route::get('/admin/menu', 'MenuController@index')->name('admin/menu');

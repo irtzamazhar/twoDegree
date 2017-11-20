@@ -10,7 +10,7 @@ use Auth;
 use Config;
 
 class NewsletterController extends Controller
-{
+{    
     public function __construct()
     {
         $this->middleware('auth');
@@ -28,10 +28,33 @@ class NewsletterController extends Controller
 //        $this->mailchimp = $mailchimp;
 //    }
     
-    public function index(Request $request) {
+    public function index() {
         $newsletters = Newsletter::orderBy('created_at', 'desc')->paginate(5);
         return view('admin.admin.newsletter', ['newsletters' => $newsletters])->render();
     }
+    
+//    public function subscribe(Request $request)
+//    {
+//    	$this->validate($request, [
+//	    	'email' => 'required|email',
+//        ]);
+//        
+//        try {
+//            $this->mailchimp
+//            ->lists
+//            ->subscribe(
+//                $this->listId,
+//                ['email' => $request->input('email')]
+//            );
+//
+//            return redirect()->back()->with('success','Email Subscribed successfully');
+//
+//        } catch (\Mailchimp_List_AlreadySubscribed $e) {
+//            return redirect()->back()->with('error','Email is Already Subscribed');
+//        } catch (\Mailchimp_Error $e) {
+//            return redirect()->back()->with('error','Error from MailChimp');
+//        }
+//    }
     
     public function subscribe(Request $request)
     {

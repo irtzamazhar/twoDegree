@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2017 at 07:30 AM
+-- Generation Time: Nov 20, 2017 at 03:38 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -118,6 +118,30 @@ INSERT INTO `faqs` (`id`, `faq_title`, `faq_content`, `faq_status`, `created_at`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `home_pages`
+--
+
+CREATE TABLE `home_pages` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `section_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `section_content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `section_image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `home_pages`
+--
+
+INSERT INTO `home_pages` (`id`, `section_name`, `section_content`, `section_image`, `created_at`, `updated_at`) VALUES
+(1, 'Top Section', '<p><strong>...</strong></p>\r\n\r\n<h1>WHERE WORLDS COLLIDE</h1>\r\n\r\n<p>Two Degrees is a new, fast-growing social network that creates valuable relationships by connecting people through mutual friends.</p>', 'iStock-520547166-1511167745.jpg', '2017-11-20 02:16:09', '2017-11-20 03:49:05'),
+(3, 'Middle Section', '<p>...</p>', 'download-1511167292.png', '2017-11-20 02:53:51', '2017-11-20 03:41:32'),
+(4, 'Bottom Section', '<p><strong>...</strong></p>\r\n\r\n<h1>HOW MANY FRIENDS DO WE HAVE IN COMMON?</h1>', 'iStock-502185542-1511168008.jpg', '2017-11-20 02:56:39', '2017-11-20 03:53:28');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `menus`
 --
 
@@ -138,12 +162,8 @@ CREATE TABLE `menus` (
 INSERT INTO `menus` (`id`, `page_place`, `page_name`, `page_url`, `page_value`, `created_at`, `updated_at`) VALUES
 (37, 'header', 'Blog', '/blog', 1, '2017-11-15 06:10:18', '2017-11-15 06:10:18'),
 (38, 'header', 'App', '/view/app', 1, '2017-11-15 06:10:18', '2017-11-15 06:10:18'),
-(39, 'header', 'Events', '/events', 1, '2017-11-15 06:10:18', '2017-11-15 06:10:18'),
 (40, 'footer', 'Privacy Policy', '/view/privacy', 0, '2017-11-15 06:10:18', '2017-11-15 06:10:18'),
-(41, 'footer', 'Terms and Conditions', '/view/terms', 0, '2017-11-15 06:10:18', '2017-11-15 06:10:18'),
-(42, 'footer', 'FAQ', '/faq', 0, '2017-11-15 06:10:18', '2017-11-15 06:10:18'),
-(43, 'footer', 'Contact Us', '/contact', 0, '2017-11-15 06:10:18', '2017-11-15 06:10:18'),
-(44, 'header', 'Contact Us', '/contact', 1, '2017-11-15 06:26:28', '2017-11-15 06:26:28');
+(41, 'footer', 'Terms and Conditions', '/view/terms', 0, '2017-11-15 06:10:18', '2017-11-15 06:10:18');
 
 -- --------------------------------------------------------
 
@@ -181,7 +201,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (17, '2017_11_09_135019_create_menus_table', 16),
 (18, '2017_11_10_130226_add_slug_to_blogs', 17),
 (19, '2017_11_10_140803_add_slug_to_site_events', 18),
-(20, '2017_11_15_082631_create_sections_table', 19);
+(20, '2017_11_15_082631_create_sections_table', 19),
+(21, '2017_11_16_095727_create_site_banners_table', 20),
+(22, '2017_11_20_064425_create_home_pages_table', 21);
 
 -- --------------------------------------------------------
 
@@ -203,7 +225,20 @@ CREATE TABLE `newsletters` (
 INSERT INTO `newsletters` (`id`, `email`, `created_at`, `updated_at`) VALUES
 (1, 'irtza@mail.com', '2017-10-27 01:24:40', '2017-10-27 01:24:40'),
 (2, 'irtza@opensolglobal.com', '2017-10-27 01:36:52', '2017-10-27 01:36:52'),
-(30, 'my43@mail.com', '2017-11-06 08:25:05', '2017-11-06 08:25:05');
+(3, 'my@mail.com', '2017-11-20 08:13:14', '2017-11-20 08:13:14'),
+(4, 'tasswar@mail.com', '2017-11-20 08:14:08', '2017-11-20 08:14:08'),
+(5, 'my54@mail.com', '2017-11-20 08:16:37', '2017-11-20 08:16:37'),
+(6, 'my54@mail.com', '2017-11-20 08:18:32', '2017-11-20 08:18:32'),
+(7, 'aliya@mial.com', '2017-11-20 08:20:40', '2017-11-20 08:20:40'),
+(8, 'my1323@mail.com', '2017-11-20 08:27:37', '2017-11-20 08:27:37'),
+(9, 'irtza4434@mail.com', '2017-11-20 08:30:38', '2017-11-20 08:30:38'),
+(10, 'my12333@mail.com', '2017-11-20 08:32:01', '2017-11-20 08:32:01'),
+(11, 'my12553@mail.com', '2017-11-20 08:37:03', '2017-11-20 08:37:03'),
+(12, 'my12663@mail.com', '2017-11-20 08:40:00', '2017-11-20 08:40:00'),
+(13, 'asdsd@dfwe.com', '2017-11-20 08:45:23', '2017-11-20 08:45:23'),
+(14, 'irtza3444@mail.com', '2017-11-20 08:53:15', '2017-11-20 08:53:15'),
+(15, 'irtza444@mail.com', '2017-11-20 08:58:39', '2017-11-20 08:58:39'),
+(16, 'irtza42244@mail.com', '2017-11-20 09:01:13', '2017-11-20 09:01:13');
 
 -- --------------------------------------------------------
 
@@ -274,6 +309,30 @@ INSERT INTO `sections` (`id`, `section_name`, `section_path`, `created_at`, `upd
 (2, 'Events', '/events', NULL, NULL),
 (3, 'FAQ', '/faq', NULL, NULL),
 (4, 'Contact Us', '/contact', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `site_banners`
+--
+
+CREATE TABLE `site_banners` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `page_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `banner_image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `site_banners`
+--
+
+INSERT INTO `site_banners` (`id`, `page_name`, `banner_image`, `created_at`, `updated_at`) VALUES
+(7, 'blog', 'iStock-502185542-1510842714.jpg', NULL, '2017-11-16 09:31:54'),
+(8, 'contact', 'Header+8-1510842588.jpg', NULL, '2017-11-16 09:29:48'),
+(9, 'event', 'Header+5-1510316065.jpg', NULL, NULL),
+(10, 'faq', 'Header+7-1510842842.jpg', NULL, '2017-11-16 09:34:02');
 
 -- --------------------------------------------------------
 
@@ -354,6 +413,12 @@ ALTER TABLE `faqs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `home_pages`
+--
+ALTER TABLE `home_pages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `menus`
 --
 ALTER TABLE `menus`
@@ -387,6 +452,12 @@ ALTER TABLE `password_resets`
 -- Indexes for table `sections`
 --
 ALTER TABLE `sections`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `site_banners`
+--
+ALTER TABLE `site_banners`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -425,22 +496,28 @@ ALTER TABLE `faqs`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `home_pages`
+--
+ALTER TABLE `home_pages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `newsletters`
 --
 ALTER TABLE `newsletters`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -453,6 +530,12 @@ ALTER TABLE `pages`
 --
 ALTER TABLE `sections`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `site_banners`
+--
+ALTER TABLE `site_banners`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `site_events`

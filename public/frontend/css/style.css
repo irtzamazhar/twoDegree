@@ -112,6 +112,11 @@ h2 {}
     line-height: 35px !important;
     float: left;
 }
+
+#mce-EMAIL {
+    float: none;
+}
+
 .error-wrapper img {
     display: inline-block;
     margin-left: 7px;
@@ -218,7 +223,7 @@ input:-moz-placeholder {
 .slide-banner {
     padding: 60px 0px;
     /* The image used */
-    background-image: url("../images/iStock-520547166.jpg");
+    /*background-image: url("../images/iStock-520547166.jpg");*/
     /* Set a specific height */
     min-height: 500px;
     /* Create the parallax scrolling effect */
@@ -2414,6 +2419,3 @@ body.hidden-scroll {
         width: 35%;
     }
 }
-
-
-
