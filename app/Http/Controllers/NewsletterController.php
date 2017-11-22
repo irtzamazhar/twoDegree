@@ -65,4 +65,14 @@ class NewsletterController extends Controller
         $newsletter->email = $request->input('email');
         $newsletter->save();
     }
+    
+    public function checkEmail(Request $request) {
+        $var = $request->input('email');
+        $check = DB::table('newsletters')->where('email', '=', $var)->get();
+        if(count($check)>0){
+            echo 'Email is Already Subscribed';
+        }else{
+            echo 'Thanks';
+        }
+    }
 }

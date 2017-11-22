@@ -50,8 +50,7 @@
 
     </div>
 @include('frontend.include.footer')
-    <script src="{{ asset('public/frontend/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('public/frontend/js/bootstrap.js') }}"></script>
+
     <script>
         function initMap() {
             var uluru = { lat: {{ $event->place_lat }}, lng: {{ $event->place_lng }} };
@@ -64,7 +63,6 @@
               map: map
             });
         }
-
     </script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyApozjbWyK5N9aq4Kc8DIpTxJg2DHuLVDU&callback=initMap"></script>
     <script type="text/javascript">

@@ -30,8 +30,6 @@
 
 @include('frontend.include.footer')
 
-    <script src="{{ asset('public/frontend/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('public/frontend/js/bootstrap.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function($) {
             $('#accordion h4').click(function() {

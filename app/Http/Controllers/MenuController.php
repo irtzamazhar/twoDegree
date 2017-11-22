@@ -79,53 +79,9 @@ class MenuController extends Controller
             $footerData->page_value = 0;
             $footerData->save();
         }
-        return 'Done';
-//        $headerMenu = $request->headerItem;
-//        $footerMenu = $request->footerItem;
-//        
-//        dd($request->all());
-//        
-//        foreach($request->headerMenu as $headerValues){
-//            $headerResult[]   = $headerValues;
-//        }
-//        foreach($request->footerMenu as $footerValues){
-//            $footerResult[] = $footerValues;
-//        }
-//        
-//        $j = 0;
-//        while($j < count($request->headerMenu)) {
-//            $IdResult                 = $fieldsIdResult[$j];
-//            $ValResult                = $fieldsValueResult[$j];
-//            $formValue                = new Formvalue;
-//            $formValue->form_field_id = $IdResult;
-//            $formValue->value         = $ValResult;
-//            $formValue->save();
-//            $j++;
-//        }
-//        
-////        $values = array();
-//        foreach ($request->all() as $value){
-//            $data = new Menu();
-//            $data->page_place = $value->
-//            
-//            $values = array(
-//                'page_place' => $headerMenu,
-//                'page_url' => 'testUrl',
-//                'page_value' => 1,
-//            );
-//        }
-            
-//        $data = array(
-//            'page_place' => $headerMenu,
-//            'page_place' => $footerMenu
-//        );
-//        $data = $data->ToArray();
-//        DB::table('menu')->insert($values);
-//        $data->save();
-//        return 'Work Done';
-//        return response()->json($data);
-//        $headerData = $_POST['headerItem'];
-//        dd($headerData);
+        
+        $request->session()->flash('success', 'Menu Updated!');
+        return redirect('/admin/menu/');
     }
 
     /**

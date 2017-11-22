@@ -54,10 +54,5 @@
         </section>
           
       </div><!-- /.content-wrapper -->
-      <!--<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>-->
-      <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace( 'editor1' );
-    </script>
       @stop
 

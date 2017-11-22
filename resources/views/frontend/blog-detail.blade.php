@@ -37,12 +37,11 @@
 
     </div>
 @include('frontend.include.footer')
-    <script src="{{ asset('public/frontend/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('public/frontend/js/bootstrap.js') }}"></script>
-    <script type="text/javascript">
-        var image = $('#page-image').text();
-        var addres = "../storage/app/public/images/" + image ;
-        console.log(addres);
-        $(".blog-header2").css('background-image', 'url(' + addres + ')');
-    </script>
+
+<script type="text/javascript">
+    var image = $('#page-image').text();
+    var addres = "../storage/app/public/images/" + image ;
+    console.log(addres);
+    $(".blog-header2").css('background-image', 'url(' + addres + ')');
+</script>
 </body>

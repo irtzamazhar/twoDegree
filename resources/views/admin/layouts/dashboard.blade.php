@@ -32,6 +32,8 @@
     <link href="{{ asset('public/css/plugins/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet">
     <!-- bootstrap wysihtml5 - text editor -->
     <link href="{{ asset('public/css/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}" rel="stylesheet">
+    <!-- Dragula CSS -->
+    <link href="{{ asset('node_modules/dragula/dist/dragula.min.css') }}" rel="stylesheet">
   </head>
   <body class="skin-blue sidebar-mini">
     <!--  wrapper -->
@@ -90,7 +92,10 @@
 
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('public/css/dist/js/pages/dashboard.js') }}"></script>
-    <!-- <script src="{{ asset('public/css/dist/js/demo.js') }}"></script> -->
+     <!--<script src="{{ asset('public/css/dist/js/demo.js') }}"></script>--> 
+    
+    <!-- Dragula Library -->
+    <script src="{{ asset('node_modules/dragula/dist/dragula.min.js') }}"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -104,22 +109,71 @@
             setTimeout(function(){ $('.my-message').fadeOut() }, 2000);
         });
         
+//        $(".droppable").sortable();
+//        $("#sortable1").sortable();
+//        $("#orogin").sortable();
+        $('.box-body .not-save').sortable({
+            connectWith: '#my_div .sortable-list'
+        });
+        
         //Drag and drop
-        var a=1;
+        var a = 1;
         $(".drag .drag_li_listing").each(function(){
             $(this).draggable({
-//                helper: "clone",
+                helper: "clone",
                 containment: [0,100,10000,10000],
                 appendTo: "body",
-//                start: function(e, ui){
-//                    $(ui.helper).addClass("ui-draggable-helper");
-//                }
+                start: function(e, ui){
+                    $(ui.helper).addClass("ui-draggable-helper");
+                }
             });
         });
+        
+        $(".droppable .drag_li_listing").each(function(){
+            $(this).draggable({
+                helper: "clone",
+                containment: [0,100,10000,10000],
+                appendTo: "body",
+                start: function(e, ui){
+                    $(ui.helper).addClass("ui-draggable-helper");
+                }
+            });
+        });
+//        
+//        $( ".not-save" ).droppable({
+//            accept: ":not(.ui-sortable-helper)",
+//            accept: ".save",
+//            drop: function (event, ui) {
+//                var q =  $(ui.draggable).attr('id');
+//                var result = n.split("_");
+//                var w = '#dragged'+result[1];
+//
+//                $(w).draggable('enable');
+//                $(ui.draggable).removeAttr("id");
+//                ui.draggable.remove();
+//            }
+//        });
 
         $( ".droppable" ).droppable({
             accept: ":not(.ui-sortable-helper)",
-            drop: function( event, ui ) {
+            classes: {
+                "ui-droppable-active": "ui-state-active",
+                "ui-droppable-hover": "ui-state-hover"
+            },
+            drop: function(event, ui) {
+                $( this ).addClass( "ui-state-highlight" );
+                var dragItemTitle = ui.draggable.attr("data-menuname");
+                var dragItemUrl = ui.draggable.attr("data-pageurl");
+                var dropInto = $(this).attr("id");
+                if(dropInto == "myheader-menu") {
+                    $('.myheader-menu').append("<input value='"+ dragItemTitle +"' name='headerMenuTitle[]' id='headerMenuTitle' type='hidden'>");
+                    $('.myheader-menu').append("<input value='"+ dragItemUrl +"' name='headerMenuUrl[]' id='headerMenuUrl' type='hidden'>");
+                    console.log(dragItemTitle + " drag into header");
+                }else if(dropInto == "myfooter-menu") {
+                    $('.myfooter-menu').append("<input value='"+ dragItemTitle +"' name='footerMenuTitle[]' id='footerMenuTitle' type='hidden'>");
+                    $('.myfooter-menu').append("<input value='"+ dragItemUrl +"' name='footerMenuUrl[]' id='headerMenuUrl' type='hidden'>");
+                    console.log(dragItemTitle + " drag into footer");
+                }
                 var b = a++;
                 var c = 'dragged'+b;
                 var m = 'dragged_'+b;
@@ -129,8 +183,10 @@
                 ui.draggable.attr("id",c);
                 var d='#dragged'+b;
                 var n='#'+m;
-                console.log(n);
+//                console.log(n);
+                $(n).sortable();
                 $(n).draggable({
+//                    if(dropInto == $(this))
                     helper: 'original',
                     tolerance: 'fit',
                     containment: [0,100,10000,10000],
@@ -147,7 +203,7 @@
 
                         $(r).draggable('enable');
                         $(ui.draggable).removeAttr("id");
-                        $(ui.draggable).remove();
+                        ui.draggable.remove();
                     }
                });
             }

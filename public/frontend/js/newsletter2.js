@@ -2,47 +2,42 @@ $(function() {
     $("form").submit(function() { return false; });
 });
 
-$(document).ready(function () {
-//    $('#myModal').modal('show');
-    $('#myModal').css('opacity','1');
-    $('#myModal').show();
-	
-});
 
-$("#news-submit").click(function(){
-    $("#news-error").html("");
-    var input_val = $("#pop-input").val();
-    if(input_val){
-       var email =validateEmail(input_val);
-         if(email == true){
-    	 $("#news-error").html("");
-    	 $('#thanks').modal('show');
-    	 $('#myModal').modal('hide');
-    	 }else{
-    	 $("#news-error").html("<img src={{ asset('public/frontend/images/error.png') }}/>Please enter valide email");
-    	 }
-    }else{
-        $("#news-error").html("<img src={{ asset('public/frontend/images/error.png') }}/>Email is Requaired");
-    }
 
-});
-
-$("#index-letter").click(function(){
-    $("#index_letter_error").html("");
-    var input_val = $("#email-letter").val();
-    if(input_val){
-       var email = validateEmail(input_val);
-       
-         if(email == true){
-    	   $('#thanks').modal('show');
-    	   $("#index_letter_error").html("");
-    	 }else{
-    	   $("#index_letter_error").html("<img src={{ asset('public/frontend/images/error.png') }}/>Please enter valide email");
-    	 }
-    }else{
-        $("#index_letter_error").html("<img src={{ asset('public/frontend/images/error.png') }}/>Email is Requaired");
-    }
-});
+//$("#mc-embedded-subscribe").click(function(){
+//    $("#news-error").html("");
+//    var input_val = $("#pop-input").val();
+//    if(input_val){
+//       var email =validateEmail(input_val);
+//         if(email == true){
+//    	 $("#news-error").html("");
+//    	 $('#thanks').modal('show');
+//    	 $('#myModal').modal('hide');
+//    	 }else{
+//    	 $("#news-error").html("<img src={{ asset('public/frontend/images/error.png') }}/>Please enter valide email");
+//    	 }
+//    }else{
+//        $("#news-error").html("<img src={{ asset('public/frontend/images/error.png') }}/>Email is Requaired");
+//    }
+//
+//});
+//
+//$("#index-letter").click(function(){
+//    $("#index_letter_error").html("");
+//    var input_val = $("#email-letter").val();
+//    if(input_val){
+//       var email = validateEmail(input_val);
+//       
+//         if(email == true){
+//    	   $('#thanks').modal('show');
+//    	   $("#index_letter_error").html("");
+//    	 }else{
+//    	   $("#index_letter_error").html("<img src={{ asset('public/frontend/images/error.png') }}/>Please enter valide email");
+//    	 }
+//    }else{
+//        $("#index_letter_error").html("<img src={{ asset('public/frontend/images/error.png') }}/>Email is Requaired");
+//    }
+//});
 
 // Check all fields on submit
 //document.addEventListener('submit', function (event) {

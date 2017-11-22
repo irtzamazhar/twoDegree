@@ -45,6 +45,7 @@ Route::post('/admin/contact/addBanner{id}', 'ContactController@storeBanner')->na
 //Newsletter Route
 Route::get('subscribe','NewsletterController@subscribe')->name('subscribe');
 Route::get('/admin/newsletter', 'NewsletterController@index')->name('newsletter');
+Route::post('checkEmail', 'NewsletterController@checkEmail')->name('checkEmail');
 
 //Pages Route
 Route::get('/admin/pages', 'PagesController@index')->name('admin/pages');
@@ -94,14 +95,6 @@ Route::post('/admin/update/{id}', 'ProfileController@update')->name('update');
 
 
 
-
-//Route::resource('admin/contact', 'ContactController');
-
-// Mailchimp routes
-//Route::get('manageMailChimp', 'MailChimpController@manageMailChimp');
-
-//Route::post('sendCompaign',['as'=>'sendCompaign','uses'=>'MailChimpController@sendCompaign']);
-
 // frontend routes
 Route::get('/', 'FrontendController@index');
 Route::get('/app-download', 'FrontendController@app');
@@ -113,14 +106,3 @@ Route::get('blog', 'FrontendController@blog');
 Route::get('blog-detail/{slug}', 'FrontendController@blogDetail')->name('blog-detail');
 Route::get('events', 'FrontendController@events');
 Route::get('event-detail/{slug}', 'FrontendController@eventDetail')->name('event-detail');
-
-//Route::get('footer', 'FrontendController@footer');
-
-
-// Route::get('/app-download', 'FrontendController@app')->name('app');
-// Route::get('/blog', 'FrontendController@blog')->name('blog');
-// Route::get('/blog-detail', 'FrontendController@blogDetail')->name('blog-detail');
-// Route::get('/privacy', 'FrontendController@privacy')->name('privacy');
-// Route::get('/terms', 'FrontendController@terms')->name('terms');
-// Route::get('/faq', 'FrontendController@faq')->name('faq');
-// Route::get('/contact', 'FrontendController@contact')->name('contact');

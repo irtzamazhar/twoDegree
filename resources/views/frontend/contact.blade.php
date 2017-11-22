@@ -60,6 +60,7 @@
 
     </div>
 @include('frontend.include.footer')
+
 <div id="contact-thanks" class="modal fade custom-modal" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -74,9 +75,7 @@
     </div>
   </div>
 </div>
-<script src="{{ asset('public/frontend/js/jquery.min.js') }}"></script>
-<script src="{{ asset('public/frontend/js/bootstrap.js') }}"></script>
-<script src="{{ asset('public/frontend/js/jquery.validate.js') }}"></script>
+
 <script>
 $(document).ready(function() {
     

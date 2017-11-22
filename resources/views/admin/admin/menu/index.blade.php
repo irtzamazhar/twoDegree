@@ -24,7 +24,7 @@
                     <div class="col-md-6">
                         <div class="page-listing">
                             <h4>Page Listing</h4>
-                            <ul id="sortable1" class="drag after_drop droptrue dragable-data">
+                            <ul id="sortable1" class="drag after_drop droptrue dragable-data not-save">
                                 @foreach($pages as $page)
                                     <li class="my_div dragItem ui-state-default drag_li_listing" data-menuname="{{ $page->page_title }}" data-pageurl="{{ $page->page_url }}">
                                         <i class="fa fa-bars" style="margin-right: 5px;" aria-hidden="true"></i>
@@ -36,7 +36,7 @@
 
                         <div class="section-listing">
                             <h4>Sections Listing</h4>
-                            <ul id="origin" class="drag after_drop droptrue dragable-data">
+                            <ul id="origin" class="drag after_drop droptrue dragable-data not-save">
                                 @foreach($sections as $section)
                                     <li class="my_div dragItem ui-state-default drag_li_listing" data-menuname="{{ $section->section_name }}" data-pageurl="{{ $section->section_path }}">
                                         <i class="fa fa-bars" style="margin-right: 5px;" aria-hidden="true"></i>
@@ -51,7 +51,7 @@
                         <form action="{{ route('insertData1') }}" method="post" id="page-menu" >
                             <div class="ui-widget-header my_style droppable" id="myheader-menu" >
                                 <p>Header Section</p>
-                                <ul class="droppable" id="dropable_list">
+                                <ul class="droppable save myheader-menu" id="dropable_list">
                                 @foreach($headerMenu as $hm)
                                     <li class="my_div dragItem drag_li_listing dragable" data-menuname="{{ $hm->page_name }}">
                                         <i class="fa fa-bars" style="margin-right: 5px;" aria-hidden="true"></i>
@@ -64,7 +64,7 @@
 
                             <div class="ui-widget-header my_style droppable" id="myfooter-menu">
                                 <p>Footer Section</p>
-                                <ul class="droppable" id="sortable5">
+                                <ul class="droppable save myfooter-menu" id="sortable5">
                                 @foreach($footerMenu as $fm)
                                     <li class="my_div dragItem drag_li_listing dragable" data-menuname="{{ $hm->page_name }}">
                                         <i class="fa fa-bars" style="margin-right: 5px;" aria-hidden="true"></i>
