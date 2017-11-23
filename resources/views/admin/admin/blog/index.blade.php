@@ -18,16 +18,16 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <a class="btn btn-success btn-flat btn-lg pull-right" href="{{ url('admin/blog/create') }}">Create A New Blog Post</a>
-                  <a class="btn btn-primary btn-flat btn-lg pull-left" href="{{ url('admin/blog/addBanner') }}">Blog Banner</a>
+                  <a class="btn btn-success btn-flat btn-md pull-right btn-create" href="{{ url('admin/blog/create') }}">Create A New Blog Post</a>
+                  <a class="btn btn-primary btn-flat btn-md pull-left" href="{{ url('admin/blog/addBanner') }}">Blog Banner</a>
                 </div>
                   @include('admin.admin.message')
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped" style="table-layout: fixed;">
                         <thead>
                           <tr>
-                            <th width="80%">Post Title</th>
-                            <!--<th width="50%">Post Body</th>-->
+                            <th width="40%">Post Title</th>
+                            <th width="40%">Post Body</th>
                             <th width="20%">Actions</th>
                           </tr>
                         </thead>
@@ -35,7 +35,10 @@
                             @foreach($blogs as $blog)
                                 <tr>
                                   <td><strong> {{ $blog->title }} </strong></td>
-                                  <!--<td style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{!! $blog->editor !!}</td>-->
+                                  <td>
+                                    @php $truncated = str_limit( $blog->editor , 60); @endphp
+                                    {!! $truncated !!}
+                                  </td>
                                   <td>
                                       @if(!Auth::guest())
                                           <a href="{{ url('/admin/blog/showPost/'.$blog->id) }}" class="btn btn-primary btn-flat ">View</a>

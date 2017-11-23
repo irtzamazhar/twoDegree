@@ -18,7 +18,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <a class="btn btn-success btn-flat btn-lg pull-right" href="{{ url('/admin/home/create') }}">Create A New Section</a>
+                  <a class="btn btn-success btn-flat btn-md btn-create pull-right" href="{{ url('/admin/home/create') }}">Create A New Section</a>
                 </div>
                   @include('admin.admin.message')
                 <div class="box-body">
@@ -26,8 +26,8 @@
                         <thead>
                           <tr>
                             <th width="20%">Section Name</th>
-                            <th width="30%">Section Image</th>
                             <th width="30%">Section Body</th>
+                            <th width="30%">Section Image</th>
                             <th width="20%">Actions</th>
                           </tr>
                         </thead>
@@ -35,7 +35,10 @@
                             @foreach($sections as $section)
                                 <tr>
                                   <td>{{ $section->section_name }}</td>
-                                  <td>{!! $section->section_content !!}</td>
+                                  <td>
+                                    @php $truncated = str_limit( $section->section_content , 100); @endphp
+                                    {!! $truncated !!}
+                                  </td>
                                   <td>
                                       <img src="{{ asset('storage/app/public/images/'.$section->section_image) }}" width="300" height="180">
                                   </td>

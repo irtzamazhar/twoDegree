@@ -35,7 +35,7 @@
     <!-- Dragula CSS -->
     <link href="{{ asset('node_modules/dragula/dist/dragula.min.css') }}" rel="stylesheet">
   </head>
-  <body class="skin-blue sidebar-mini">
+  <body class="skin-blue sidebar-mini" id="my_body">
     <!--  wrapper -->
         <div id="wrapper">
         <!-- navbar top -->
@@ -48,8 +48,6 @@
     
         @yield('content')
         @include('admin.include.footer')
-
-        @include('admin.include.controlsidebar')
         </div>
 
     <!-- jQuery 2.1.3 -->
@@ -66,7 +64,7 @@
     <!-- Morris.js charts -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     
-    <script src="{{ asset('public/css/plugins/morris/morris.min.js') }}"></script>
+    <!--<script src="{{ asset('public/css/plugins/morris/morris.min.js') }}"></script>-->
     <!-- Sparkline -->
     <script src="{{ asset('public/css/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
     <!-- jvectormap -->
@@ -109,106 +107,59 @@
             setTimeout(function(){ $('.my-message').fadeOut() }, 2000);
         });
         
-//        $(".droppable").sortable();
-//        $("#sortable1").sortable();
-//        $("#orogin").sortable();
-        $('.box-body .not-save').sortable({
+        $('#my_div .sortable-list').sortable({
             connectWith: '#my_div .sortable-list'
+        }).disableSelection();
+        
+        $(".close-item").click(function(){
+            $(this).parent().remove();
         });
         
-        //Drag and drop
-        var a = 1;
-        $(".drag .drag_li_listing").each(function(){
-            $(this).draggable({
-                helper: "clone",
-                containment: [0,100,10000,10000],
-                appendTo: "body",
-                start: function(e, ui){
-                    $(ui.helper).addClass("ui-draggable-helper");
+        $("#submit-btn").click(function(e){
+            var headerItems = $('#header').children();
+            var footerItems = $('#footer').children();
+
+            var headerMenuName = [];
+            var headerMenuURL = [];
+
+            var footerMenuName = [];
+            var footerMenuURL = [];
+
+            console.log(headerMenuName);
+            console.log(footerMenuName);
+            headerItems.each(function() {
+                headerMenuName.push($(this).attr("data-menuname"));
+                headerMenuURL.push($(this).attr("data-pageurl"));
+            });
+
+            footerItems.each(function() {
+                footerMenuName.push($(this).attr("data-menuname"));
+                footerMenuURL.push($(this).attr("data-pageurl"))
+            });
+
+
+            ///e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "{{ url('/insertData') }}",
+                data: {
+                    hName: headerMenuName,
+                    hURL: headerMenuURL,
+                    fName: footerMenuName,
+                    fURL: footerMenuURL, 
+                },
+                success: function(res) {
+                    $("#my_body").html(res);
+                    setTimeout(function(){
+                         location.reload();
+                    }, 2000);
+                },
+                error: function(err){
+                    alert(JSON.stringify(err));
+                    console.log('Something went wrong', status, err);
                 }
             });
         });
-        
-        $(".droppable .drag_li_listing").each(function(){
-            $(this).draggable({
-                helper: "clone",
-                containment: [0,100,10000,10000],
-                appendTo: "body",
-                start: function(e, ui){
-                    $(ui.helper).addClass("ui-draggable-helper");
-                }
-            });
-        });
-//        
-//        $( ".not-save" ).droppable({
-//            accept: ":not(.ui-sortable-helper)",
-//            accept: ".save",
-//            drop: function (event, ui) {
-//                var q =  $(ui.draggable).attr('id');
-//                var result = n.split("_");
-//                var w = '#dragged'+result[1];
-//
-//                $(w).draggable('enable');
-//                $(ui.draggable).removeAttr("id");
-//                ui.draggable.remove();
-//            }
-//        });
-
-        $( ".droppable" ).droppable({
-            accept: ":not(.ui-sortable-helper)",
-            classes: {
-                "ui-droppable-active": "ui-state-active",
-                "ui-droppable-hover": "ui-state-hover"
-            },
-            drop: function(event, ui) {
-                $( this ).addClass( "ui-state-highlight" );
-                var dragItemTitle = ui.draggable.attr("data-menuname");
-                var dragItemUrl = ui.draggable.attr("data-pageurl");
-                var dropInto = $(this).attr("id");
-                if(dropInto == "myheader-menu") {
-                    $('.myheader-menu').append("<input value='"+ dragItemTitle +"' name='headerMenuTitle[]' id='headerMenuTitle' type='hidden'>");
-                    $('.myheader-menu').append("<input value='"+ dragItemUrl +"' name='headerMenuUrl[]' id='headerMenuUrl' type='hidden'>");
-                    console.log(dragItemTitle + " drag into header");
-                }else if(dropInto == "myfooter-menu") {
-                    $('.myfooter-menu').append("<input value='"+ dragItemTitle +"' name='footerMenuTitle[]' id='footerMenuTitle' type='hidden'>");
-                    $('.myfooter-menu').append("<input value='"+ dragItemUrl +"' name='footerMenuUrl[]' id='headerMenuUrl' type='hidden'>");
-                    console.log(dragItemTitle + " drag into footer");
-                }
-                var b = a++;
-                var c = 'dragged'+b;
-                var m = 'dragged_'+b;
-                var targetElem = $(this).attr("id");
-                $( ui.draggable ).clone().appendTo( this ).attr("id",m);
-                $(ui.draggable).draggable('disable');
-                ui.draggable.attr("id",c);
-                var d='#dragged'+b;
-                var n='#'+m;
-//                console.log(n);
-                $(n).sortable();
-                $(n).draggable({
-//                    if(dropInto == $(this))
-                    helper: 'original',
-                    tolerance: 'fit',
-                    containment: [0,100,10000,10000],
-                    appendTo: "body",
-                    zindex:10000,
-                });
-                $( ".after_drop" ).droppable({
-                    accept: ":not(.ui-sortable-helper)",
-                    accept: ".drag_li_listing ",
-                    drop: function (event, ui) {
-                        var n =  $(ui.draggable).attr('id');
-                        var res = n.split("_");
-                        var r = '#dragged'+res[1];
-
-                        $(r).draggable('enable');
-                        $(ui.draggable).removeAttr("id");
-                        ui.draggable.remove();
-                    }
-               });
-            }
-        });
-
     </script>
 
     

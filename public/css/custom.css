@@ -1,4 +1,4 @@
-.my_div {
+/*.my_div {
     border: 1px solid #DDDDDD !important;
     width: 200px;
     height: 40px;
@@ -8,72 +8,115 @@
     cursor:move;
     background-color: #E9E9E9;
     text-decoration: none;
-}
+}*/
 
 /*.page-listing{
     border: 1px solid #DDDDDD !important;
 }*/
 
-.dragable-data{
+/*.dragable-data{
     float: left;
     height: auto;
     width: 550px;
     list-style: none;
-}
+}*/
 
-.my_style {
+/*.my_style {
     width: 500px;
     height: auto;
     padding: 0.5em;
-    /*clear: both;*/
+    clear: both;
     float: left;
     margin: 10px;
-}
-/*
-#outer-dropzone {
-  height: 140px;
-}
-
-#inner-dropzone {
-  height: 80px;
-}
-
-.dropzone {
-  background-color: #ccc;
-  border: dashed 4px transparent;
-  border-radius: 4px;
-  margin: 10px auto 30px;
-  padding: 10px;
-  width: 80%;
-  transition: background-color 0.3s;
-}
-
-.drop-active {
-  border-color: #aaa;
-}
-
-.drop-target {
-  background-color: #29e;
-  border-color: #fff;
-  border-style: solid;
-}
-
-.drag-drop {
-  display: inline-block;
-  min-width: 40px;
-  padding: 2em 0.5em;
-
-  color: #fff;
-  background-color: #29e;
-  border: solid 2px #fff;
-
-  -webkit-transform: translate(0px, 0px);
-          transform: translate(0px, 0px);
-
-  transition: background-color 0.3s;
-}
-
-.drag-drop.can-drop {
-  color: #000;
-  background-color: #4e4;
 }*/
+
+/* My styling */
+body{
+    background-color: white;
+    color: black;
+}
+
+.column.first {
+    margin-left: 0;
+}
+
+.column {
+    margin-left: 2%;
+    width: 100%;
+}
+
+.left {
+    float: left;
+}
+
+div {
+    display: block;
+}
+
+.sortable-list {
+    list-style: none;
+    min-height: 60px;
+    padding: 10px;
+}
+
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+
+.sortable-item {
+    background-color: #FFF;
+    border: 1px solid #F4F4F4;
+    cursor: move;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 10px 0;
+    text-align: center;
+    width: 48%;
+    float: left;
+    margin: 1% 1%;
+    text-align: left;
+    padding: 10px 10px;
+        line-height: 15px;
+        background: #ECF0F5;
+}
+
+#submit-btn{
+    margin-right: 26px;
+    margin-top: 30px;
+}
+
+.close-item{
+    line-height: 14px !important;
+}
+.page-listing h1,.my_style h1{
+    font-size: 20px;
+}
+.menu-holder{
+    background: transparent !important;
+    margin-top: 5px;
+}
+.page-listing ul,.my_style ul{
+    float: left;
+    width: 100%;
+}
+.page-listing ul li i,.my_style ul li i{
+    float: left;
+}
+.my_style ul li{
+        border-left: 3px solid #D2D6DE;
+}
+
+.btn-dlt{
+    margin-right: 5px;
+}
+
+.btn-create{
+    margin-right: 39px;
+}

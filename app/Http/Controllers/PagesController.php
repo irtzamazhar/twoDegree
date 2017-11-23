@@ -47,13 +47,11 @@ class PagesController extends Controller
         $this->validate($request, [
             'page_url' => 'required',
             'page_title' => 'required',
-            'page_status' => 'required',
             'page_content' => 'required',
             'page-image' => 'required|image|nullable|max:1999'
         ],[
             'page_url.required' => 'Page URL is Required',
             'page_title.required' => 'Page Title is Required',
-            'page_status.required' => 'Page Status is Required',
             'page_content.required' => 'Page Content is Required',
             'page-image.required' => 'Image is Required',
             'page-image.image' => 'Must be an Image.',
@@ -78,7 +76,6 @@ class PagesController extends Controller
         $page = new Page;
         $page->page_url = "/view/".$request->input('page_url');
         $page->page_title = $request->input('page_title');
-        $page->page_status = $request->input('page_status');
         $page->page_content = $request->input('page_content');
         $page->page_image = $fileNameToStore;
         $page->save();
@@ -125,18 +122,14 @@ class PagesController extends Controller
         $this->validate($request, [
             'page_url' => 'required',
             'page_title' => 'required',
-            'page_status' => 'required',
             'page_content' => 'required',
-            'page-image' => 'required|image|nullable|max:1999'
+            'page-image' => 'image|nullable|max:1999'
         ],[
             'page_url.required' => 'Page URL is Required',
             'page_title.required' => 'Page Title is Required',
-            'page_status.required' => 'Page Status is Required',
             'page_content.required' => 'Page Content is Required',
-            'page-image.required' => 'Image is Required',
             'page-image.image' => 'Must be an Image.',
         ]);
-        
         // Handle file upload
         if ($request->hasFile('page-image')) {
             // Get file with the extention
@@ -155,7 +148,6 @@ class PagesController extends Controller
         $page = Page::find($id);
         $page->page_url = $request->input('page_url');
         $page->page_title = $request->input('page_title');
-        $page->page_status = $request->input('page_status');
         $page->page_content = $request->input('page_content');
         if($request->hasFile('page-image')){
             $page->page_image = $fileNameToStore;            
@@ -176,7 +168,6 @@ class PagesController extends Controller
     public function destroy($id)
     {
         $page = Page::find($id);
-
         $page->delete();
         return redirect('/admin/pages')->with('danger', 'Page Removed!');
     }

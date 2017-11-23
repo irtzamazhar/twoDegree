@@ -48,10 +48,10 @@
                     </div>
                     <br><br>
                       @if(!Auth::guest())
-                          <a href="{{ url('/admin/event/editEvent/'.$event->id) }}" class="btn btn-warning btn-flat">Edit</a>
-                          <a href="{{ url('/admin/event/deleteEvent/'.$event->id) }}" class="btn btn-danger btn-flat">Delete</a>
+                          <a href="{{ url('/admin/event/editEvent/'.$event->id) }}" class="btn btn-warning btn-flat pull-right">Edit</a>
+                          <a href="{{ url('/admin/event/deleteEvent/'.$event->id) }}" class="btn btn-danger btn-flat pull-right btn-dlt">Delete</a>
                       @endif
-                      <a href="{{ url('admin/event') }}" class="btn btn-primary btn-lg btn-flat pull-right">Go Back</a>
+                      <a href="{{ url('admin/event') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
                 </div>
               </div>
             </div>

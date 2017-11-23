@@ -18,16 +18,16 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <a class="btn btn-success btn-flat btn-lg pull-right" href="{{ url('/admin/pages/create') }}">Create A New Page</a>
+                  <a class="btn btn-success btn-flat btn-md btn-create pull-right" href="{{ url('/admin/pages/create') }}">Create A New Page</a>
                 </div>
                   @include('admin.admin.message')
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped" style="table-layout: fixed;">
                         <thead>
                           <tr>
-                            <th width="30%">Page Url</th>
+                            <th width="20%">Page Url</th>
                             <th width="30%">Page Title</th>
-                            <th width="20%">Page Status</th>
+                            <th width="30%">Page Content</th>
                             <th width="20%">Actions</th>
                           </tr>
                         </thead>
@@ -36,11 +36,10 @@
                                 <tr>
                                   <td>{{ $page->page_url }}</td>
                                   <td>{{ $page->page_title }}</td>
-                                  @if($page->page_status == 1)
-                                  <td>Publish</td>
-                                  @else
-                                  <td>Drafted</td>
-                                  @endif
+                                  <td>
+                                    @php $truncated = str_limit( $page->page_content , 50); @endphp
+                                    <div>{!! $truncated !!}</div>
+                                  </td>
                                   <td>
                                       @if(!Auth::guest())
                                           <a href="{{ url('/admin/pages/showPage/'.$page->id) }}" class="btn btn-primary btn-flat">View</a>

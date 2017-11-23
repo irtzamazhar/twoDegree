@@ -36,7 +36,7 @@
                                 <span class="help-block">{{ $errors->first('banner-image') }}</span>
                             @endif                            
                         </div>
-                        <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-lg pull-right">
+                        <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-md pull-right">
                     </form>
                     @endforeach
                 </div>

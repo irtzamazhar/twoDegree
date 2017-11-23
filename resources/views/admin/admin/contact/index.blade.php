@@ -19,7 +19,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                    <a class="btn btn-primary btn-flat btn-lg pull-left" href="{{ url('admin/contact/addBanner') }}">Contact Banner</a>
+                    <a class="btn btn-primary btn-flat btn-md pull-left" href="{{ url('admin/contact/addBanner') }}">Contact Banner</a>
                 </div>
                   @include('admin.admin.message')
                 <div class="box-body">
@@ -44,7 +44,10 @@
                                       <td>{{ $contact->lname }}</td>
                                       <td>{{ $contact->email }}</td>
                                       <td>{{ $contact->subject }}</td>
-                                      <td style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{{ $contact->message }}</td>
+                                      <td>
+                                        @php $truncated = str_limit( $contact->message , 20); @endphp
+                                        {!! $truncated !!}
+                                      </td>
                                       <td>
                                           @if(!Auth::guest())
                                               <a href="{{ url('/admin/contact/showContact/'.$contact->id) }}" class="btn btn-primary btn-flat">View</a>

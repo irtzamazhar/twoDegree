@@ -24,10 +24,10 @@
                     <h1>{{ $faq->faq_title }}</h1>
                     <p>{!! $faq->faq_content !!}</p>
                       @if(!Auth::guest())
-                          <a href="{{ url('/admin/faq/editFaq/'.$faq->id) }}" class="btn btn-warning btn-flat">Edit</a>
-                          <a href="{{ url('/admin/faq/deleteFaq/'.$faq->id) }}" class="btn btn-danger btn-flat">Delete</a>
+                          <a href="{{ url('/admin/faq/editFaq/'.$faq->id) }}" class="btn btn-warning pull-right btn-flat">Edit</a>
+                          <a href="{{ url('/admin/faq/deleteFaq/'.$faq->id) }}" class="btn pull-right btn-dlt btn-danger btn-flat">Delete</a>
                       @endif
-                      <a href="{{ url('admin/faq') }}" class="btn btn-primary btn-lg btn-flat pull-right">Go Back</a>
+                      <a href="{{ url('admin/faq') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
                 </div>
               </div>
             </div>

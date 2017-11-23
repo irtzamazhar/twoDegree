@@ -18,15 +18,15 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <a class="btn btn-primary btn-flat btn-lg pull-left" href="{{ url('admin/faq/addBanner') }}">FAQ Banner</a>
-                  <a class="btn btn-success btn-flat btn-lg pull-right" href="{{ url('admin/faq/create') }}">Create A New FAQ</a>
+                  <a class="btn btn-primary btn-flat btn-md pull-left" href="{{ url('admin/faq/addBanner') }}">FAQ Banner</a>
+                  <a class="btn btn-success btn-flat btn-md btn-create pull-right" href="{{ url('admin/faq/create') }}">Create A New FAQ</a>
                 </div>
                   @include('admin.admin.message')
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped" style="table-layout: fixed;">
                         <thead>
                           <tr>
-                              <th width="20%"> FAQ Title</th>
+                            <th width="20%"> FAQ Title</th>
                             <th width="40%"><center>FAQ Content</center></th>
                             <th width="20%"><center>Status</center></th>
                             <th width="20%"><center>Actions</center></th>
@@ -35,8 +35,14 @@
                         <tbody>
                             @foreach($faqs as $faq)
                                 <tr>
-                                  <td style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;"><strong> {{ $faq->faq_title }} </strong></td>
-                                  <td style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{!! $faq->faq_content !!}</td>
+                                  <td>
+                                    @php $truncated = str_limit( $faq->faq_title , 30); @endphp
+                                    <strong>{!! $truncated !!}</strong>
+                                  </td>
+                                  <td>
+                                    @php $truncated = str_limit( $faq->faq_content , 70); @endphp
+                                    {!! $truncated !!}
+                                  </td>
                                   @if( $faq->faq_status == 1)
                                   <td><center> Publish</center></td>
                                   @else

@@ -69,8 +69,8 @@
                             <p class="contact-er"></p>
                         </div>
                         <div class="form-group col-xs-12">
-                            <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-lg">
-                            <a href="{{ url('admin/event') }}" class="btn btn-primary btn-lg btn-flat pull-right">Go Back</a>
+                            <input type="submit" value="Post" class="form-group btn btn-success btn-flat pull-right btn-md">
+                            <a href="{{ url('admin/event') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
                         </div>
                     </form>
                 </div>

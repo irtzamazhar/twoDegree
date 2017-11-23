@@ -57,10 +57,24 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        $headerTitleVar = $request->headerMenuTitle;
-        $headerUrlVar = $request->headerMenuUrl;
-        $footerTitleVar = $request->footerMenuTitle;
-        $footerUrlVar = $request->footerMenuUrl;
+        $headerTitleVar = $request->hName;
+        $headerUrlVar = $request->hURL;
+        $footerTitleVar = $request->fName;
+        $footerUrlVar = $request->fURL;
+        
+//        var_dump($headerTitleVar);
+//        echo '<br>';
+//        var_dump($headerUrlVar);
+//        echo '<br>';
+//        var_dump($footerTitleVar);
+//        echo '<br>';
+//        var_dump($footerUrlVar);
+//        echo '<br>';
+//        die();
+//        $page = Page::find($id);
+//        $page->delete();
+        
+        Menu::truncate();
                 
         for($i=0; $i<count($headerTitleVar); $i++){
             $headerData = new Menu;

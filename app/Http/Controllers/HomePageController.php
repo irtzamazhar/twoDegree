@@ -116,10 +116,9 @@ class HomePageController extends Controller
         // Validate the post
         $this->validate($request, [
             'section-name' => 'required',
-            'section-image' => 'required|image|nullable|max:1999'
+            'section-image' => 'image|nullable|max:1999'
         ],[
             'section-name.required' => 'Section Name is Required',
-            'section-image.required' => 'Image is Required',
             'section-image.image' => 'Must be an Image.',
         ]);
         
@@ -142,7 +141,7 @@ class HomePageController extends Controller
         $section->section_name = $request->input('section-name');
         $section->section_content = $request->input('section-content');
         if($request->hasFile('section-image')){
-            $section->section_image = $fileNameToStore;            
+            $section->section_image = $fileNameToStore;
         }
         $section->save();
         

@@ -19,7 +19,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                    <a href="mailto:{{ $contact->email }}?Subject=Contact%20Inquiry" class="btn btn-success btn-lg btn-flat pull-right" target="_top">Reply</a>
+                    <a href="mailto:{{ $contact->email }}?Subject=Contact%20Inquiry" class="btn btn-success btn-md btn-flat pull-right" target="_top">Reply</a>
                 </div>
                 <div class="box-body">
                     <div class="fname">
@@ -42,12 +42,13 @@
                         <h4>Message:</h4>
                         <div>{{ $contact->message }}</div>
                     </div>
-                    @if(!Auth::guest())
-                        <a href="{{ url('/admin/contact/delete/'.$contact->id) }}" class="btn btn-danger btn-flat">Delete</a>
-                    @endif
-                    <a href="{{ url('admin/contact') }}" class="btn btn-primary btn-lg btn-flat pull-right">Go Back</a>
+                    
                 </div>
               </div>
+                @if(!Auth::guest())
+                    <a href="{{ url('/admin/contact/delete/'.$contact->id) }}" class="btn btn-danger btn-flat">Delete</a>
+                @endif
+                <a href="{{ url('admin/contact') }}" class="btn btn-primary btn-md btn-flat pull-right">Go Back</a>
             </div>
           </div>
           

@@ -36,22 +36,11 @@
                                 <span class="help-block">{{ $errors->first('page_title') }}</span>
                             @endif
                         </div>
-                        <div class="form-group col-xs-6 {{ $errors->has('page-image') ? ' has-error' : '' }}">
+                        <div class="form-group col-xs-12 {{ $errors->has('page-image') ? ' has-error' : '' }}">
                             <label for="pageImage">Page Image</label>
                             <input type="file" class="form-control" value="{{ old('page-image') }}" id="page-image" name="page-image">
                             @if($errors->has('page-image'))
                                 <span class="help-block">{{ $errors->first('page-image') }}</span>
-                            @endif
-                        </div>
-                        <div class="form-group col-xs-6 {{ $errors->has('page_status') ? ' has-error' : '' }}">
-                            <label for="pageStatus">Page Status</label>
-                            <select class="form-control" id="page_status" name="page_status">
-                                <option value="">~~Status~~</option>
-                                <option value="1">Publish</option>
-                                <option value="0">Drafted</option>
-                            </select>
-                            @if($errors->has('page_status'))
-                                <span class="help-block">{{ $errors->first('page_status') }}</span>
                             @endif
                         </div>
                         <div class="form-group col-xs-12 {{ $errors->has('page_content') ? ' has-error' : '' }}">
@@ -62,8 +51,8 @@
                             @endif
                         </div>
                         <div class="form-group col-xs-12">
-                            <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-lg">
-                            <a href="{{ url('admin/pages') }}" class="btn btn-primary btn-lg btn-flat pull-right">Go Back</a>
+                            <input type="submit" value="Post" class="form-group btn btn-success btn-flat pull-right btn-md">
+                            <a href="{{ url('admin/pages') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
                         </div>
                     </form>
                 </div>
@@ -71,8 +60,7 @@
             </div>
           </div>
           
-      </div><!-- /.content-wrapper -->
-      <!--<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>-->
+      </div>
       <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace( 'editor1' );

@@ -36,8 +36,9 @@
                                 <span class="help-block">{{ $errors->first('blog-post') }}</span>
                             @endif
                         </div>                        
-                        <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-lg">
+                        <input type="submit" value="Post" class="form-group btn btn-success btn-flat pull-right btn-md">
                     </form>
+                    <a href="{{ url('admin/blog') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
                 </div>
               </div>
             </div>

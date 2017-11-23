@@ -33,8 +33,8 @@
                             <textarea placeholder="Enter Post Body..." id="editor1" rows="10" name="blog-post" class="form-control" value="">{{ $blog->editor }}</textarea>
                             <p class="contact-er"></p>
                         </div>                        
-                        <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-lg">
-                        <a class="btn btn-lg btn-flat btn-danger pull-right" href="{{ url('/admin/blog') }}">Go Back</a>
+                        <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-md pull-right">
+                        <a class="btn btn-md btn-flat btn-primary " href="{{ url('/admin/blog') }}">Go Back</a>
                     </form>
                 </div>
               </div>

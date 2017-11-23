@@ -13,14 +13,16 @@
             @endforeach
             @if(count($faqs) > 0)
 
+            <div id="accordion">
+            @php $i = 1 @endphp
             @foreach($faqs as $faq)
-                <div id="accordion">
-                    <h4 class="accordion-toggle">{{ $faq->faq_title }}</h4>
-                    <div class="accordion-content">
-                        <p>{!! $faq->faq_content !!}</p>
-                    </div>
+                <h4 class="accordion-head accordion-toggle<?= $i ?>">{{ $faq->faq_title }}</h4>
+                <div class="accordion-detail accordion-content<?= $i ?>">
+                    <p>{!! $faq->faq_content !!}</p>
                 </div>
+            @php $i++ @endphp
             @endforeach
+            </div>
             @else
                 <h2>No FAQ Yet.</h2>
             @endif

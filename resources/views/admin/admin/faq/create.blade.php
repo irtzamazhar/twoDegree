@@ -48,8 +48,8 @@
                                 <span class="help-block">{{ $errors->first('faq-content') }}</span>
                             @endif
                         </div>                        
-                        <input type="submit" value="Submit" class="form-group btn btn-success btn-flat btn-lg">
-                        <a class="btn btn-flat btn-lg btn-primary pull-right" href="{{ url('/admin/faq') }}">Go Back</a>
+                        <input type="submit" value="Submit" class="form-group btn btn-success btn-flat btn-md pull-right">
+                        <a class="btn btn-flat btn-md btn-primary" href="{{ url('/admin/faq') }}">Go Back</a>
                     </form>
                 </div>
               </div>

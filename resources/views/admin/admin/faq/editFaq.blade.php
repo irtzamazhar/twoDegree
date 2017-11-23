@@ -48,8 +48,8 @@
                             <textarea placeholder="Enter FAQ Content..." id="editor1" rows="10" name="faq-content" class="form-control" value="">{{ $faq->faq_content }}</textarea>
                             <p class="contact-er"></p>
                         </div>                        
-                        <input type="submit" value="Submit" class="form-group btn btn-success btn-flat btn-lg">
-                        <a class="btn btn-lg btn-flat btn-danger pull-right" href="{{ url('/admin/faq') }}">Go Back</a>
+                        <input type="submit" value="Submit" class="pull-right form-group btn btn-success btn-flat btn-md">
+                        <a class="btn btn-md btn-flat btn-primary" href="{{ url('/admin/faq') }}">Go Back</a>
                     </form>
                 </div>
               </div>

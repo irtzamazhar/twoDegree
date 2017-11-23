@@ -37,7 +37,7 @@
                                 <span class="help-block">{{ $errors->first('page_title') }}</span>
                             @endif
                         </div>
-                        <div class="form-group col-xs-4 {{ $errors->has('page-image') ? ' has-error' : '' }}">
+                        <div class="form-group col-xs-10 {{ $errors->has('page-image') ? ' has-error' : '' }}">
                             <label for="pageImage">Page Image</label>
                             <input type="file" class="form-control" value="{{ old('page-image') }}" id="page-image" name="page-image">
                             @if($errors->has('page-image'))
@@ -46,27 +46,8 @@
                         </div>
                         <div class="form-group col-xs-2">
                             <td>
-                                <img src="{{ asset('storage/app/public/images/'.$page->page_image) }}" alt="alt" width="160" height="70">
+                                <img src="{{ asset('storage/app/public/images/'.$page->page_image) }}" alt="alt" width="153" height="70">
                             </td>
-                        </div>
-                        <div class="form-group col-xs-6 {{ $errors->has('page_status') ? ' has-error' : '' }}">
-                            <label for="pageStatus">Page Status</label>
-                            @if($page->page_status == 1)
-                            <select class="form-control" id="page_status" name="page_status">
-                                <option value="">~~Status~~</option>
-                                <option value="1" selected="">Publish</option>
-                                <option value="0">Drafted</option>
-                            </select>
-                            @else
-                            <select class="form-control" id="page_status" name="page_status">
-                                <option value="">~~Status~~</option>
-                                <option value="1">Publish</option>
-                                <option value="0" selected="">Drafted</option>
-                            </select>
-                            @endif
-                            @if($errors->has('page_status'))
-                                <span class="help-block">{{ $errors->first('page_status') }}</span>
-                            @endif
                         </div>
                         <div class="form-group col-xs-12 {{ $errors->has('page_content') ? ' has-error' : '' }}">
                             <label for="PageBody">Page Content</label>
@@ -76,8 +57,8 @@
                             @endif
                         </div>
                         <div class="form-group col-xs-12">
-                            <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-lg">
-                            <a href="{{ url('admin/pages') }}" class="btn btn-primary btn-lg btn-flat pull-right">Go Back</a>
+                            <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-md pull-right">
+                            <a href="{{ url('admin/pages') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
                         </div>
                     </form>
                 </div>

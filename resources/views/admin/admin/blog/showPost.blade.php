@@ -25,10 +25,10 @@
                     <p>{{ date('F d, Y', strtotime($blog->created_at)) }}</p>
                     <div>{!! $blog->editor !!}</div>
                       @if(!Auth::guest())
-                          <a href="{{ url('/admin/blog/editPost/'.$blog->id) }}" class="btn btn-warning btn-flat">Edit</a>
-                          <a href="{{ url('/admin/blog/deletePost/'.$blog->id) }}" class="btn btn-danger btn-flat">Delete</a>
+                          <a href="{{ url('/admin/blog/editPost/'.$blog->id) }}" class="btn btn-warning pull-right btn-flat">Edit</a>
+                          <a href="{{ url('/admin/blog/deletePost/'.$blog->id) }}" class="btn btn-danger btn-flat pull-right btn-dlt">Delete</a>
                       @endif
-                      <a href="{{ url('admin/blog') }}" class="btn btn-primary btn-lg btn-flat pull-right">Go Back</a>
+                      <a href="{{ url('admin/blog') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
                 </div>
               </div>
             </div>

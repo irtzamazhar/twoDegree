@@ -744,16 +744,7 @@ footer {
     top: 0px !important;
 }
 
-.accordion-toggle1,
-.accordion-toggle2,
-.accordion-toggle3,
-.accordion-toggle4,
-.accordion-toggle5,
-.accordion-toggle6,
-.accordion-toggle7,
-.accordion-toggle8,
-.accordion-toggle9,
-.accordion-toggle10 {
+.accordion-head {
     cursor: pointer;
     background: url(../images/pluc.png) 0 5px no-repeat;
     padding: 0 0 14px 35px;
@@ -773,29 +764,11 @@ footer {
     line-height: 24px;
 }
 
-.accordion-toggle1.on,
-.accordion-toggle2.on,
-.accordion-toggle3.on,
-.accordion-toggle4.on,
-.accordion-toggle5.on,
-.accordion-toggle6.on,
-.accordion-toggle7.on,
-.accordion-toggle8.on,
-.accordion-toggle9.on,
-.accordion-toggle10.on {
+.accordion-head.on{
     background: url(../images/minas.png) scroll 0 12px no-repeat;
 }
 
-.accordion-content1,
-.accordion-content2,
-.accordion-content3,
-.accordion-content4,
-.accordion-content5,
-.accordion-content6,
-.accordion-content7,
-.accordion-content8,
-.accordion-content9,
-.accordion-content10 {
+.accordion-detail {
     display: none;
 }
 

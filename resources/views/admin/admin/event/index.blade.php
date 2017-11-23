@@ -18,8 +18,8 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <a class="btn btn-primary btn-flat btn-lg pull-left" href="{{ url('admin/event/addBanner') }}">Event Banner</a>
-                  <a class="btn btn-success btn-flat btn-lg pull-right" href="{{ url('/admin/event/create') }}">Create A New Event</a>
+                  <a class="btn btn-primary btn-flat btn-md pull-left" href="{{ url('admin/event/addBanner') }}">Event Banner</a>
+                  <a class="btn btn-success btn-flat btn-md btn-create pull-right" href="{{ url('/admin/event/create') }}">Create A New Event</a>
                 </div>
                   @include('admin.admin.message')
                 <div class="box-body">
@@ -27,9 +27,9 @@
                         <thead>
                           <tr>
                             <th width="15%">Event Title</th>
-                            <th width="15%">Event Day</th>
+                            <th width="10%">Event Day</th>
                             <th width="15%">Event Timing</th>
-                            <th width="20%">Event Details</th>
+                            <th width="25%">Event Details</th>
                             <th width="15%">Address</th>
                             <th width="20%">Actions</th>
                           </tr>
@@ -40,7 +40,10 @@
                                   <td>{{ $event->event_title }}</td>
                                   <td>{{ date('M d, Y', strtotime($event->event_day)) }}</td>
                                   <td>{{ date('h:iA', strtotime($event->event_timing1)) }} - {{ date('h:iA', strtotime($event->event_timing2)) }}</td>
-                                  <td style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{{ $event->event_detail }}</td>
+                                  <td>
+                                    @php $truncated = str_limit( $event->event_detail , 50); @endphp
+                                    {!! $truncated !!}
+                                  </td>
                                   <td>{{ $event->address }}</td>
                                   <td>
                                       @if(!Auth::guest())

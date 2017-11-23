@@ -36,10 +36,10 @@
                     </div>
                     <div style="margin-top: 20px;">
                       @if(!Auth::guest())
-                          <a href="{{ url('/admin/home/edit/'.$section->id) }}" class="btn btn-warning btn-flat">Edit</a>
-                          <a href="{{ url('/admin/home/delete/'.$section->id) }}" class="btn btn-danger btn-flat">Delete</a>
+                          <a href="{{ url('/admin/home/edit/'.$section->id) }}" class="btn btn-warning btn-flat pull-right">Edit</a>
+                          <a href="{{ url('/admin/home/delete/'.$section->id) }}" class="btn btn-danger btn-dlt btn-flat pull-right">Delete</a>
                       @endif
-                      <a href="{{ url('admin/home') }}" class="btn btn-primary btn-lg btn-flat pull-right">Go Back</a>
+                      <a href="{{ url('admin/home') }}" class="btn btn-primary btn-md btn-flat ">Go Back</a>
                     </div>
                 </div>
               </div>

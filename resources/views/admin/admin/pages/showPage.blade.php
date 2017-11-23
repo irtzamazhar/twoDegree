@@ -29,14 +29,6 @@
                         <h4>Page Title:</h4>
                         <div>{{ $page->page_title }}</div>
                     </div>
-                    <div class="page-status">
-                        <h4>Page Status:</h4>
-                        @if($page->page_content)
-                        <div>Public</div>
-                        @else
-                        <div>Drafted</div>
-                        @endif
-                    </div>
 
                     <div class="page-content">
                         <h4>Page Content:</h4>
@@ -49,10 +41,10 @@
                     </div>
                     <div style="margin-top: 20px;">
                       @if(!Auth::guest())
-                          <a href="{{ url('/admin/pages/editPage/'.$page->id) }}" class="btn btn-warning btn-flat">Edit</a>
-                          <a href="{{ url('/admin/pages/deletePage/'.$page->id) }}" class="btn btn-danger btn-flat">Delete</a>
+                          <a href="{{ url('/admin/pages/editPage/'.$page->id) }}" class="btn btn-warning btn-flat pull-right">Edit</a>
+                          <a href="{{ url('/admin/pages/deletePage/'.$page->id) }}" class="btn btn-danger btn-flat pull-right btn-dlt">Delete</a>
                       @endif
-                      <a href="{{ url('admin/pages') }}" class="btn btn-primary btn-lg btn-flat pull-right">Go Back</a>
+                      <a href="{{ url('admin/pages') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
                     </div>
                 </div>
               </div>

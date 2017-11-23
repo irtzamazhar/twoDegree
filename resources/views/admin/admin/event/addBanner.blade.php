@@ -35,8 +35,9 @@
                                 <span class="help-block">{{ $errors->first('banner-image') }}</span>
                             @endif                            
                         </div>
-                        <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-lg pull-right">
+                        <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-md pull-right">
                     </form>
+                    <a href="{{ url('admin/event') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
                 </div>
               </div>
             </div>

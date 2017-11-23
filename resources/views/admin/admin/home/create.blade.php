@@ -44,8 +44,8 @@
                             @endif
                         </div>
                         <div class="form-group col-xs-12">
-                            <input type="submit" value="Submit" class="form-group btn btn-success btn-flat btn-lg">
-                            <a href="{{ url('admin/home') }}" class="btn btn-primary btn-lg btn-flat pull-right">Go Back</a>
+                            <input type="submit" value="Submit" class="form-group btn btn-success btn-flat pull-right btn-md">
+                            <a href="{{ url('admin/home') }}" class="btn btn-primary btn-md btn-flat ">Go Back</a>
                         </div>
                     </form>
                 </div>
