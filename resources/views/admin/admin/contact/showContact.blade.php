@@ -14,43 +14,46 @@
         </section>
 
         <!-- Main content -->
-        <section class="content">
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
+        <section class="invoice">
+            <div>
                 <div class="box-header">
                     <a href="mailto:{{ $contact->email }}?Subject=Contact%20Inquiry" class="btn btn-success btn-md btn-flat pull-right" target="_top">Reply</a>
                 </div>
-                <div class="box-body">
-                    <div class="fname">
-                        <h4>First Name:</h4>
-                        <div>{{ $contact->fname }}</div>
-                    </div>
-                    <div class="lname">
-                        <h4>Last Name:</h4>
-                        <div>{{ $contact->lname }}</div>
-                    </div>
-                    <div class="email">
-                        <h4>Email:</h4>
-                        <div>{{ $contact->email }}</div>
-                    </div>
-                    <div class="subject">
-                        <h4>Subject:</h4>
-                        <div>{{ $contact->subject }}</div>
-                    </div>
-                    <div class="message">
-                        <h4>Message:</h4>
-                        <div>{{ $contact->message }}</div>
-                    </div>
-                    
-                </div>
+                <table class="table table-striped view-any">
+                    <tbody>
+                        <tr>
+                            <th style="width:10%">First Name:</th>
+                            <td>{{ $contact->fname }}</td>
+                        </tr>
+                        <tr>
+                            <th>Last Name:</th>
+                            <td>{{ $contact->lname }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td>{{ $contact->email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Subject:</th>
+                            <td>{{ $contact->subject }}</td>
+                        </tr>
+                        <tr>
+                            <th>Message:</th>
+                            <td>{{ $contact->message }}</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                @if(!Auth::guest())
+                                    <a href="{{ url('/admin/contact/delete/'.$contact->id) }}" class="btn btn-danger btn-flat pull-right" onclick="return confirm('Are you sure?')">Delete</a>
+                                @endif
+                                <a href="{{ url('admin/contact') }}" class="btn btn-primary btn-md btn-flat ">Go Back</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
               </div>
-                @if(!Auth::guest())
-                    <a href="{{ url('/admin/contact/delete/'.$contact->id) }}" class="btn btn-danger btn-flat">Delete</a>
-                @endif
-                <a href="{{ url('admin/contact') }}" class="btn btn-primary btn-md btn-flat pull-right">Go Back</a>
-            </div>
-          </div>
+
           
         </section>
       </div><!-- /.content-wrapper -->

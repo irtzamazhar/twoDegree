@@ -13,11 +13,8 @@
           </ol>
         </section>
         
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
-                <div class="box-header">
-                </div>
+        <section class="invoice">
+            <div>
                 <div class="box-body">
                     @include('admin.admin.message')
                     @foreach($siteBanner as $contactBanner)
@@ -39,11 +36,10 @@
                         <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-md pull-right">
                     </form>
                     @endforeach
+                    <a href="{{ url('admin/contact') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
                 </div>
-              </div>
             </div>
-          </div>
-          
+        </section>
       </div><!-- /.content-wrapper -->
       <!--<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>-->
 <!--    <script>

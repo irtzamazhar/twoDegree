@@ -13,38 +13,39 @@
           </ol>
         </section>
         
-        <section>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
+        <section class="invoice">
+            <div>
                 <div class="box-header">
+                    <h3 class="box-title">View Page Section</h3>
                 </div>
                   @include('admin.admin.message')
-                <div class="box-body">
-                    <div class="section-name">
-                        <h4>Section Name:</h4>
-                        <div>{{ $section->section_name }}</div>
-                    </div>
-
-                    <div class="section-content">
-                        <h4>Section Content:</h4>
-                        <div>{!! $section->section_content !!}</div>
-                    </div>
-                    <div class="section-image">
-                        <h4>Section Image:</h4>
-                        <img src="{{ asset('storage/app/public/images/'.$section->section_image) }}" width="100%"/>
-                    </div>
-                    <div style="margin-top: 20px;">
-                      @if(!Auth::guest())
+                  <table class="table table-striped view-any">
+                    <tbody>
+                        <tr>
+                            <th>Section Name:</th>
+                            <td><h1>{{ $section->section_name }}</h1></td>
+                        </tr>
+                        <tr>
+                            <th>Section Content:</th>
+                            <td>{!! $section->section_content !!}</td>
+                        </tr>
+                        <tr>
+                            <th>Section Image:</th>
+                            <td><img src="{{ asset('storage/app/public/images/'.$section->section_image) }}" width="100%"/></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                @if(!Auth::guest())
                           <a href="{{ url('/admin/home/edit/'.$section->id) }}" class="btn btn-warning btn-flat pull-right">Edit</a>
-                          <a href="{{ url('/admin/home/delete/'.$section->id) }}" class="btn btn-danger btn-dlt btn-flat pull-right">Delete</a>
+                          <a href="{{ url('/admin/home/delete/'.$section->id) }}" class="btn btn-danger btn-dlt btn-flat pull-right" onclick="return confirm('Are you sure?')">Delete</a>
                       @endif
                       <a href="{{ url('admin/home') }}" class="btn btn-primary btn-md btn-flat ">Go Back</a>
-                    </div>
-                </div>
-              </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
             </div>
-          </div>
         </section>
           
       </div><!-- /.content-wrapper -->

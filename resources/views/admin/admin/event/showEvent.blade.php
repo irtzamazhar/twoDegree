@@ -5,7 +5,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            View Event
+            Manage Event
           </h1>
           <ol class="breadcrumb">
             <li><a href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -13,49 +13,53 @@
           </ol>
         </section>
         
-        <section>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
+        <section class="invoice">
+            <div>
                 <div class="box-header">
+                  <h3 class="box-title">View Event</h3>
                 </div>
                   @include('admin.admin.message')
-                <div class="box-body">
-                    <div class="event-title">
-                        <h4>Event Title:</h4>
-                        <div>{{ $event->event_title }}</div>
-                    </div>
-                    <div class="event-day">
-                        <h4>Event Day:</h4>
-                        <div>{{ date('M d, Y', strtotime($event->event_day)) }}</div>
-                    </div>
-                    <div class="event-timing">
-                        <h4>Event Timing:</h4>
-                        <div>{{ date('h:iA', strtotime($event->event_timing1)) }} - {{ date('h:iA', strtotime($event->event_timing2)) }}</div>
-                    </div>
-                    <div class="event-details">
-                        <h4>Event Details:</h4>
-                        <div>{{ $event->event_detail }}</div>
-                    </div>
-                    <div class="event-image">
-                        <h4>Event Image:</h4>
-                        <img src="{{ asset('storage/app/public/images/'.$event->event_image) }}" width="330" height="300"/>
-                        <!--<div>{{ $event->event_detail }}</div>-->
-                    </div>
-                    <div class="event-location">
-                        <h4>Event Location:</h4>
-                        <div>{{ $event->address }}</div>
-                    </div>
-                    <br><br>
-                      @if(!Auth::guest())
+                  <table class="table table-striped view-any">
+                    <tbody>
+                        <tr>
+                            <th style="width:10%">Event Title:</th>
+                            <td><h4>{{ $event->event_title }}</h4></td>
+                        </tr>
+                        <tr>
+                            <th>Event Day:</th>
+                            <td>{{ date('M d, Y', strtotime($event->event_day)) }}</td>
+                        </tr>
+                        <tr>
+                            <th>Event Timing:</th>
+                            <td>{{ date('h:iA', strtotime($event->event_timing1)) }} - {{ date('h:iA', strtotime($event->event_timing2)) }}</td>
+                        </tr>
+                        <tr>
+                            <th>Event Details:</th>
+                            <td>{{ $event->event_detail }}</td>
+                        </tr>
+                        <tr>
+                            <th>Event Image:</th>
+                            <td>
+                                <img src="{{ asset('storage/app/public/images/'.$event->event_image) }}" width="330" height="300"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Event Location:</th>
+                            <td>{{ $event->address }}</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                @if(!Auth::guest())
                           <a href="{{ url('/admin/event/editEvent/'.$event->id) }}" class="btn btn-warning btn-flat pull-right">Edit</a>
-                          <a href="{{ url('/admin/event/deleteEvent/'.$event->id) }}" class="btn btn-danger btn-flat pull-right btn-dlt">Delete</a>
+                          <a href="{{ url('/admin/event/deleteEvent/'.$event->id) }}" class="btn btn-danger btn-flat pull-right btn-dlt" onclick="return confirm('Are you sure?')">Delete</a>
                       @endif
                       <a href="{{ url('admin/event') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
-                </div>
-              </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
             </div>
-          </div>
         </section>
           
       </div><!-- /.content-wrapper -->

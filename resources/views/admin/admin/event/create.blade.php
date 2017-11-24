@@ -5,7 +5,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Create Event
+            Manage Event
           </h1>
           <ol class="breadcrumb">
             <li><a href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -13,71 +13,80 @@
           </ol>
         </section>
         
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
+        <section class="invoice">
+            <div>
                 <div class="box-header">
-                  
+                  <h3 class="box-title">Creat Event</h3>
                 </div>
-                  @include('admin.admin.message')
                 <div class="box-body">
                     <form action="{{ url('/createEvent') }}" method="post" id="blogpost" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        <div class="form-group col-xs-12">
-                            <label for="eventTitle">Event Title</label>
-                            <input type="text" class="form-control" id="event-title" name="event-title" placeholder="Enter Event Title">
-                            <p class="contact-er"></p>
-                        </div>
-                        <div class="form-group col-xs-6">
-                            <label for="eventDay">Event Day</label>
-                            <div class="input-group date">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="date" class="form-control pull-right" id="datepicker" name="event-day" placeholder="Event Day">
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <label for="eventTitle">Event Title</label>
+                                <input type="text" class="form-control" id="event-title" name="event-title" placeholder="Enter Event Title">
+                                <p class="contact-er"></p>
                             </div>
-                            <p class="contact-er"></p>
                         </div>
-                        <div class="form-group col-xs-6">
-                            <label for="title">Event Timing</label>
-                            <div class="input-group time">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-clock-o"></i>
+                        <div class="row">
+                            <div class="form-group col-xs-6">
+                                <label for="eventDay">Event Day</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="date" class="form-control pull-right" id="datepicker" name="event-day" placeholder="Event Day">
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="time" class="form-control pull-right" id="timing1" name="event-timing1" placeholder="Event Day">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="time" class="form-control pull-right" id="timing2" name="event-timing2" placeholder="Event Day">
-                                </div>
+                                <p class="contact-er"></p>
                             </div>
-                            <!--<input type="time" class="form-control" id="title" name="title" placeholder="Enter Post Title">-->
-                            <p class="contact-er"></p>
+                            <div class="form-group col-xs-6">
+                                <label for="title">Event Timing</label>
+                                <div class="input-group time">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="time" class="form-control pull-right" id="timing1" name="event-timing1" placeholder="Event Day">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="time" class="form-control pull-right" id="timing2" name="event-timing2" placeholder="Event Day">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<input type="time" class="form-control" id="title" name="title" placeholder="Enter Post Title">-->
+                                <p class="contact-er"></p>
+                            </div>
                         </div>
-                        <div class="form-group col-xs-12">
-                            <label for="eventDetail">Event Detail</label>
-                            <textarea placeholder="Enter Event Details..." id="event-detail" rows="10" name="event-detail" class="form-control"></textarea>
-                            <input type="file" class="form-control" name="event-image" id="event-image">
-                            <p class="contact-er"></p>
+                        
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <label for="eventDetail">Event Detail</label>
+                                <textarea placeholder="Enter Event Details..." id="event-detail" rows="10" name="event-detail" class="form-control"></textarea>
+                                <input type="file" class="form-control" name="event-image" id="event-image">
+                                <p class="contact-er"></p>
+                            </div>
                         </div>
-                        <div class="form-group col-xs-12">
-                            <label for="eventLocation">Event Location</label>
-                            <input id="event-location" type="text" name="event-location" class="form-control" autocomplete="on">
-                            <input type="hidden" id="place-lng" name="place-lng" value="">
-                            <input type="hidden" id="place-lat" name="place-lat" value="">
-                            <input type="hidden" id="address" name="address" value="">
-                            <p class="contact-er"></p>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <label for="eventLocation">Event Location</label>
+                                <input id="event-location" type="text" name="event-location" class="form-control" autocomplete="on">
+                                <input type="hidden" id="place-lng" name="place-lng" value="">
+                                <input type="hidden" id="place-lat" name="place-lat" value="">
+                                <input type="hidden" id="address" name="address" value="">
+                                <p class="contact-er"></p>
+                            </div>
                         </div>
-                        <div class="form-group col-xs-12">
-                            <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-md pull-right">
-                            <a href="{{ url('admin/event') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-md pull-right">
+                                <a href="{{ url('admin/event') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
+                            </div>
                         </div>
                     </form>
                 </div>
-              </div>
             </div>
-          </div>
-          
+        </section>
       </div><!-- /.content-wrapper -->
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyApozjbWyK5N9aq4Kc8DIpTxJg2DHuLVDU&sensor=false&libraries=places"></script>
       <script>

@@ -13,43 +13,44 @@
           </ol>
         </section>
         
-        <section>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
+        <section class="invoice">
+            <div>
                 <div class="box-header">
+                    <h3 class="box-title">View Page</h3>
                 </div>
-                  @include('admin.admin.message')
-                <div class="box-body">
-                    <div class="page-url">
-                        <h4>Page URL:</h4>
-                        <div>{{ $page->page_url }}</div>
-                    </div>
-                    <div class="page-title">
-                        <h4>Page Title:</h4>
-                        <div>{{ $page->page_title }}</div>
-                    </div>
-
-                    <div class="page-content">
-                        <h4>Page Content:</h4>
-                        <div>{!! $page->page_content !!}</div>
-                    </div>
-                    <div class="event-image">
-                        <h4>Event Image:</h4>
-                        <img src="{{ asset('storage/app/public/images/'.$page->page_image) }}" width="1500" height="350"/>
-                        
-                    </div>
-                    <div style="margin-top: 20px;">
-                      @if(!Auth::guest())
+                <table class="table table-striped view-any">
+                    <tbody>
+                        <tr>
+                            <th style="width:10%">Page URL:</th>
+                            <td>{{ $page->page_url }}</td>
+                        </tr>
+                        <tr>
+                            <th>Page Title:</th>
+                            <td><h1>{{ $page->page_title }}</h1></td>
+                        </tr>
+                        <tr>
+                            <th>Page Content:</th>
+                            <td>{!! $page->page_content !!}</td>
+                        </tr>
+                        <tr>
+                            <th>Page Image:</th>
+                            <td>
+                                <img src="{{ asset('storage/app/public/images/'.$page->page_image) }}" width="100%" height="250"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                @if(!Auth::guest())
                           <a href="{{ url('/admin/pages/editPage/'.$page->id) }}" class="btn btn-warning btn-flat pull-right">Edit</a>
-                          <a href="{{ url('/admin/pages/deletePage/'.$page->id) }}" class="btn btn-danger btn-flat pull-right btn-dlt">Delete</a>
+                          <a href="{{ url('/admin/pages/deletePage/'.$page->id) }}" class="btn btn-danger btn-flat pull-right btn-dlt" onclick="return confirm('Are you sure?')">Delete</a>
                       @endif
                       <a href="{{ url('admin/pages') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
-                    </div>
-                </div>
-              </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
             </div>
-          </div>
         </section>
           
       </div><!-- /.content-wrapper -->

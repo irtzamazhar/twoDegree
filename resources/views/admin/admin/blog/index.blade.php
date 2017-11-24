@@ -13,10 +13,8 @@
           </ol>
         </section>
         
-        <section>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
+        <section class="invoice">
+            <div class="">
                 <div class="box-header">
                   <a class="btn btn-success btn-flat btn-md pull-right btn-create" href="{{ url('admin/blog/create') }}">Create A New Blog Post</a>
                   <a class="btn btn-primary btn-flat btn-md pull-left" href="{{ url('admin/blog/addBanner') }}">Blog Banner</a>
@@ -43,7 +41,7 @@
                                       @if(!Auth::guest())
                                           <a href="{{ url('/admin/blog/showPost/'.$blog->id) }}" class="btn btn-primary btn-flat ">View</a>
                                           <a href="{{ url('/admin/blog/editPost/'.$blog->id) }}" class="btn btn-warning btn-flat ">Edit</a>
-                                          <a href="{{ url('/admin/blog/deletePost/'.$blog->id) }}" class="btn btn-danger btn-flat ">Delete</a>
+                                          <a href="{{ url('/admin/blog/deletePost/'.$blog->id) }}" class="btn btn-danger btn-flat " onclick="return confirm('Are you sure?')">Delete</a>
                                       @endif
                                   </td>
                                 </tr>
@@ -51,9 +49,7 @@
                         </tbody>
                     </table>
                 </div>
-              </div>
             </div>
-          </div>
         </section>
           
       </div><!-- /.content-wrapper -->

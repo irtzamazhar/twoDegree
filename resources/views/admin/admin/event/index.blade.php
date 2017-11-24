@@ -13,10 +13,8 @@
           </ol>
         </section>
         
-        <section>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
+        <section class="invoice">
+            <div>
                 <div class="box-header">
                   <a class="btn btn-primary btn-flat btn-md pull-left" href="{{ url('admin/event/addBanner') }}">Event Banner</a>
                   <a class="btn btn-success btn-flat btn-md btn-create pull-right" href="{{ url('/admin/event/create') }}">Create A New Event</a>
@@ -49,7 +47,7 @@
                                       @if(!Auth::guest())
                                           <a href="{{ url('/admin/event/showEvent/'.$event->id) }}" class="btn btn-primary btn-flat">View</a>
                                           <a href="{{ url('/admin/event/editEvent/'.$event->id) }}" class="btn btn-warning btn-flat">Edit</a>
-                                          <a href="{{ url('/admin/event/deleteEvent/'.$event->id) }}" class="btn btn-danger btn-flat">Delete</a>
+                                          <a href="{{ url('/admin/event/deleteEvent/'.$event->id) }}" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure?')">Delete</a>
                                       @endif
                                   </td>
                                 </tr>
@@ -59,8 +57,6 @@
                     {{$site_events->links()}}
                 </div>
               </div>
-            </div>
-          </div>
         </section>
           
       </div><!-- /.content-wrapper -->

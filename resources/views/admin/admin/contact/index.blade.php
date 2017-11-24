@@ -1,5 +1,6 @@
 @extends('admin.layouts.dashboard')
 @section('content')
+
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -14,10 +15,8 @@
         </section>
 
         <!-- Main content -->
-        <section class="content">
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
+        <section class="invoice">
+            <div>
                 <div class="box-header">
                     <a class="btn btn-primary btn-flat btn-md pull-left" href="{{ url('admin/contact/addBanner') }}">Contact Banner</a>
                 </div>
@@ -51,7 +50,7 @@
                                       <td>
                                           @if(!Auth::guest())
                                               <a href="{{ url('/admin/contact/showContact/'.$contact->id) }}" class="btn btn-primary btn-flat">View</a>
-                                              <a href="{{ url('/admin/contact/delete/'.$contact->id) }}" class="btn btn-danger btn-flat">Delete</a>
+                                              <a href="{{ url('/admin/contact/delete/'.$contact->id) }}" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure?')">Delete</a>
                                           @endif
                                       </td>
                                     </tr>
@@ -63,10 +62,7 @@
                         <h2>No Contact Inquiries Yet.</h2>
                     @endif
                 </div>
-              </div>
             </div>
-          </div>
-          
         </section>
       </div><!-- /.content-wrapper -->
       @stop

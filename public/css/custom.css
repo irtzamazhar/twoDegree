@@ -1,41 +1,3 @@
-/*.my_div {
-    border: 1px solid #DDDDDD !important;
-    width: 200px;
-    height: 40px;
-    padding: 0.5em;
-    float: left;
-    margin: 10px 10px 10px 10px;;
-    cursor:move;
-    background-color: #E9E9E9;
-    text-decoration: none;
-}*/
-
-/*.page-listing{
-    border: 1px solid #DDDDDD !important;
-}*/
-
-/*.dragable-data{
-    float: left;
-    height: auto;
-    width: 550px;
-    list-style: none;
-}*/
-
-/*.my_style {
-    width: 500px;
-    height: auto;
-    padding: 0.5em;
-    clear: both;
-    float: left;
-    margin: 10px;
-}*/
-
-/* My styling */
-body{
-    background-color: white;
-    color: black;
-}
-
 .column.first {
     margin-left: 0;
 }
@@ -118,5 +80,27 @@ ul, menu, dir {
 }
 
 .btn-create{
-    margin-right: 39px;
+    margin-right: 23px;
+}
+
+.invoice{
+    padding: 15px !important;
+    border-top: 3px solid #d2d6de !important;
+}
+
+.box-title{
+    font-size: 20px !important;
+    font-weight: 400;
+}
+
+.view-any h1,.view-any h2,.view-any h3,.view-any h4,.view-any h5,.view-any h6{
+    font-size: 18px !important;
+}
+
+.view-any p{
+    font-size: 15px !important;
+}
+
+.view-title{
+    font-weight: bold;
 }

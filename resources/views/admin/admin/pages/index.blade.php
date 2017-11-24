@@ -13,10 +13,8 @@
           </ol>
         </section>
         
-        <section>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
+        <section class="invoice">
+            <div>
                 <div class="box-header">
                   <a class="btn btn-success btn-flat btn-md btn-create pull-right" href="{{ url('/admin/pages/create') }}">Create A New Page</a>
                 </div>
@@ -44,7 +42,7 @@
                                       @if(!Auth::guest())
                                           <a href="{{ url('/admin/pages/showPage/'.$page->id) }}" class="btn btn-primary btn-flat">View</a>
                                           <a href="{{ url('/admin/pages/editPage/'.$page->id) }}" class="btn btn-warning btn-flat">Edit</a>
-                                          <a href="{{ url('/admin/pages/deletePage/'.$page->id) }}" class="btn btn-danger btn-flat">Delete</a>
+                                          <a href="{{ url('/admin/pages/deletePage/'.$page->id) }}" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure?')">Delete</a>
                                       @endif
                                   </td>
                                 </tr>
@@ -53,9 +51,7 @@
                     </table>
                     {{$pages->links()}}
                 </div>
-              </div>
             </div>
-          </div>
         </section>
           
       </div><!-- /.content-wrapper -->

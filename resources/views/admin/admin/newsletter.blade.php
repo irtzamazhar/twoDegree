@@ -14,10 +14,8 @@
         </section>
 
         <!-- Main content -->
-        <section class="content">
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
+        <section class="invoice">
+            <div>
                 <div class="box-header">
                     <h3 class="box-title">All Subscriber's Email</h3>
                 </div>
@@ -47,8 +45,6 @@
                     @endif
                 </div>
               </div>
-            </div>
-          </div>
           
         </section>
       </div><!-- /.content-wrapper -->

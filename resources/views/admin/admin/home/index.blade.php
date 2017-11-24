@@ -5,7 +5,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            List of all Sections
+            Manage HomePage
           </h1>
           <ol class="breadcrumb">
             <li><a href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -13,11 +13,10 @@
           </ol>
         </section>
         
-        <section>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
+        <section class="invoice">
+            <div>
                 <div class="box-header">
+                    <h3 class="box-title">List of all Sections</h3>
                   <a class="btn btn-success btn-flat btn-md btn-create pull-right" href="{{ url('/admin/home/create') }}">Create A New Section</a>
                 </div>
                   @include('admin.admin.message')
@@ -46,7 +45,7 @@
                                       @if(!Auth::guest())
                                           <a href="{{ url('/admin/home/show/'.$section->id) }}" class="btn btn-primary btn-flat">View</a>
                                           <a href="{{ url('/admin/home/edit/'.$section->id) }}" class="btn btn-warning btn-flat">Edit</a>
-                                          <a href="{{ url('/admin/home/delete/'.$section->id) }}" class="btn btn-danger btn-flat">Delete</a>
+                                          <a href="{{ url('/admin/home/delete/'.$section->id) }}" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure?')">Delete</a>
                                       @endif
                                   </td>
                                 </tr>
@@ -54,9 +53,7 @@
                         </tbody>
                     </table>
                 </div>
-              </div>
             </div>
-          </div>
         </section>
           
       </div><!-- /.content-wrapper -->

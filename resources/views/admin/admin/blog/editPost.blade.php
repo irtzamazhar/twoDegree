@@ -13,11 +13,10 @@
           </ol>
         </section>
         
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
+        <section class="invoice">
+            <div>
                 <div class="box-header">
-                 
+                    <h3 class="box-title">Edit Blog Post</h3>
                 </div>
                   @include('admin.admin.message')
                 <div class="box-body">
@@ -37,9 +36,8 @@
                         <a class="btn btn-md btn-flat btn-primary " href="{{ url('/admin/blog') }}">Go Back</a>
                     </form>
                 </div>
-              </div>
             </div>
-          </div>
+        </section>
           
       </div><!-- /.content-wrapper -->
       <!--<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>-->
