@@ -34,6 +34,7 @@
     <link href="{{ asset('public/css/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}" rel="stylesheet">
     <!-- Dragula CSS -->
     <link href="{{ asset('node_modules/dragula/dist/dragula.min.css') }}" rel="stylesheet">
+    {!! Charts::styles() !!}
   </head>
   <body class="skin-blue sidebar-mini" id="my_body">
     <!--  wrapper -->
@@ -54,8 +55,9 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
-    <!-- jQuery UI 1.11.2 -->
-   
+    <!-- Custom js -->
+    <script src="{{ asset('public/js/custom.js') }}"></script>
+    
     <script>
       $.widget.bridge('uibutton', $.ui.button);
     </script>
@@ -103,9 +105,9 @@
                 $(this).addClass('active');                
             });
         });
-        $(window).load(function(){
+//        $(window).load(function(){
             setTimeout(function(){ $('.my-message').fadeOut() }, 2000);
-        });
+//        });
         
         $('#my_div .sortable-list').sortable({
             connectWith: '#my_div .sortable-list'

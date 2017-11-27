@@ -63,7 +63,7 @@
                   <p>Upcoming Events</p>
                 </div>
                 <div class="icon">
-                  <i class="fa fa-files-o"></i>
+                  <i class="fa fa-calendar"></i>
                 </div>
                 <a href="{{ url('/admin/event') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
@@ -72,38 +72,28 @@
           
           <div class="row">
               <section class="col-xs-12">
-<!--                  <div class="box box-solid bg-teal-gradient" style="position: relative; left: 0px; top: 0px;">
-                <div class="box-header ui-sortable-handle" style="cursor: move;">
-                  <h3 class="box-title">Subscribers/Contact Inquiries</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
+                  <div class="app">
+                      <!--<a href="#">Here</a>-->
+                      <div class="dropdown pull-right">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-bars" style="margin-right: 5px;"></i></button>
+                        <ul class="dropdown-menu">
+                          <li><a id="yearly" style="cursor: pointer;">Yearly</a></li>
+                          <li><a id="monthly" style="cursor: pointer;">Monthly</a></li>
+                          <li><a id="daily" style="cursor: pointer;">Daily</a></li>
+                        </ul>
+                      </div>
+                    <center>
+                        <div id="m">{!! $monthChart->html() !!}</div>
+                        <div id="y" style="display: none;">{!! $yearChart->html() !!}</div>
+                        <div id="d" style="display: none;">{!! $dayChart->html() !!}</div>
+                    </center>
                   </div>
-                </div>-->
-<!--                <div class="box-body border-radius-none">
-                  <div class="chart" id="line-chart" style="height: 250px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-                      
-                  </div>
-                </div> /.box-body -->
-<!--                <div class="box-footer no-border">
-                  <div class="row">
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <div style="display:inline;width:60px;height:60px;"><canvas width="60" height="60"></canvas><input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgcolor="#39CCCC" readonly="readonly" style="width: 34px; height: 20px; position: absolute; vertical-align: middle; margin-top: 20px; margin-left: -47px; border: 0px; background: none; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Arial; text-align: center; color: rgb(57, 204, 204); padding: 0px; -webkit-appearance: none;"></div>
-                      <div class="knob-label">Mail-Orders</div>
-                    </div> ./col 
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <div style="display:inline;width:60px;height:60px;"><canvas width="60" height="60"></canvas><input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgcolor="#39CCCC" readonly="readonly" style="width: 34px; height: 20px; position: absolute; vertical-align: middle; margin-top: 20px; margin-left: -47px; border: 0px; background: none; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Arial; text-align: center; color: rgb(57, 204, 204); padding: 0px; -webkit-appearance: none;"></div>
-                      <div class="knob-label">Online</div>
-                    </div> ./col 
-                    <div class="col-xs-4 text-center">
-                      <div style="display:inline;width:60px;height:60px;"><canvas width="60" height="60"></canvas><input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgcolor="#39CCCC" readonly="readonly" style="width: 34px; height: 20px; position: absolute; vertical-align: middle; margin-top: 20px; margin-left: -47px; border: 0px; background: none; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Arial; text-align: center; color: rgb(57, 204, 204); padding: 0px; -webkit-appearance: none;"></div>
-                      <div class="knob-label">In-Store</div>
-                    </div> ./col 
-                  </div> /.row 
-                </div> /.box-footer -->
-              </div>
               </section>
           </div>
         </section>
       </div>
+    {!! Charts::scripts() !!}
+    {!! $monthChart->script() !!}
+    {!! $yearChart->script() !!}
+    {!! $dayChart->script() !!}
 @stop

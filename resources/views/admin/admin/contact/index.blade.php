@@ -42,7 +42,10 @@
                                       <td>{{ $contact->fname }}</td>
                                       <td>{{ $contact->lname }}</td>
                                       <td>{{ $contact->email }}</td>
-                                      <td>{{ $contact->subject }}</td>
+                                      <td>
+                                        @php $truncated = str_limit( $contact->subject , 15); @endphp
+                                        {!! $truncated !!}
+                                      </td>
                                       <td>
                                         @php $truncated = str_limit( $contact->message , 20); @endphp
                                         {!! $truncated !!}

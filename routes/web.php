@@ -21,7 +21,7 @@ Route::get('/admin/blog/deletePost/{id}', 'BlogController@destroy')->name('delet
 Route::get('/admin/blog/editPost/{id}', 'BlogController@edit')->name('editBlogPost');
 Route::post('/admin/blog/update/{id}', 'BlogController@update')->name('updateBlogPost');
 Route::get('/admin/blog/showPost/{id}', 'BlogController@show')->name('showBlogPost');
-Route::get('/admin/blog/addBanner', 'BlogController@addBanner')->name('addBanner');
+Route::get('/admin/blog/addBanner', 'BlogController@addBanner')->name('addBlogBanner');
 Route::post('/admin/blog/addBanner{id}', 'BlogController@storeBanner')->name('storeBlogBanner');
 
 //Site Event Route
@@ -32,14 +32,14 @@ Route::get('/admin/event/editEvent/{id}', 'SiteEventsController@edit')->name('ed
 Route::post('/admin/event/update/{id}', 'SiteEventsController@update')->name('updateEvent');
 Route::get('/admin/event/showEvent/{id}', 'SiteEventsController@show')->name('showEvent');
 Route::get('/admin/event/deleteEvent/{id}', 'SiteEventsController@destroy')->name('deleteEvent');
-Route::get('/admin/event/addBanner', 'SiteEventsController@addBanner')->name('addBanner');
+Route::get('/admin/event/addBanner', 'SiteEventsController@addBanner')->name('addEventBanner');
 Route::post('/admin/event/addBanner{id}', 'SiteEventsController@storeBanner')->name('storeEventBanner');
 
 //Contact Route
 Route::get('/admin/contact', 'ContactController@index')->name('admin/contact');
 Route::get('/admin/contact/delete/{id}', 'ContactController@destroy')->name('deleteContact');
 Route::get('/admin/contact/showContact/{id}', 'ContactController@show')->name('showContact');
-Route::get('/admin/contact/addBanner', 'ContactController@addBanner')->name('addBanner');
+Route::get('/admin/contact/addBanner', 'ContactController@addBanner')->name('addContactBanner');
 Route::post('/admin/contact/addBanner{id}', 'ContactController@storeBanner')->name('storeContactBanner');
 
 //Newsletter Route
@@ -66,14 +66,8 @@ Route::post('/admin/home/update/{id}', 'HomePageController@update')->name('updat
 Route::get('/admin/home/show/{id}', 'HomePageController@show')->name('showSection');
 
 //Menu Route
-//Route::get('/admin/menu', 'MenuController@index')->name('admin/menu');
-//Route::resource('/admin/menu', 'MenuController');
 Route::get('/admin/menu', 'MenuController@create')->name('admin/menu');
 Route::post('/insertData', 'MenuController@store')->name('insertData1');
-//Route::get('/admin/menu/deleteMenu/{id}', 'MenuController@destroy')->name('deleteMenu');
-//Route::get('/admin/menu/editMenu/{id}', 'MenuController@edit')->name('editMenu');
-//Route::post('/admin/menu/update/{id}', 'MenuController@update')->name('updateMenu');
-//Route::get('/admin/menu/showMenu/{id}', 'MenuController@show')->name('showMenu');
 
 //FAQ's Route
 Route::get('/admin/faq', 'FaqsController@index')->name('admin/faq');
@@ -83,7 +77,7 @@ Route::get('/admin/faq/deleteFaq/{id}', 'FaqsController@destroy')->name('deleteF
 Route::get('/admin/faq/editFaq/{id}', 'FaqsController@edit')->name('editFaq');
 Route::post('/admin/faq/update/{id}', 'FaqsController@update')->name('updateFaq');
 Route::get('/admin/faq/showFaq/{id}', 'FaqsController@show')->name('showFaq');
-Route::get('/admin/faq/addBanner', 'FaqsController@addBanner')->name('addBanner');
+Route::get('/admin/faq/addBanner', 'FaqsController@addBanner')->name('addFaqBanner');
 Route::post('/admin/faq/addBanner{id}', 'FaqsController@storeBanner')->name('storeFaqBanner');
 
 //Home Route
