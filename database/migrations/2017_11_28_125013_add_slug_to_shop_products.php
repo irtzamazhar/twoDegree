@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHomePagesTable extends Migration
+class AddSlugToShopProducts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateHomePagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('home_pages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('section_name');
-            $table->longText('section_content');
-            $table->string('section_image');
-            $table->timestamps();
+        Schema::table('shop_products', function($table) {
+            $table->string('slug');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateHomePagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('home_pages');
+        Schema::table('shop_products', function($table) {
+            $table->dropColumn('slug');
+        });
     }
 }

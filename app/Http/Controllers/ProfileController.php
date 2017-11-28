@@ -31,8 +31,12 @@ class ProfileController extends Controller
     {
         // Validate User data
         $this->validate($request, [
-            'name' => 'Required',
-            'email' => 'required|email'
+            'name' => 'required',
+            'email' => 'required|email',
+            'image' => 'image|nullable|max:1999'
+        ], [
+            'name.required' => 'Name Field is Required.',
+            'email.required' => 'Email Field is Required.'
         ]);
 
         if($request->pass!='')

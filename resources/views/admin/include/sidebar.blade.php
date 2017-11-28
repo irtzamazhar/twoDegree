@@ -30,20 +30,13 @@
                 <span>Newsletter E-mails</span>
               </a>
             </li>
-            <!--<li class="{{ Request::is('admin/contact') ? 'active' : null }}">-->
-            <li class="{{ $url == 'showContact' ? 'active' : '' }}
-                {{ $url == 'admin/contact' ? 'active' : null }}
-                {{ $url == 'addContactBanner' ? 'active' : null }}">
+            <li class="{{ Request::is('admin/contact*') ? 'active' : null }}">
               <a href="{!!URL::route('admin/contact')!!}">
                 <i class="fa fa-users"></i>
                 <span>Contact Inquiries</span>
               </a>
             </li>
-            <li class="{{ $url == 'admin/blog' ? 'active' : '' }}
-                {{ $url == 'createPost' ? 'active' : '' }}
-                {{ $url == 'editBlogPost' ? 'active' : '' }}
-                {{ $url == 'showBlogPost' ? 'active' : '' }}
-                {{ $url == 'addBlogBanner' ? 'active' : null }}">
+            <li class="{{ Request::is('admin/blog*') ? 'active' : null }}">
               <a href="{!!URL::route('admin/blog')!!}">
                 <i class="fa fa-coffee"></i>
                 <span>Manage Blog</span>
@@ -91,6 +84,12 @@
               <a href="{!!URL::route('admin/home')!!}">
                 <i class="fa fa-home"></i>
                 <span>Manage HomePage</span>
+              </a>
+            </li>
+            <li class="{{ Request::is('admin/shop') ? 'active' : null }}">
+              <a href="{!!URL::route('admin/shop')!!}">
+                <i class="fa fa-wrench"></i>
+                <span>Manage Shop</span>
               </a>
             </li>
           </ul>

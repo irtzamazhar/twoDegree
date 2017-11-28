@@ -87,6 +87,18 @@ Route::get('/admin/table', 'HomeController@table')->name('table');
 Route::get('/admin/profile', 'ProfileController@profile')->name('profile');
 Route::post('/admin/update/{id}', 'ProfileController@update')->name('update');
 
+//Shop Route
+Route::get('/admin/shop', 'ShopController@index')->name('admin/shop');
+Route::get('/admin/shop/createProduct', 'ShopController@create');
+Route::post('createShopProduct', 'ShopController@store')->name('createShopProduct');
+Route::get('/admin/shop/deleteProduct/{id}', 'ShopController@destroy')->name('deleteProduct');
+Route::get('/admin/shop/editProduct/{id}', 'ShopController@edit')->name('editProduct');
+Route::post('/admin/shop/update/{id}', 'ShopController@update')->name('updateShopProduct');
+Route::get('/admin/shop/showProduct/{id}', 'ShopController@show')->name('showProduct');
+Route::get('/admin/shop/addBanner', 'ShopController@addBanner')->name('addShopProduct');
+Route::post('/admin/shop/addBanner{id}', 'ShopController@storeBanner')->name('storeShopProduct');
+
+
 
 
 // frontend routes
@@ -100,3 +112,4 @@ Route::get('blog', 'FrontendController@blog');
 Route::get('blog-detail/{slug}', 'FrontendController@blogDetail')->name('blog-detail');
 Route::get('events', 'FrontendController@events');
 Route::get('event-detail/{slug}', 'FrontendController@eventDetail')->name('event-detail');
+Route::get('shop', 'FrontendController@shop');

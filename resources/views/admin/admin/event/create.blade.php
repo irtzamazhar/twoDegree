@@ -22,24 +22,28 @@
                     <form action="{{ url('/createEvent') }}" method="post" id="blogpost" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
-                            <div class="form-group col-xs-12">
+                            <div class="form-group col-xs-12 {{ $errors->has('event-title') ? ' has-error' : '' }}">
                                 <label for="eventTitle">Event Title</label>
-                                <input type="text" class="form-control" id="event-title" name="event-title" placeholder="Enter Event Title">
-                                <p class="contact-er"></p>
+                                <input type="text" class="form-control" id="event-title" value="{{ old('event-title') }}" name="event-title" placeholder="Enter Event Title">
+                                @if($errors->has('event-title'))
+                                    <span class="help-block">{{ $errors->first('event-title') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col-xs-6">
+                            <div class="form-group col-xs-6 {{ $errors->has('event-day') ? ' has-error' : '' }}">
                                 <label for="eventDay">Event Day</label>
                                 <div class="input-group date">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="date" class="form-control pull-right" id="datepicker" name="event-day" placeholder="Event Day">
+                                    <input type="date" class="form-control pull-right" value="{{ old('event-day') }}" id="datepicker" name="event-day" placeholder="Event Day">
                                 </div>
-                                <p class="contact-er"></p>
+                                @if($errors->has('event-day'))
+                                    <span class="help-block">{{ $errors->first('event-day') }}</span>
+                                @endif
                             </div>
-                            <div class="form-group col-xs-6">
+                            <div class="form-group col-xs-6 {{ $errors->has('event-timing1') ? ' has-error' : '' }}">
                                 <label for="title">Event Timing</label>
                                 <div class="input-group time">
                                     <div class="input-group-addon">
@@ -47,30 +51,44 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="time" class="form-control pull-right" id="timing1" name="event-timing1" placeholder="Event Day">
+                                            <input type="time" class="form-control pull-right" value="{{ old('event-timing1') }}" id="timing1" name="event-timing1" placeholder="Event Day">
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="time" class="form-control pull-right" id="timing2" name="event-timing2" placeholder="Event Day">
+                                            <input type="time" class="form-control pull-right" value="{{ old('event-timing2') }}" id="timing2" name="event-timing2" placeholder="Event Day">
                                         </div>
                                     </div>
                                 </div>
+                                @if($errors->has('event-timing1'))
+                                    <span class="help-block">{{ $errors->first('event-timing1') }}</span>
+                                @endif
                                 <!--<input type="time" class="form-control" id="title" name="title" placeholder="Enter Post Title">-->
                                 <p class="contact-er"></p>
                             </div>
                         </div>
                         
                         <div class="row">
-                            <div class="form-group col-xs-12">
+                            <div class="form-group col-xs-12 {{ $errors->has('event-detail') ? ' has-error' : '' }}">
                                 <label for="eventDetail">Event Detail</label>
-                                <textarea placeholder="Enter Event Details..." id="event-detail" rows="10" name="event-detail" class="form-control"></textarea>
+                                <textarea placeholder="Enter Event Details..." id="event-detail" rows="10" name="event-detail" class="form-control">{{ old('event-detail') }}</textarea>
+                                @if($errors->has('event-detail'))
+                                    <span class="help-block">{{ $errors->first('event-detail') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-xs-12 {{ $errors->has('event-image') ? ' has-error' : '' }}">
                                 <input type="file" class="form-control" name="event-image" id="event-image">
-                                <p class="contact-er"></p>
+                                @if($errors->has('event-image'))
+                                    <span class="help-block">{{ $errors->first('event-image') }}</span>
+                                @endif
                             </div>
                         </div>
+                        
                         <div class="row">
-                            <div class="form-group col-xs-12">
+                            <div class="form-group col-xs-12 {{ $errors->has('event-location') ? ' has-error' : '' }}">
                                 <label for="eventLocation">Event Location</label>
                                 <input id="event-location" type="text" name="event-location" class="form-control" autocomplete="on">
+                                @if($errors->has('event-location'))
+                                    <span class="help-block">{{ $errors->first('event-location') }}</span>
+                                @endif
                                 <input type="hidden" id="place-lng" name="place-lng" value="">
                                 <input type="hidden" id="place-lat" name="place-lat" value="">
                                 <input type="hidden" id="address" name="address" value="">

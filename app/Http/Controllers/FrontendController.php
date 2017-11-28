@@ -94,6 +94,13 @@ class FrontendController extends Controller
         );
         return view('frontend.event-detail', $data)->render();
     }
+
+    public function shop()
+    {
+        // $siteBanner = SiteBanner::where('page_name', '=', 'blog')->get()->toArray();
+        // $blogs = Blog::orderBy('created_at', 'desc')->paginate(5);
+        return view('frontend.shop');
+    }
     
     public function getPage($page_url)
     {

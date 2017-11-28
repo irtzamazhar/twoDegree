@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2017 at 12:14 PM
+-- Generation Time: Nov 28, 2017 at 09:24 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -70,12 +70,10 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `fname`, `lname`, `email`, `subject`, `message`, `created_at`, `updated_at`) VALUES
-(22, 'irtza', 'mazhar', 'logics.tester@gmail.com', 'My subject', 'lok', '2017-11-01 02:56:47', '2017-11-01 02:56:47'),
-(38, 'irtza', 'mazhar', 'irtza@mail.com', 'My subject', 'sacadcdsCS', '2017-11-24 06:13:47', '2017-11-24 06:13:47'),
-(39, 'fvfdvd', 'vdvdv', 'irtza@opensolglobal.com', 'vdfvdfvdf', 'bfgbfgbfgbfg', '2017-11-24 06:14:04', '2017-11-24 06:14:04'),
-(40, 'irtza', 'mazharf', 'admin@mail.com', 'My subject', 'cdsvsdvsvvsdvsfvsdfvdfvadv df g fg fg', '2017-11-27 02:56:19', '2017-11-27 02:56:19'),
-(41, 'irtza', 'mazhar', 'irtza@mail.com', 'My subjectfd', 'gdfjfgjhdfkfjjhlgkl;liouityjrnd d', '2017-11-27 05:55:57', '2017-11-27 05:55:57'),
-(42, 'irtza', 'mazhar', 'atif@mail.com', 'dfbbdfbdfbdf', 'sbsfbndfnndsgnfgn', '2017-11-27 05:56:40', '2017-11-27 05:56:40');
+(43, 'Wallace', 'Shaeleigh', 'sotypugefy@gmail.com', 'Atque non ut maxime qui sunt ea', 'Sunt cillum atque enim aliquam dignissimos minima quos ducimus praesentium odio laudantium do repudiandae labore mollit aut alias odio aut', '2017-11-27 09:47:03', '2017-11-27 09:47:03'),
+(44, 'Stacy', 'Christen', 'nybo@hotmail.com', 'In molestiae do magna nihil similique est est ipsam id consectetur est maiores nesciunt', 'Delectus doloremque quis repudiandae fugit aliqua Est eum illum', '2017-11-27 09:47:17', '2017-11-27 09:47:17'),
+(45, 'Tasha', 'Ignacia', 'rujalynys@gmail.com', 'Et qui eum', 'Minima eiusmod mollitia magni atque velit culpa autem molestiae consequatur Tenetur vitae', '2017-11-27 09:49:30', '2017-11-27 09:49:30'),
+(46, 'Roman', 'Amelia', 'nunyd@hotmail.com', 'Ad ut sed dolor Nam', 'Doloribus corporis officiis pariatur Pariatur Anim ut est amet dolor vitae exercitation consequatur quaerat voluptas', '2017-11-27 09:50:01', '2017-11-27 09:50:01');
 
 -- --------------------------------------------------------
 
@@ -128,7 +126,7 @@ CREATE TABLE `home_pages` (
 --
 
 INSERT INTO `home_pages` (`id`, `section_name`, `section_content`, `section_image`, `created_at`, `updated_at`) VALUES
-(1, 'Top Section', '<p><strong>...</strong></p>\r\n\r\n<h1>WHERE WORLDS COLLIDE</h1>\r\n\r\n<p>Two Degrees is a new, fast-growing social network that creates valuable relationships by connecting people through mutual friends.</p>', 'iStock-520547166-1511444904.jpg', '2017-11-20 02:16:09', '2017-11-23 08:48:24'),
+(1, 'Top Section', '<p><strong>...</strong></p>\r\n\r\n<h1>WHERE WORLDS COLLIDE</h1>\r\n\r\n<p>Two Degrees is a new, fast-growing social network that creates valuable relationships by connecting people through mutual friends.</p>', 'slide9-1511851275.jpeg', '2017-11-20 02:16:09', '2017-11-28 01:41:15'),
 (3, 'Middle Section', '<p>...</p>', 'download-1511167292.png', '2017-11-20 02:53:51', '2017-11-20 03:41:32'),
 (4, 'Bottom Section', '<p><strong>...</strong></p>\r\n\r\n<h1>HOW MANY FRIENDS DO WE HAVE IN COMMON?</h1>', 'iStock-502185542-1511168008.jpg', '2017-11-20 02:56:39', '2017-11-20 03:53:28');
 
@@ -470,7 +468,7 @@ ALTER TABLE `blogs`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `faqs`
@@ -482,7 +480,7 @@ ALTER TABLE `faqs`
 -- AUTO_INCREMENT for table `home_pages`
 --
 ALTER TABLE `home_pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `menus`

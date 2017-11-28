@@ -12,6 +12,11 @@ use DB;
 
 class SiteEventsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -48,8 +53,16 @@ class SiteEventsController extends Controller
             'event-timing1' => 'required',
             'event-timing2' => 'required',
             'event-detail' => 'required',
-            'event-image' => 'image|nullable|max:1999',
+            'event-image' => 'required|image|max:1999',
             'event-location' => 'required'
+        ],[
+            'event-title.required' => 'Event Title is required',
+            'event-day.required' => 'Event Day is required',
+            'event-timing1.required' => 'Event Timing is required',
+            'event-detail.required' => 'Event Detail is required',
+            'event-image.required' => 'Event Image is required',
+            'event-image.image' => 'Must Be An Image',
+            'event-location.required' => 'Event Location is required',
         ]);
         
         // Handle file upload
