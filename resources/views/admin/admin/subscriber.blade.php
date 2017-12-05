@@ -20,28 +20,28 @@
                     <h3 class="box-title">All Subscriber's Email</h3>
                 </div>
                 <div class="box-body">
-                    @if(count($newsletters) > 0)
+                    @if(count($newsletterEmails) > 0)
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
                           <th>#</th>
-                          <th>User E-mail</th>
+                          <th>User E-mails</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @php $i = 1 @endphp
-                      @foreach($newsletters as $newsletter)
+                      
+                      @foreach($newsletterEmails as $key => $newsletter)
                       <tr>
-                          <td><?= $i ?></td>
+                          <td>{{ $newsletterEmails->firstItem() + $key }}</td>
                           <td>{{ $newsletter->email }}</td>
                       </tr>
-                      @php $i++ @endphp
+                      
                       @endforeach
                     </tbody>
                   </table>
-                    {{ $newsletters->links() }}
+                    {{ $newsletterEmails->links() }}
                     @else
-                        <h2>No Contact Inquiries Yet.</h2>
+                        <h2>No Emails Yet.</h2>
                     @endif
                 </div>
               </div>

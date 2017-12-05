@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Blog;
 use App\Contact;
 use App\SiteEvent;
-use App\Newsletter;
+use App\NewsletterEmail;
 use App\Section;
 use Carbon\Carbon;
 use Charts;
@@ -36,14 +36,14 @@ class HomeController extends Controller
         $countSiteEvent = DB::table('site_events')->where('event_day', '>=', $today)->count();
         $countBlog = Blog::all()->count();
         $countContact = Contact::all()->count();
-        $countNewsletter = Newsletter::all()->count();
-        $newsletterData =  DB::table('newsletters')->get(); //must alias the aggregate column as aggregate
+        $countSubscriber = NewsletterEmail::all()->count();
+        $subscriberData =  DB::table('newsletter_emails')->get(); //must alias the aggregate column as aggregate
         // Monthly chart
         $monthChart = Charts::multiDatabase('line', 'highcharts')
             ->title("Contact Inquiries/Subscriber's")
             ->dimensions(0, 400) // Width x Height
             ->colors(['#F39C12', '#00C0EF'])
-            ->dataset("Subscriber's", Newsletter::all())
+            ->dataset("Subscriber's", NewsletterEmail::all())
             ->dataset('Contact Inquiries', Contact::all())
             ->responsive(false)
             ->elementLabel('')
@@ -54,7 +54,7 @@ class HomeController extends Controller
             ->title("Contact Inquiries/Subscriber's")
             ->dimensions(1089, 400) // Width x Height
             ->colors(['#F39C12', '#00C0EF'])
-            ->dataset("Subscriber's", Newsletter::all())
+            ->dataset("Subscriber's", NewsletterEmail::all())
             ->dataset('Contact Inquiries', Contact::all())
             ->responsive(false)
             ->elementLabel('')
@@ -65,7 +65,7 @@ class HomeController extends Controller
             ->title("Contact Inquiries/Subscriber's")
             ->dimensions(1089, 400) // Width x Height
             ->colors(['#F39C12', '#00C0EF'])
-            ->dataset("Subscriber's", Newsletter::all())
+            ->dataset("Subscriber's", NewsletterEmail::all())
             ->dataset('Contact Inquiries', Contact::all())
             ->responsive(false)
             ->elementLabel('')
@@ -76,7 +76,7 @@ class HomeController extends Controller
             'countBlog' => $countBlog,
             'countContact' => $countContact,
             'countSiteEvent' => $countSiteEvent,
-            'countNewsletter' => $countNewsletter,
+            'countSubscriber' => $countSubscriber,
             'monthChart' => $monthChart,
             'yearChart' => $yearChart,
             'dayChart' => $dayChart,

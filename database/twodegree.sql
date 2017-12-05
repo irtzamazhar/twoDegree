@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2017 at 09:24 AM
+-- Generation Time: Nov 30, 2017 at 08:13 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -151,13 +151,13 @@ CREATE TABLE `menus` (
 --
 
 INSERT INTO `menus` (`id`, `page_place`, `page_name`, `page_url`, `page_value`, `created_at`, `updated_at`) VALUES
-(1, 'header', 'App', '/view/app', 1, '2017-11-27 01:36:54', '2017-11-27 01:36:54'),
-(2, 'header', 'Blog', '/blog', 1, '2017-11-27 01:36:54', '2017-11-27 01:36:54'),
-(3, 'header', 'Events', '/events', 1, '2017-11-27 01:36:54', '2017-11-27 01:36:54'),
-(4, 'footer', 'Privacy Policy', '/view/privacy', 0, '2017-11-27 01:36:54', '2017-11-27 01:36:54'),
-(5, 'footer', 'Terms and Conditions', '/view/terms', 0, '2017-11-27 01:36:55', '2017-11-27 01:36:55'),
-(6, 'footer', 'FAQ', '/faq', 0, '2017-11-27 01:36:55', '2017-11-27 01:36:55'),
-(7, 'footer', 'Contact Us', '/contact', 0, '2017-11-27 01:36:55', '2017-11-27 01:36:55');
+(1, 'header', 'App', '/view/app', 1, '2017-11-30 02:11:34', '2017-11-30 02:11:34'),
+(2, 'header', 'Blog', '/blog', 1, '2017-11-30 02:11:34', '2017-11-30 02:11:34'),
+(3, 'header', 'Events', '/events', 1, '2017-11-30 02:11:34', '2017-11-30 02:11:34'),
+(4, 'footer', 'Privacy Policy', '/view/privacy', 0, '2017-11-30 02:11:34', '2017-11-30 02:11:34'),
+(5, 'footer', 'Terms and Conditions', '/view/terms', 0, '2017-11-30 02:11:34', '2017-11-30 02:11:34'),
+(6, 'footer', 'FAQ', '/faq', 0, '2017-11-30 02:11:34', '2017-11-30 02:11:34'),
+(7, 'footer', 'Contact Us', '/contact', 0, '2017-11-30 02:11:34', '2017-11-30 02:11:34');
 
 -- --------------------------------------------------------
 
@@ -197,7 +197,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (19, '2017_11_10_140803_add_slug_to_site_events', 18),
 (20, '2017_11_15_082631_create_sections_table', 19),
 (21, '2017_11_16_095727_create_site_banners_table', 20),
-(22, '2017_11_20_064425_create_home_pages_table', 21);
+(22, '2017_11_20_064425_create_home_pages_table', 21),
+(27, '2017_11_28_102720_create_shop_products_table', 22),
+(28, '2017_11_28_125013_add_slug_to_shop_products', 22);
 
 -- --------------------------------------------------------
 
@@ -290,7 +292,38 @@ INSERT INTO `sections` (`id`, `section_name`, `section_path`, `created_at`, `upd
 (1, 'Blog', '/blog', NULL, NULL),
 (2, 'Events', '/events', NULL, NULL),
 (3, 'FAQ', '/faq', NULL, NULL),
-(4, 'Contact Us', '/contact', NULL, NULL);
+(4, 'Contact Us', '/contact', NULL, NULL),
+(5, 'Shop', '/shop', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shop_products`
+--
+
+CREATE TABLE `shop_products` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `product_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_price` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_color` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_desc` mediumtext COLLATE utf8mb4_unicode_ci,
+  `product_image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_size` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_quantity` int(11) DEFAULT NULL,
+  `product_sale_price` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shop_products`
+--
+
+INSERT INTO `shop_products` (`id`, `product_name`, `product_price`, `product_color`, `product_desc`, `product_image`, `product_size`, `product_quantity`, `product_sale_price`, `created_at`, `updated_at`, `slug`) VALUES
+(1, 'Logo Sunglasses Blue', '$4.99', 'Grey', 'qwertqwertqwertqwertqwertqwertqwertqwertqwertqwertqwertqwertqwertvv', 'hatlogo1-1511875720.png', 'Small', 11, '$2.99', '2017-11-28 08:28:40', '2017-11-28 08:28:40', 'logo-sunglasses-blue'),
+(3, 'Logo Excercise Tank Top', '$30.00', NULL, NULL, 'tank-1511876880.png', NULL, NULL, '$24.99', '2017-11-28 08:48:00', '2017-11-28 08:48:00', 'logo-excercise-tank-top'),
+(4, 'Logo Sunglasses Blue', '$4.99', 'Blue', NULL, 'logosunblue-1512020803.png', NULL, 15, NULL, '2017-11-30 00:46:43', '2017-11-30 00:46:43', 'logo-sunglasses-blue-1');
 
 -- --------------------------------------------------------
 
@@ -311,7 +344,7 @@ CREATE TABLE `site_banners` (
 --
 
 INSERT INTO `site_banners` (`id`, `page_name`, `banner_image`, `created_at`, `updated_at`) VALUES
-(7, 'blog', 'iStock-502185542-1510842714.jpg', NULL, '2017-11-16 09:31:54'),
+(7, 'blog', 'Header+7-1512025927.jpg', NULL, '2017-11-30 02:12:07'),
 (8, 'contact', 'Header+8-1510842588.jpg', NULL, '2017-11-16 09:29:48'),
 (9, 'event', 'Header+5-1510316065.jpg', NULL, NULL),
 (10, 'faq', 'Header+7-1510842842.jpg', NULL, '2017-11-16 09:34:02');
@@ -345,7 +378,8 @@ CREATE TABLE `site_events` (
 INSERT INTO `site_events` (`id`, `event_title`, `event_day`, `event_timing1`, `event_timing2`, `event_detail`, `event_image`, `place_lng`, `place_lat`, `address`, `created_at`, `updated_at`, `slug`) VALUES
 (1, 'Startup Power Hour!', '2017-12-03', '07:30:00', '08:30:00', 'A few days ago my roommate went on a date with a guy from bumble. Not only did the guy lie about his job, height and age, he also didn’t look anything like his profile photo. Nonetheless, she was bummed. Cue in the song “another one bites the dust” and it sings the story of her life. This is a pretty regular occurrence for bumble and tinder users. Online dating is tough, there’s no doubt about it. However, online dating through an app— that’s even tougher.', 'Koala-1509633764.jpg', -80.100533, 26.383479, '901 NW 35th St, Boca Raton, FL 33431, USA', '2017-11-02 09:42:44', '2017-11-02 09:42:44', 'startup-power-hour'),
 (4, 'Startup Power Hour 2!', '2018-03-03', '15:00:00', '17:00:00', 'Premium Plan customers: For production-ready apps, you must use a browser-restricted API key that is set up in the Google Maps APIs Premium Plan project created for you when you purchased the Premium Plan. Alternatively, you can use a client ID in combination with URL registration (instead of an API key).', 'Penguins-1509706025.jpg', 74.378679, 31.529414, 'Tufail Road, Lahore Cantt، Lahore, Pakistan', '2017-11-03 05:47:05', '2017-11-03 06:39:16', 'startup-power-hour-2'),
-(6, 'Startup Power Hour 5!', '2019-05-05', '22:00:00', '12:00:00', 'Premium Plan customers: For production-ready apps, you must use a browser-restricted API key that is set up in the Google Maps APIs Premium Plan project created for you when you purchased the Premium Plan. Alternatively, you can use a client ID in combination with URL registration (instead of an API key).', 'slide10-1510150759.jpeg', 74.333437, 31.513464, 'Hafeez Kardar Road، Lahore, Pakistan', '2017-11-08 09:19:19', '2017-11-10 09:27:32', 'startup-power-hour-5');
+(6, 'Startup Power Hour 5!', '2019-05-05', '22:00:00', '12:00:00', 'Premium Plan customers: For production-ready apps, you must use a browser-restricted API key that is set up in the Google Maps APIs Premium Plan project created for you when you purchased the Premium Plan. Alternatively, you can use a client ID in combination with URL registration (instead of an API key).', 'slide10-1510150759.jpeg', 74.333437, 31.513464, 'Hafeez Kardar Road، Lahore, Pakistan', '2017-11-08 09:19:19', '2017-11-10 09:27:32', 'startup-power-hour-5'),
+(7, 'Startup Power Hour!', '2017-11-28', '18:30:00', '20:00:00', 'This is just a test detail', 'slide3-1511879751.jpeg', -99.901813, 31.968599, 'Texas, USA', '2017-11-28 09:35:51', '2017-11-30 00:55:00', 'startup-power-hour-6');
 
 -- --------------------------------------------------------
 
@@ -436,6 +470,12 @@ ALTER TABLE `sections`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `shop_products`
+--
+ALTER TABLE `shop_products`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `site_banners`
 --
 ALTER TABLE `site_banners`
@@ -480,7 +520,7 @@ ALTER TABLE `faqs`
 -- AUTO_INCREMENT for table `home_pages`
 --
 ALTER TABLE `home_pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `menus`
@@ -492,7 +532,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `newsletters`
@@ -510,7 +550,13 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `shop_products`
+--
+ALTER TABLE `shop_products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `site_banners`
@@ -522,7 +568,7 @@ ALTER TABLE `site_banners`
 -- AUTO_INCREMENT for table `site_events`
 --
 ALTER TABLE `site_events`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`

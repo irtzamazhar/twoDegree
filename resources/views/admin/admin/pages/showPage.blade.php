@@ -38,18 +38,13 @@
                                 <img src="{{ asset('storage/app/public/images/'.$page->page_image) }}" width="100%" height="250"/>
                             </td>
                         </tr>
-                        <tr>
-                            <th></th>
-                            <td>
-                                @if(!Auth::guest())
-                          <a href="{{ url('/admin/pages/editPage/'.$page->id) }}" class="btn btn-warning btn-flat pull-right">Edit</a>
-                          <a href="{{ url('/admin/pages/deletePage/'.$page->id) }}" class="btn btn-danger btn-flat pull-right btn-dlt" onclick="return confirm('Are you sure?')">Delete</a>
-                      @endif
-                      <a href="{{ url('admin/pages') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
-                            </td>
-                        </tr>
                     </tbody>
                   </table>
+                @if(!Auth::guest())
+                  <a href="{{ url('/admin/pages/editPage/'.$page->id) }}" class="btn btn-warning btn-flat pull-right">Edit</a>
+                  <a href="{{ url('/admin/pages/deletePage/'.$page->id) }}" class="btn btn-danger btn-flat pull-right btn-dlt" onclick="return confirm('Are you sure?')">Delete</a>
+              @endif
+              <a href="{{ url('admin/pages') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
             </div>
         </section>
           

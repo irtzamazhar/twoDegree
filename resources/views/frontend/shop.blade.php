@@ -1,87 +1,38 @@
 @include('frontend.include.header')
-    <div class="page-header section-start shop-header">
+@foreach($shopBanner as $image)
+    <div class="page-header section-start shop-header2" style="background-image: url( {{ url('public/images/' . $image['banner_image'])}} );">
+@endforeach
         <h1>Shop</h1>
 
     </div>
     <div class="container">
         <div class="shop-page section-start">
+            @foreach($shopBanner as $image)
+                <div style="display: none;" id="page-image">{{ $image['banner_image'] }}</div>
+            @endforeach
 
             <p class="head-text">Hats, t-shirts, tanks, sunglasses, sweatshirts and other goodies.</p>
+        @foreach ($products as $product)    
             <div class="shop-wrapper">
                 <div class="col-md-4 col-sm-6 col-xs-6">
                     <div class="product-wrapper">
                         <div class="product-image">
-                            <img src="{{ asset('public/frontend/images/hatlogo1.png') }}"/>
+                            <img src="{{ asset('storage/app/public/images/'.$product->product_image) }}" />
                         </div>
-                        <a href="#" class="Product-name">Logo Skateboard Hat</a>
-                        <a href="#" class="product-price">$19.99</a>
+                        <a href="#" class="Product-name">{{ $product->product_name }}</a>
+                        <a href="#" class="product-price">{{ $product->product_price }}</a>
                     </div>
-
-
                 </div>
-                  <div class="col-md-4 col-sm-6 col-xs-6">
-                    <div class="product-wrapper">
-                        <div class="product-image">
-                            <img src="{{ asset('public/frontend/images/tank.png') }}"/>
-                        </div>
-                        <a href="#" class="Product-name">Logo Excercise Tank Top</a>
-                        <a href="#" class="product-price">$24.99</a>
-						<div class="sale">
-							<p>SALE</p>
-						</div>
-                    </div>
-
-
-                </div>
-                  <div class="col-md-4 col-sm-6 col-xs-6">
-                    <div class="product-wrapper">
-                        <div class="product-image">
-                            <img src="{{ asset('public/frontend/images/logotshirt.png') }}"/>
-                        </div>
-                        <a href="#" class="Product-name">Logo Fitted T-Shirt</a>
-                        <a href="#" class="product-price">$24.99</a>
-                    </div>
-
-
-                </div>
-                  <div class="col-md-4 col-sm-6 col-xs-6">
-                    <div class="product-wrapper">
-                        <div class="product-image">
-                            <img src="{{ asset('public/frontend/images/hatlogo2.png') }}"/>
-                        </div>
-                        <a href="#" class="Product-name">Logo Skateboard Hat</a>
-                        <a href="#" class="product-price">$19.99</a>
-                    </div>
-
-
-                </div>
-                 <div class="col-md-4 col-sm-6 col-xs-6">
-                    <div class="product-wrapper">
-                        <div class="product-image">
-                            <img src="{{ asset('public/frontend/images/logosunblue.png') }}"/>
-                        </div>
-                        <a href="#" class="Product-name">Logo Sunglasses Blue</a>
-                        <a href="#" class="product-price">$4.99</a>
-                    </div>
-
-
-                </div>
-                 <div class="col-md-4 col-sm-6 col-xs-6">
-                    <div class="product-wrapper">
-                        <div class="product-image">
-                            <img src="{{ asset('public/frontend/images/logosunpink.png') }}"/>
-                        </div>
-                        <a href="#" class="Product-name">Logo Sunglasses Pink</a>
-                        <a href="#" class="product-price">$4.99</a>
-                    </div>
-
-
-                </div>
-
             </div>
+        @endforeach
         </div>
 
     </div>
 
 @include('frontend.include.footer')
+<script type="text/javascript">
+    var image = $('#page-image').text();
+    var addres = "storage/app/public/images/" + image ;
+    $(".shop-header2").css('background-image', 'url(' + addres + ')');
+</script>
 </body>

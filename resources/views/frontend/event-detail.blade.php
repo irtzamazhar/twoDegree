@@ -68,7 +68,6 @@
     <script type="text/javascript">
         var image = $('#page-image').text();
         var addres = "../storage/app/public/images/" + image ;
-        console.log(addres);
         $(".event-header2").css('background-image', 'url(' + addres + ')');
     </script>
 </body>

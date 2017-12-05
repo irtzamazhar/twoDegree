@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Newsletter extends Model
+class NewsletterEmail extends Model
 {
     // Table name
-    protected $tableName = 'newsletters';
+    protected $tableName = 'newsletter_emails';
     // Primary Key
     public $primaryKey = 'id';
     // Timestamps

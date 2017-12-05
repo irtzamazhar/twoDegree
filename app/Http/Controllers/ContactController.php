@@ -11,10 +11,6 @@ use DB;
 
 class ContactController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     
     /**
      * Display a listing of the resource.
@@ -23,6 +19,7 @@ class ContactController extends Controller
      */
     public function index(Request $request)
     {
+//        $this->middleware('auth');
         $contacts = Contact::orderBy('created_at', 'desc')->paginate(5);
         return view('admin.admin.contact.index', ['contacts' => $contacts])->render();
     }

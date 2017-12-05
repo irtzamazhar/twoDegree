@@ -23,48 +23,72 @@
                     <form action="{{ action('ShopController@update', $product->id) }}" method="post" id="blogpost" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
-                            <div class="form-group col-xs-6 {{ $errors->has('page_url') ? ' has-error' : '' }}">
-                                <label for="pageUrl">Page URL</label>
-                                <input type="text" class="form-control" value="{{ $page->page_url }}" id="page_url" name="page_url" placeholder="Enter Page Url">
-                                @if($errors->has('page_url'))
-                                    <span class="help-block">{{ $errors->first('page_url') }}</span>
+                            <div class="form-group col-xs-6 {{ $errors->has('product-name') ? ' has-error' : '' }}">
+                                <label for="productName">Product Name</label>
+                                <input type="text" class="form-control" id="product-name" value="{{ $product->product_name }}" name="product-name" placeholder="Enter Product Name">
+                                @if($errors->has('product-name'))
+                                    <span class="help-block">{{ $errors->first('product-name') }}</span>
                                 @endif
                             </div>
-                            <div class="form-group col-xs-6 {{ $errors->has('page_title') ? ' has-error' : '' }}">
-                                <label for="pageTitle">Page Title</label>
-                                <input type="text" class="form-control" value="{{ $page->page_title }}" id="page_title" name="page_title" placeholder="Enter Page Title">
-                                @if($errors->has('page_title'))
-                                    <span class="help-block">{{ $errors->first('page_title') }}</span>
+                            <div class="form-group col-xs-6 {{ $errors->has('product-price') ? ' has-error' : '' }}">
+                                <label for="productPrice">Product Price</label>
+                                <input type="text" class="form-control" id="product-price" value="{{ $product->product_price }}" name="product-price" placeholder="Enter Product Price">
+                                @if($errors->has('product-price'))
+                                    <span class="help-block">{{ $errors->first('product-price') }}</span>
                                 @endif
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-xs-10 {{ $errors->has('page-image') ? ' has-error' : '' }}">
-                                <label for="pageImage">Page Image</label>
-                                <input type="file" class="form-control" value="{{ old('page-image') }}" id="page-image" name="page-image">
-                                @if($errors->has('page-image'))
-                                    <span class="help-block">{{ $errors->first('page-image') }}</span>
+                            <div class="form-group col-xs-6 {{ $errors->has('product-color') ? ' has-error' : '' }}">
+                                <label for="productColor">Product Color</label>
+                                <input type="text" class="form-control" id="product-color" value="{{ $product->product_color }}" name="product-color" placeholder="Eneter Product Color">
+                                @if($errors->has('product-color'))
+                                    <span class="help-block">{{ $errors->first('product-color') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-xs-6 {{ $errors->has('product-size') ? ' has-error' : '' }}">
+                                <label for="productSize">Product Size</label>
+                                <input type="text" class="form-control" id="product-size" value="{{ $product->product_size }}" name="product-size" placeholder="Enter Product Size">
+                                @if($errors->has('product-size'))
+                                    <span class="help-block">{{ $errors->first('product-size') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-xs-6 {{ $errors->has('product-quantity') ? ' has-error' : '' }}">
+                                <label for="productQuantity">Product Quantity</label>
+                                <input type="text" class="form-control" id="product-quantity" value="{{ $product->product_quantity }}" name="product-quantity" placeholder="Enter Product Quantity">
+                                @if($errors->has('product-quantity'))
+                                    <span class="help-block">{{ $errors->first('product-quantity') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-xs-6 {{ $errors->has('sale-price') ? ' has-error' : '' }}">
+                                <label for="salePrice">Sale Price</label>
+                                <input type="text" class="form-control" id="sale-price" value="{{ $product->product_sale_price }}" name="sale-price" placeholder="Enter Sale Price">
+                                @if($errors->has('sale-price'))
+                                    <span class="help-block">{{ $errors->first('sale-price') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-xs-10 {{ $errors->has('product-image') ? ' has-error' : '' }}">
+                                <label for="productImage">Product Image</label>
+                                <input type="file" class="form-control" id="product-image" name="product-image">
+                                @if($errors->has('product-image'))
+                                    <span class="help-block">{{ $errors->first('product-image') }}</span>
                                 @endif
                             </div>
                             <div class="form-group col-xs-2">
                                 <td>
-                                    <img src="{{ asset('storage/app/public/images/'.$page->page_image) }}" alt="alt" width="144" height="70">
+                                    <img src="{{ asset('storage/app/public/images/'.$product->product_image) }}" alt="alt" width="80" height="100">
                                 </td>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-xs-12 {{ $errors->has('page_content') ? ' has-error' : '' }}">
-                                <label for="PageBody">Page Content</label>
-                                <textarea placeholder="Enter Page Body..." id="editor1" rows="10" name="page_content" class="form-control" value="" >{{ $page->page_content }}</textarea>
-                                @if($errors->has('page_content'))
-                                    <span class="help-block">{{ $errors->first('page_content') }}</span>
+                            <div class="form-group col-xs-12 {{ $errors->has('product-desc') ? ' has-error' : '' }}">
+                                <label for="productDesc">Product Description</label>
+                                <textarea placeholder="Enter Product Description..." id="product-desc" rows="4" name="product-desc" class="form-control">{{ $product->product_desc }}</textarea>
+                                @if($errors->has('product-desc'))
+                                    <span class="help-block">{{ $errors->first('product-desc') }}</span>
                                 @endif
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-xs-12">
                                 <input type="submit" value="Post" class="form-group btn btn-success btn-flat btn-md pull-right">
-                                <a href="{{ url('admin/pages') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
+                                <a href="{{ url('admin/shop') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
                             </div>
                         </div>
                     </form>

@@ -47,18 +47,13 @@
                             <th>Event Location:</th>
                             <td>{{ $event->address }}</td>
                         </tr>
-                        <tr>
-                            <th></th>
-                            <td>
-                                @if(!Auth::guest())
-                          <a href="{{ url('/admin/event/editEvent/'.$event->id) }}" class="btn btn-warning btn-flat pull-right">Edit</a>
-                          <a href="{{ url('/admin/event/deleteEvent/'.$event->id) }}" class="btn btn-danger btn-flat pull-right btn-dlt" onclick="return confirm('Are you sure?')">Delete</a>
-                      @endif
-                      <a href="{{ url('admin/event') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
-                            </td>
-                        </tr>
                     </tbody>
                   </table>
+                  @if(!Auth::guest())
+                      <a href="{{ url('/admin/event/editEvent/'.$event->id) }}" class="btn btn-warning btn-flat pull-right">Edit</a>
+                      <a href="{{ url('/admin/event/deleteEvent/'.$event->id) }}" class="btn btn-danger btn-flat pull-right btn-dlt" onclick="return confirm('Are you sure?')">Delete</a>
+                  @endif
+                  <a href="{{ url('admin/event') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
             </div>
         </section>
           

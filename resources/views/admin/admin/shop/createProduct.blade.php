@@ -22,37 +22,61 @@
                     <form action="{{ url('/createShopProduct') }}" method="post" id="blogpost" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
-                            <div class="form-group col-xs-6">
+                            <div class="form-group col-xs-6 {{ $errors->has('product-name') ? ' has-error' : '' }}">
                                 <label for="productName">Product Name</label>
-                                <input type="text" class="form-control" id="product-name" name="product-name" placeholder="Enter Product Name">
+                                <input type="text" class="form-control" id="product-name" value="{{ old('product-name') }}" name="product-name" placeholder="Enter Product Name">
+                                @if($errors->has('product-name'))
+                                    <span class="help-block">{{ $errors->first('product-name') }}</span>
+                                @endif
                             </div>
-                            <div class="form-group col-xs-6">
+                            <div class="form-group col-xs-6 {{ $errors->has('product-price') ? ' has-error' : '' }}">
                                 <label for="productPrice">Product Price</label>
-                                <input type="text" class="form-control" id="product-price" name="product-price" placeholder="Enter Product Price">
+                                <input type="text" class="form-control" id="product-price" value="{{ old('product-price') }}" name="product-price" placeholder="Enter Product Price">
+                                @if($errors->has('product-price'))
+                                    <span class="help-block">{{ $errors->first('product-price') }}</span>
+                                @endif
                             </div>
-                            <div class="form-group col-xs-6">
+                            <div class="form-group col-xs-6 {{ $errors->has('product-color') ? ' has-error' : '' }}">
                                 <label for="productColor">Product Color</label>
-                                <input type="text" class="form-control" id="product-color" name="product-color" placeholder="Eneter Product Color">
+                                <input type="text" class="form-control" id="product-color" value="{{ old('product-color') }}" name="product-color" placeholder="Eneter Product Color">
+                                @if($errors->has('product-color'))
+                                    <span class="help-block">{{ $errors->first('product-color') }}</span>
+                                @endif
                             </div>
-                            <div class="form-group col-xs-6">
+                            <div class="form-group col-xs-6 {{ $errors->has('product-size') ? ' has-error' : '' }}">
                                 <label for="productSize">Product Size</label>
-                                <input type="text" class="form-control" id="product-size" name="product-size" placeholder="Enter Product Size">
+                                <input type="text" class="form-control" id="product-size" value="{{ old('product-size') }}" name="product-size" placeholder="Enter Product Size">
+                                @if($errors->has('product-size'))
+                                    <span class="help-block">{{ $errors->first('product-size') }}</span>
+                                @endif
                             </div>
-                            <div class="form-group col-xs-6">
+                            <div class="form-group col-xs-6 {{ $errors->has('product-quantity') ? ' has-error' : '' }}">
                                 <label for="productQuantity">Product Quantity</label>
-                                <input type="text" class="form-control" id="product-quantity" name="product-quantity" placeholder="Enter Product Quantity">
+                                <input type="text" class="form-control" id="product-quantity" value="{{ old('product-quantity') }}" name="product-quantity" placeholder="Enter Product Quantity">
+                                @if($errors->has('product-quantity'))
+                                    <span class="help-block">{{ $errors->first('product-quantity') }}</span>
+                                @endif
                             </div>
-                            <div class="form-group col-xs-6">
+                            <div class="form-group col-xs-6 {{ $errors->has('sale-price') ? ' has-error' : '' }}">
                                 <label for="salePrice">Sale Price</label>
-                                <input type="text" class="form-control" id="sale-price" name="sale-price" placeholder="Enter Sale Price">
+                                <input type="text" class="form-control" id="sale-price" value="{{ old('sale-price') }}" name="sale-price" placeholder="Enter Sale Price">
+                                @if($errors->has('sale-price'))
+                                    <span class="help-block">{{ $errors->first('sale-price') }}</span>
+                                @endif
                             </div>
-                            <div class="form-group col-xs-12">
+                            <div class="form-group col-xs-12 {{ $errors->has('product-image') ? ' has-error' : '' }}">
                                 <label for="productImage">Product Image</label>
-                                <input type="file" class="form-control" id="product-image" name="product-image">
+                                <input type="file" class="form-control" id="product-image" value="{{ old('product-image') }}" name="product-image">
+                                @if($errors->has('product-image'))
+                                    <span class="help-block">{{ $errors->first('product-image') }}</span>
+                                @endif
                             </div>
-                            <div class="form-group col-xs-12">
+                            <div class="form-group col-xs-12 {{ $errors->has('product-desc') ? ' has-error' : '' }}">
                                 <label for="productDesc">Product Description</label>
-                                <textarea placeholder="Enter Product Description..." id="product-desc" rows="4" name="product-desc" class="form-control"></textarea>
+                                <textarea placeholder="Enter Product Description..." id="product-desc" rows="4" name="product-desc" class="form-control">{{ old('product-desc') }}</textarea>
+                                @if($errors->has('product-desc'))
+                                    <span class="help-block">{{ $errors->first('product-desc') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="row">

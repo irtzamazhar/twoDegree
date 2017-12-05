@@ -17,7 +17,7 @@
             <div class="">
                 <div class="box-header">
                   <a class="btn btn-success btn-flat btn-md pull-right btn-create" href="{{ url('admin/shop/createProduct') }}">Add A New Product</a>
-                  <a class="btn btn-primary btn-flat btn-md pull-left" href="{{ url('admin/shop/addBanner') }}">Shop Banner</a>
+                  <a class="btn btn-primary btn-flat btn-md pull-left" href="{{ url('admin/shop/addShopBanner') }}">Shop Banner</a>
                 </div>
                   @include('admin.admin.message')
                 <div class="box-body">

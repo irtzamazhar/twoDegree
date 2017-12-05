@@ -29,18 +29,13 @@
                             <th>Content:</th>
                             <td>{!! $faq->faq_content !!}</td>
                         </tr>
-                        <tr>
-                            <th></th>
-                            <td>
-                                @if(!Auth::guest())
-                          <a href="{{ url('/admin/faq/editFaq/'.$faq->id) }}" class="btn btn-warning pull-right btn-flat">Edit</a>
-                          <a href="{{ url('/admin/faq/deleteFaq/'.$faq->id) }}" class="btn pull-right btn-dlt btn-danger btn-flat" onclick="return confirm('Are you sure?')">Delete</a>
-                      @endif
-                      <a href="{{ url('admin/faq') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
-                            </td>
-                        </tr>
                     </tbody>
                   </table>
+                  @if(!Auth::guest())
+                      <a href="{{ url('/admin/faq/editFaq/'.$faq->id) }}" class="btn btn-warning pull-right btn-flat">Edit</a>
+                      <a href="{{ url('/admin/faq/deleteFaq/'.$faq->id) }}" class="btn pull-right btn-dlt btn-danger btn-flat" onclick="return confirm('Are you sure?')">Delete</a>
+                  @endif
+                  <a href="{{ url('admin/faq') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
             </div>
         </section>
           

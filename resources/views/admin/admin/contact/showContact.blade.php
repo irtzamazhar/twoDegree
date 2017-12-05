@@ -41,17 +41,12 @@
                             <th>Message:</th>
                             <td>{{ $contact->message }}</td>
                         </tr>
-                        <tr>
-                            <th></th>
-                            <td>
-                                @if(!Auth::guest())
-                                    <a href="{{ url('/admin/contact/delete/'.$contact->id) }}" class="btn btn-danger btn-flat pull-right" onclick="return confirm('Are you sure?')">Delete</a>
-                                @endif
-                                <a href="{{ url('admin/contact') }}" class="btn btn-primary btn-md btn-flat ">Go Back</a>
-                            </td>
-                        </tr>
                     </tbody>
                   </table>
+                @if(!Auth::guest())
+                    <a href="{{ url('/admin/contact/delete/'.$contact->id) }}" class="btn btn-danger btn-flat pull-right" onclick="return confirm('Are you sure?')">Delete</a>
+                @endif
+                <a href="{{ url('admin/contact') }}" class="btn btn-primary btn-md btn-flat ">Go Back</a>
               </div>
 
           

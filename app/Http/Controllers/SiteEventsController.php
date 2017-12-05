@@ -141,8 +141,13 @@ class SiteEventsController extends Controller
             'event-timing1' => 'required',
             'event-timing2' => 'required',
             'event-detail' => 'required',
-//            'event-image' => 'image|nullable|max:1999',
             'event-location' => 'required'
+        ], [
+            'event-title.required' => 'Event Title is required',
+            'event-day.required' => 'Event Day is required',
+            'event-timing1.required' => 'Event Timing is required',
+            'event-detail.required' => 'Event Detail is required',
+            'event-location.required' => 'Event Location is required',
         ]);
         
         // Create Event
@@ -152,7 +157,6 @@ class SiteEventsController extends Controller
         $event->event_timing1 = $request->input('event-timing1');
         $event->event_timing2 = $request->input('event-timing2');
         $event->event_detail = $request->input('event-detail');
-//        $event->event_image = $fileNameToStore;
         $event->place_lat = $request->input('place-lat');
         $event->place_lng = $request->input('place-lng');
         $event->address = $request->input('address');

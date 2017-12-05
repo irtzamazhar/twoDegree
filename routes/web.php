@@ -43,9 +43,9 @@ Route::get('/admin/contact/addBanner', 'ContactController@addBanner')->name('add
 Route::post('/admin/contact/addBanner{id}', 'ContactController@storeBanner')->name('storeContactBanner');
 
 //Newsletter Route
-Route::get('subscribe','NewsletterController@subscribe')->name('subscribe');
-Route::get('/admin/newsletter', 'NewsletterController@index')->name('newsletter');
-Route::post('checkEmail', 'NewsletterController@checkEmail')->name('checkEmail');
+Route::get('/admin/newsletter','NewsletterEmailController@index')->name('newsletter');
+Route::post('subscribe','NewsletterEmailController@subscribe')->name('subscribe');
+Route::post('checkEmail', 'NewsletterEmailController@checkEmail')->name('checkEmail');
 
 //Pages Route
 Route::get('/admin/pages', 'PagesController@index')->name('admin/pages');
@@ -95,8 +95,8 @@ Route::get('/admin/shop/deleteProduct/{id}', 'ShopController@destroy')->name('de
 Route::get('/admin/shop/editProduct/{id}', 'ShopController@edit')->name('editProduct');
 Route::post('/admin/shop/update/{id}', 'ShopController@update')->name('updateShopProduct');
 Route::get('/admin/shop/showProduct/{id}', 'ShopController@show')->name('showProduct');
-Route::get('/admin/shop/addBanner', 'ShopController@addBanner')->name('addShopProduct');
-Route::post('/admin/shop/addBanner{id}', 'ShopController@storeBanner')->name('storeShopProduct');
+Route::get('/admin/shop/addShopBanner', 'ShopController@addBanner')->name('addShopBanner');
+Route::post('/admin/shop/addShopBanner{id}', 'ShopController@storeBanner')->name('storeShopBanner');
 
 
 

@@ -33,18 +33,13 @@
                             <th>Blog Content:</th>
                             <td>{!! $blog->editor !!}</td>
                         </tr>
-                        <tr>
-                            <th></th>
-                            <td>
-                                @if(!Auth::guest())
-                                    <a href="{{ url('/admin/blog/editPost/'.$blog->id) }}" class="btn btn-warning pull-right btn-flat">Edit</a>
-                                    <a href="{{ url('/admin/blog/deletePost/'.$blog->id) }}" class="btn btn-danger btn-flat pull-right btn-dlt">Delete</a>
-                                @endif
-                                <a href="{{ url('admin/blog') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
-                            </td>
-                        </tr>
                     </tbody>
                   </table>
+                  @if(!Auth::guest())
+                      <a href="{{ url('/admin/blog/editPost/'.$blog->id) }}" class="btn btn-warning pull-right btn-flat">Edit</a>
+                      <a href="{{ url('/admin/blog/deletePost/'.$blog->id) }}" class="btn btn-danger btn-flat pull-right btn-dlt">Delete</a>
+                  @endif
+                  <a href="{{ url('admin/blog') }}" class="btn btn-primary btn-md btn-flat">Go Back</a>
             </div>
         </section>
           

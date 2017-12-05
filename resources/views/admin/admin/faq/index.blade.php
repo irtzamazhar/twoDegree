@@ -25,9 +25,9 @@
                         <thead>
                           <tr>
                             <th width="20%"> FAQ Title</th>
-                            <th width="40%"><center>FAQ Content</center></th>
-                            <th width="20%"><center>Status</center></th>
-                            <th width="20%"><center>Actions</center></th>
+                            <th width="40%">FAQ Content</th>
+                            <th width="20%">Status</th>
+                            <th width="20%">Actions</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -42,9 +42,9 @@
                                     {!! $truncated !!}
                                   </td>
                                   @if( $faq->faq_status == 1)
-                                  <td><center> Publish</center></td>
+                                  <td>Publish</td>
                                   @else
-                                  <td><center> Drafted</center></td>
+                                  <td>Drafted</td>
                                   @endif
                                   <td>
                                       @if(!Auth::guest())

@@ -7,7 +7,7 @@
     </div>
     <div class="download-section section-start">
         <div class="container">
-            <div class="content-page section-start">
+            <div class="content-page section-start" style="padding: 0px 5%;">
                 <div class="terms-page section-start">
                     <div style="display: none;" id="page-image">{{ $page->page_image }}</div>
                     {!! $page->page_content !!}                   

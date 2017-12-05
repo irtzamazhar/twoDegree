@@ -33,18 +33,13 @@
                             <th>Section Image:</th>
                             <td><img src="{{ asset('storage/app/public/images/'.$section->section_image) }}" width="100%"/></td>
                         </tr>
-                        <tr>
-                            <th></th>
-                            <td>
-                                @if(!Auth::guest())
-                          <a href="{{ url('/admin/home/edit/'.$section->id) }}" class="btn btn-warning btn-flat pull-right">Edit</a>
-                          <a href="{{ url('/admin/home/delete/'.$section->id) }}" class="btn btn-danger btn-dlt btn-flat pull-right" onclick="return confirm('Are you sure?')">Delete</a>
-                      @endif
-                      <a href="{{ url('admin/home') }}" class="btn btn-primary btn-md btn-flat ">Go Back</a>
-                            </td>
-                        </tr>
                     </tbody>
                   </table>
+                   @if(!Auth::guest())
+                      <a href="{{ url('/admin/home/edit/'.$section->id) }}" class="btn btn-warning btn-flat pull-right">Edit</a>
+                      <a href="{{ url('/admin/home/delete/'.$section->id) }}" class="btn btn-danger btn-dlt btn-flat pull-right" onclick="return confirm('Are you sure?')">Delete</a>
+                  @endif
+                  <a href="{{ url('admin/home') }}" class="btn btn-primary btn-md btn-flat ">Go Back</a>
             </div>
         </section>
           

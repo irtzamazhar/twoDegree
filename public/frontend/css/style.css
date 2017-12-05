@@ -40,7 +40,7 @@ img {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
     -moz-transition-duration: 0.4s;
     -webkit-transition-duration: 0.4s;
     -o-transition-duration: 0.4s;
@@ -131,6 +131,7 @@ h2 {}
     float: left;
     padding-left: 20px;
     background: url('../images/error.png') no-repeat 0% 43%;
+    font-weight: 400;
 	width:100%;
 	text-align:left;
 }
@@ -706,12 +707,13 @@ footer {
     display: block;
     margin: 1em 0px;
     color: #363636;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 15px !important;
     letter-spacing: 0px;
-    line-height: 24px;
-    font-family: 'Noto Sans', sans-serif;
+    line-height: 24px !important;
+    font-family: 'Noto Sans', sans-serif !important;
+    /*text-align: left !important;*/
 }
 
 .terms-list {

@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Newsletter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Newsletter;
+use App\Subscriber;
 use DB;
-use Auth;
-use Config;
+//use Auth;
+//use Config;
 
 class NewsletterController extends Controller
 {    
     public function __construct()
     {
         $this->middleware('auth');
+    }
+    
+    public function spatieMail() {
+        Newsletter::subscribe('rincewind@discworld.com');
     }
     
 //    protected $mailchimp;
@@ -29,8 +34,8 @@ class NewsletterController extends Controller
 //    }
     
     public function index() {
-        $newsletters = Newsletter::orderBy('created_at', 'desc')->paginate(5);
-        return view('admin.admin.newsletter', ['newsletters' => $newsletters])->render();
+        $newsletters = App\Subscriber::orderBy('created_at', 'desc')->paginate(5);
+        return view('admin.admin.subs', ['newsletters' => $newsletters])->render();
     }
     
 //    public function subscribe(Request $request)

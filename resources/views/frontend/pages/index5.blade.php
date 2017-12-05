@@ -45,12 +45,20 @@
         <div class="container">
             <p>Sign up with your email address to receive news and updates.</p>
             <div class="newsletter-inner section-start">
-                <form id="homesignup" method="post" action="{{ route('subscribe') }}">
+                <form action="https://opensolglobal.us17.list-manage.com/subscribe/post-json?u=fb6d20aa4e10a25b5c0dd5615&amp;id=537f1a7d8b&c=?" method="get" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate my-form" target="_blank" onsubmit="return checkEmail();">
                     {{ csrf_field() }}
-                    <input type="text" class="newsletter-input" placeholder="Email Address" name="email" id="email-letter" />
-                    <button type="button" class="global-btn" id="index-letter" value="Submit">Sign up</button>
-                    <p id="index_letter_error" class="error-wrapper"></p>
+                    <div>
+                        <div class="mc-field-group">
+                            <input type="email" value="" name="EMAIL" class="required email newsletter-input" id="mce-EMAIL" placeholder="Email Address">
+                            <button type="submit" class="global-btn clear" id="mc-embedded-subscribe" name="subscribe">Sign up</button>
+                            <span class="email_status"></span>
+                        </div>
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="b_fb6d20aa4e10a25b5c0dd5615_537f1a7d8b" tabindex="-1" value="">
+                        </div>
+                    </div>
                 </form>
+                <!--<iframe width="420" height="345" frameborder="0" src="https://www.youtube.com/embed/XGSy3_Czz8k"></iframe>-->
             </div>
             <span>We respect your privacy.</span>
         </div>
@@ -66,17 +74,25 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
             </div>
             <div class="modal-body">
                 <h2>Sign up with your email address to receive news and updates.</h2>
                 <div class="newsletter-inner">
-                    <form  id="news-form">
-                        {{ csrf_field() }}
-                        <input class="newsletter-input" placeholder="Email Address" type="email" id="pop-input">
-                        <button type="button" class="global-btn" id="news-submit" value="Submit">Sign up</button>
-			<p id="news-error" class="error-wrapper"></p>
-		    </form>
+                    
+                    <!--<iframe src="{{ route('mailchimp') }}" frameborder="0"></iframe>-->
+                    <form action="https://opensolglobal.us17.list-manage.com/subscribe/post-json?u=fb6d20aa4e10a25b5c0dd5615&amp;id=537f1a7d8b&c=?" method="get" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate my-form" target="_blank" onsubmit="return checkEmail();">
+                    {{ csrf_field() }}
+                        <div class="mc-field-group">
+                            <input type="email" value="" name="EMAIL" class="required email newsletter-input" id="mce-EMAIL" placeholder="Email Address">
+                            <button type="submit" class="global-btn clear" id="mc-embedded-subscribe" name="subscribe">Sign up</button>
+                            <span id="email_status"></span>
+                        </div>
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="b_fb6d20aa4e10a25b5c0dd5615_537f1a7d8b" tabindex="-1" value="">
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -86,6 +102,7 @@
 
 <div id="thanks" class="modal fade custom-modal" role="dialog">
   <div class="modal-dialog">
+
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -100,9 +117,28 @@
 
   </div>
 </div>
-@include('frontend.include.footer')
+@include('frontend.include.footer')	
+	
+
 
     <script src="{{ asset('public/frontend/js/newsletter.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/frontend/js/subscribe_validation.js') }}"></script>
+    
+    <script type="text/javascript">
+        function validateEmail(email){
+            var emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+            var valid = emailReg.test(email);
+
+            if(!valid) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        $(document).ready(function () {
+            $('#myModal').modal('show');
+        });
+    </script>
     
     <script type="text/javascript">
         var image = $('#section-image').text();

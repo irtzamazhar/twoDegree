@@ -11,6 +11,7 @@ use App\Page;
 use App\Menu;
 use App\SiteBanner;
 use App\HomePage;
+use App\ShopProducts;
 use DB;
 
 class FrontendController extends Controller
@@ -97,9 +98,14 @@ class FrontendController extends Controller
 
     public function shop()
     {
-        // $siteBanner = SiteBanner::where('page_name', '=', 'blog')->get()->toArray();
-        // $blogs = Blog::orderBy('created_at', 'desc')->paginate(5);
-        return view('frontend.shop');
+        $shopBanner = SiteBanner::where('page_name', '=', 'shop')->get()->toArray();
+        $products = ShopProducts::orderBy('created_at', 'desc')->paginate(5);
+        $data = array(
+            'products' => $products,
+            'shopBanner' => $shopBanner,
+            
+        );
+        return view('frontend.shop', $data)->render();
     }
     
     public function getPage($page_url)
