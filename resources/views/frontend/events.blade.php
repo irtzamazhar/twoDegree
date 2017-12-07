@@ -1,6 +1,6 @@
 @include('frontend.include.header')
 @foreach($eventImage as $image)
-<div class="page-header section-start event-header2" style="background-image: url( {{ url('public/images/' . $image['banner_image'])}} );">
+<div class="page-header section-start event-header2" >
     <h1>Upcoming Events</h1>
 </div>
 @endforeach
@@ -50,8 +50,38 @@
                                 </div>
                                 <div class="entry-header">
                                     <p class="entry-more-link"><a href="{{ url('event-detail/'.$event->slug) }}"></a></p>
-                                    <p class="entry-actions"><span class="like-count"><i class="fa fa-share-alt" aria-hidden="true"></i>Share</span></p>
-                                    <p class="entry-actions"><span class="like-count"><i class="fa fa-heart" aria-hidden="true"></i>0 Likes</span></p>
+                                    <!--<p class="entry-actions"><span class="like-count"><i class="fa fa-share-alt" aria-hidden="true"></i>Share</span></p>-->
+                                    <p class="entry-actions">
+                                        <!-- Load Facebook SDK for JavaScript -->
+                                        <div id="fb-root"></div>
+                                        <script>
+                                            window.fbAsyncInit = function() {
+                                              FB.init({
+                                                appId            : '128704691158646',
+                                                autoLogAppEvents : true,
+                                                xfbml            : true,
+                                                version          : 'v2.11'
+                                              });
+                                            };
+
+                                            (function(d, s, id) {
+                                                var js, fjs = d.getElementsByTagName(s)[0];
+                                                if (d.getElementById(id)) return;
+                                                js = d.createElement(s); js.id = id;
+                                                js.src = 'https://connect.facebook.net/en_US/sdk.js';
+                                                fjs.parentNode.insertBefore(js, fjs);
+                                            }(document, 'script', 'facebook-jssdk'));
+                                        </script>
+                                        <!-- Your like button code -->
+                                        <div class="fb-like" 
+                                             data-href="http://localhost/twodegree/blog/{{ $event->id }}"
+                                             data-layout="button" 
+                                             data-action="like" 
+                                             data-size="large" 
+                                             data-show-faces="false" 
+                                            data-share="true">
+                                        </div>
+                                    </p>
 
                                 </div>
 

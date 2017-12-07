@@ -86,7 +86,7 @@
                 <span>Manage HomePage</span>
               </a>
             </li>
-            <li class="{{ Request::is('admin/shop') ? 'active' : null }}">
+            <li class="{{ Request::is('admin/shop*') ? 'active' : null }}">
               <a href="{!!URL::route('admin/shop')!!}">
                 <i class="fa fa-wrench"></i>
                 <span>Manage Shop</span>

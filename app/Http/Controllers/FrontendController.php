@@ -108,6 +108,19 @@ class FrontendController extends Controller
         return view('frontend.shop', $data)->render();
     }
     
+    public function shopDetail($slug)
+    {
+        $shopBanner = SiteBanner::where('page_name', '=', 'shop')->get()->toArray();
+        $productss = DB::table('shop_products')->where('slug', '=', $slug)->get();
+        dd($productss);
+        $data = array(
+            'productss' => $productss,
+            'shopBanner' => $shopBanner,
+            
+        );
+        return view('frontend.shop-detail', $data)->render();
+    }
+    
     public function getPage($page_url)
     {
         $url = '/view/' . $page_url;

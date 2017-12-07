@@ -55,7 +55,7 @@
                         <div class="row">
                             <div class="form-group col-xs-12 {{ $errors->has('page_content') ? ' has-error' : '' }}">
                                 <label for="PageBody">Page Content</label>
-                                <textarea placeholder="Enter Page Body..." id="editor1" rows="10" name="page_content" class="form-control" value="" >{{ $page->page_content }}</textarea>
+                                <textarea placeholder="Enter Page Body..." id="editor1" rows="10" name="page_content" class="form-control" value="" >{!! $page->page_content !!}</textarea>
                                 @if($errors->has('page_content'))
                                     <span class="help-block">{{ $errors->first('page_content') }}</span>
                                 @endif

@@ -1,6 +1,6 @@
 @include('frontend.include.header')
 @foreach($eventImage as $image)
-    <div class="page-header section-start event-header2" style="background-image: url( {{ url('public/images/' . $image['banner_image'])}} );">
+    <div class="page-header section-start event-header2" >
 @endforeach
         @foreach ($eventss as $event)
         <h1>{{ $event->event_title }}<br><span class="tagline">MeetUp. StartUp. ScaleUp.</span> </h1>
@@ -26,13 +26,35 @@
                 <p>{{ $event->event_detail }}</p>
                 <div class="review-post section-start">
                     <div class="likes ">
-                        <i class="fa fa-heart" aria-hidden="true"></i>
-                        <p>2 likes</p>
+                        <!-- Load Facebook SDK for JavaScript -->
+                        <div id="fb-root"></div>
+                        <script>
+                            window.fbAsyncInit = function() {
+                              FB.init({
+                                appId            : '128704691158646',
+                                autoLogAppEvents : true,
+                                xfbml            : true,
+                                version          : 'v2.11'
+                              });
+                            };
 
-                    </div>
-                    <div class="share">
-                        <i class="fa fa-share-alt" aria-hidden="true"></i>
-                        <p>Share</p>
+                            (function(d, s, id) {
+                                var js, fjs = d.getElementsByTagName(s)[0];
+                                if (d.getElementById(id)) return;
+                                js = d.createElement(s); js.id = id;
+                                js.src = 'https://connect.facebook.net/en_US/sdk.js';
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));
+                        </script>
+                        <!-- Your like button code -->
+                        <div class="fb-like" 
+                             data-href="http://localhost/twodegree/blog/{{ $event->id }}"
+                             data-layout="button" 
+                             data-action="like" 
+                             data-size="large" 
+                             data-show-faces="false" 
+                            data-share="true">
+                        </div>
                     </div>
                 </div>
                 </div>

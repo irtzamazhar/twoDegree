@@ -10,7 +10,7 @@
             <div class="content-page section-start" style="padding: 0px 5%;">
                 <div class="terms-page section-start">
                     <div style="display: none;" id="page-image">{{ $page->page_image }}</div>
-                    {!! $page->page_content !!}                   
+                    {!! $page->page_content !!}
                 </div>
             </div>
         </div>

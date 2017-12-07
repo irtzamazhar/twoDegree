@@ -36,16 +36,16 @@ Route::get('/admin/event/addBanner', 'SiteEventsController@addBanner')->name('ad
 Route::post('/admin/event/addBanner{id}', 'SiteEventsController@storeBanner')->name('storeEventBanner');
 
 //Contact Route
-Route::get('/admin/contact', 'ContactController@index')->name('admin/contact');
-Route::get('/admin/contact/delete/{id}', 'ContactController@destroy')->name('deleteContact');
-Route::get('/admin/contact/showContact/{id}', 'ContactController@show')->name('showContact');
-Route::get('/admin/contact/addBanner', 'ContactController@addBanner')->name('addContactBanner');
-Route::post('/admin/contact/addBanner{id}', 'ContactController@storeBanner')->name('storeContactBanner');
+Route::get('/admin/contact', 'ContactController@index')->name('admin/contact')->middleware('auth');
+Route::get('/admin/contact/delete/{id}', 'ContactController@destroy')->name('deleteContact')->middleware('auth');
+Route::get('/admin/contact/showContact/{id}', 'ContactController@show')->name('showContact')->middleware('auth');
+Route::get('/admin/contact/addBanner', 'ContactController@addBanner')->name('addContactBanner')->middleware('auth');
+Route::post('/admin/contact/addBanner{id}', 'ContactController@storeBanner')->name('storeContactBanner')->middleware('auth');
 
 //Newsletter Route
-Route::get('/admin/newsletter','NewsletterEmailController@index')->name('newsletter');
-Route::post('subscribe','NewsletterEmailController@subscribe')->name('subscribe');
-Route::post('checkEmail', 'NewsletterEmailController@checkEmail')->name('checkEmail');
+Route::get('/admin/newsletter','NewsletterEmailController@index')->name('newsletter')->middleware('auth');
+Route::post('subscribe','NewsletterEmailController@subscribe')->name('subscribe')->middleware('auth');
+Route::post('checkEmail', 'NewsletterEmailController@checkEmail')->name('checkEmail')->middleware('auth');
 
 //Pages Route
 Route::get('/admin/pages', 'PagesController@index')->name('admin/pages');
@@ -113,3 +113,9 @@ Route::get('blog-detail/{slug}', 'FrontendController@blogDetail')->name('blog-de
 Route::get('events', 'FrontendController@events');
 Route::get('event-detail/{slug}', 'FrontendController@eventDetail')->name('event-detail');
 Route::get('shop', 'FrontendController@shop');
+Route::get('shop-detail/{slug}', 'FrontendController@shopDetail');
+
+//Error page
+Route::get('/404', function () {
+    return abort(404);
+});

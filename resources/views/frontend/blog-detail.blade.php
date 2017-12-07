@@ -1,6 +1,6 @@
 @include('frontend.include.header')
     @foreach($siteBanner as $image)
-    <div class="page-header section-start blog-header2" style="background-image: url( {{ url('public/images/' . $image['banner_image'])}} );">
+    <div class="page-header section-start blog-header2">
         <h1>Blog</h1>
         
     </div>
@@ -22,13 +22,35 @@
                 </div>
                 <div class="review-post section-start">
                     <div class="likes ">
-                        <i class="fa fa-heart" aria-hidden="true"></i>
-                        <p>2 likes</p>
+                        <div id="fb-root"></div>
+                        <script>
+                            window.fbAsyncInit = function() {
+                              FB.init({
+                                appId            : '128704691158646',
+                                autoLogAppEvents : true,
+                                xfbml            : true,
+                                version          : 'v2.11'
+                              });
+                            };
 
-                    </div>
-                    <div class="share">
-                        <i class="fa fa-share-alt" aria-hidden="true"></i>
-                        <p>Share</p>
+                            (function(d, s, id) {
+                                var js, fjs = d.getElementsByTagName(s)[0];
+                                if (d.getElementById(id)) return;
+                                js = d.createElement(s); js.id = id;
+                                js.src = 'https://connect.facebook.net/en_US/sdk.js';
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));
+                        </script>
+                        <!-- Your like button code -->
+                        <div class="fb-like" 
+                             data-href="http://localhost/twodegree/blog-detail/{{ $blog->id }}"
+                             data-layout="button" 
+                             data-action="like" 
+                             data-size="small" 
+                             data-show-faces="false" 
+                            data-share="true">
+                        </div>
+
                     </div>
                 </div>
             </div>

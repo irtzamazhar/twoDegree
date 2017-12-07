@@ -165,6 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Skovmand\Mailchimp\MailchimpServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
+        Laravel\Cashier\CashierServiceProvider::class,
 
         /*
          * Package Service Providers...

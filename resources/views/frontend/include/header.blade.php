@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta property="og:url"           content="http://localhost/twodegree/blog" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Two Degrees" />
+    <meta property="og:description"   content="A New Social World" />
+    <meta property="og:image"         content="{{ asset('public/frontend/images/logo.png') }}" />
     <title>Two Degree</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

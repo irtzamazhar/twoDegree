@@ -713,7 +713,7 @@ footer {
     letter-spacing: 0px;
     line-height: 24px !important;
     font-family: 'Noto Sans', sans-serif !important;
-    /*text-align: left !important;*/
+    text-align: justify;
 }
 
 .terms-list {
@@ -730,6 +730,11 @@ footer {
     font-size: 15px;
     letter-spacing: 0px;
     line-height: 24px;
+    text-align: left !important;
+}
+
+.app-class p{
+    text-align: center !important;
 }
 .blog-detail .blog-post-title a{
 	margin-bottom: 20px;
