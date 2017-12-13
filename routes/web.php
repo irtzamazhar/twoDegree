@@ -112,8 +112,13 @@ Route::get('blog', 'FrontendController@blog');
 Route::get('blog-detail/{slug}', 'FrontendController@blogDetail')->name('blog-detail');
 Route::get('events', 'FrontendController@events');
 Route::get('event-detail/{slug}', 'FrontendController@eventDetail')->name('event-detail');
-Route::get('shop', 'FrontendController@shop');
+Route::get('shop', 'FrontendController@shop')->name('shop');
 Route::get('shop-detail/{slug}', 'FrontendController@shopDetail');
+Route::get('add-to-cart/{id}', 'FrontendController@addToCart')->name('add-to-cart');
+Route::get('get-cart', 'FrontendController@getCart')->name('get-cart');
+Route::get('checkout', 'FrontendController@checkout')->name('checkout');
+Route::get('stripe-payment', 'FrontendController@stripePayment')->name('stripe-payment');
+Route::post('payCash', 'FrontendController@payCash')->name('payCash');
 
 //Error page
 Route::get('/404', function () {

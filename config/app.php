@@ -165,7 +165,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Skovmand\Mailchimp\MailchimpServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
-        Laravel\Cashier\CashierServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -183,6 +182,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Intervention\Image\ImageServiceProviderLaravel5::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
     ],
 
     /*
@@ -235,6 +235,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
 
     ],
 

@@ -4,7 +4,7 @@
         <div class="banner-inner">
             {!! $t_section['section_content'] !!}
             <div style="display: none;" id="section-image">{{ $t_section['section_image'] }}</div>
-            <a href="{{ url('/app-download') }}" class="global-btn">Download</a>
+            <a href="{{ url('/view/app') }}" class="global-btn">Download</a>
             <div class="scrool-wrapper">
                 <div class="scroll-dn" id="scroll-den">
                     <span>Scroll down</span>
@@ -45,7 +45,7 @@
         <div class="container">
             <p>Sign up with your email address to receive news and updates.</p>
             <div class="newsletter-inner section-start">
-                <form id="homesignup" method="post" action="{{ route('subscribe') }}">
+                <form id="homesignup">
                     {{ csrf_field() }}
                     <input type="text" class="newsletter-input" placeholder="Email Address" name="email" id="email-letter" />
                     <button type="button" class="global-btn" id="index-letter" value="Submit">Sign up</button>

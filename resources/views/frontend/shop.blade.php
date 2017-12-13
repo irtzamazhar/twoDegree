@@ -1,6 +1,15 @@
 @include('frontend.include.header')
+@if(Session::has('success'))
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+            <div id="charge-message" class="alert alert-success">
+                {{ Session::get('success') }}
+            </div>
+        </div>
+    </div>
+@endif
 @foreach($shopBanner as $image)
-    <div class="page-header section-start shop-header2" style="background-image: url( {{ url('public/images/' . $image['banner_image'])}} );">
+    <div class="page-header section-start shop-header2">
 @endforeach
         <h1>Shop</h1>
 
@@ -19,8 +28,8 @@
                         <div class="product-image">
                             <img src="{{ asset('storage/app/public/images/'.$product->product_image) }}" />
                         </div>
-                        <a href="#" class="Product-name">{{ $product->product_name }}</a>
-                        <a href="#" class="product-price">{{ $product->product_price }}</a>
+                        <a href="{{ url('shop-detail/'.$product->slug) }}" class="Product-name">{{ $product->product_name }}</a>
+                        <a href="{{ url('shop-detail/'.$product->slug) }}" class="product-price">{{ $product->product_price }}</a>
                     </div>
                 </div>
             </div>

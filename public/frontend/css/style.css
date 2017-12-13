@@ -2399,3 +2399,7 @@ body.hidden-scroll {
         width: 35%;
     }
 }
+
+.submit-button {
+  margin-top: 10px;
+}
