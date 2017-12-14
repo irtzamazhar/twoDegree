@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2017 at 07:38 AM
+-- Generation Time: Dec 13, 2017 at 03:48 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -206,9 +206,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (22, '2017_11_20_064425_create_home_pages_table', 21),
 (27, '2017_11_28_102720_create_shop_products_table', 22),
 (28, '2017_11_28_125013_add_slug_to_shop_products', 22),
-(29, '2017_10_27_061816_create_subscribers_table', 23),
 (30, '2017_12_05_103948_create_subcribers_table', 24),
-(31, '2017_12_05_111422_create_newsletter_emails_table', 25);
+(31, '2017_12_05_111422_create_newsletter_emails_table', 25),
+(32, '2017_12_08_061004_add_braintree_id_to_users_table', 26),
+(33, '2017_12_13_130655_create_orders_table', 27);
 
 -- --------------------------------------------------------
 
@@ -230,7 +231,25 @@ CREATE TABLE `newsletter_emails` (
 INSERT INTO `newsletter_emails` (`id`, `email`, `created_at`, `updated_at`) VALUES
 (13, 'logics.tester@gmail.com', '2017-12-05 08:33:01', '2017-12-05 08:33:01'),
 (14, 'irtza@mail.com', '2017-12-05 08:39:52', '2017-12-05 08:39:52'),
-(16, 'erxetxx@txttr.com', '2017-12-05 09:11:38', '2017-12-05 09:11:38');
+(16, 'erxetxx@txttr.com', '2017-12-05 09:11:38', '2017-12-05 09:11:38'),
+(17, 'admin@mail.com', '2017-12-08 02:44:10', '2017-12-08 02:44:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `cart` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -462,6 +481,12 @@ ALTER TABLE `newsletter_emails`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pages`
 --
 ALTER TABLE `pages`
@@ -542,13 +567,19 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `newsletter_emails`
 --
 ALTER TABLE `newsletter_emails`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pages`

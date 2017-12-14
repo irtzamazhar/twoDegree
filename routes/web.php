@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Admin Routes
 Auth::routes();
 
 //Blog Route
@@ -112,13 +112,23 @@ Route::get('blog', 'FrontendController@blog');
 Route::get('blog-detail/{slug}', 'FrontendController@blogDetail')->name('blog-detail');
 Route::get('events', 'FrontendController@events');
 Route::get('event-detail/{slug}', 'FrontendController@eventDetail')->name('event-detail');
-Route::get('shop', 'FrontendController@shop')->name('shop');
-Route::get('shop-detail/{slug}', 'FrontendController@shopDetail');
-Route::get('add-to-cart/{id}', 'FrontendController@addToCart')->name('add-to-cart');
-Route::get('get-cart', 'FrontendController@getCart')->name('get-cart');
-Route::get('checkout', 'FrontendController@checkout')->name('checkout');
-Route::get('stripe-payment', 'FrontendController@stripePayment')->name('stripe-payment');
-Route::post('payCash', 'FrontendController@payCash')->name('payCash');
+
+
+//Shop Route
+Route::get('shop/', 'ShopController@shop')->name('shop');
+Route::get('shop/shop-detail/{slug}', 'ShopController@shopDetail');
+Route::get('shop/add-to-cart/{id}', 'ShopController@addToCart')->name('add-to-cart');
+Route::get('shop/view-cart', 'ShopController@getCart')->name('view-cart');
+Route::get('shop/empty-cart', 'ShopController@removeCart')->name('empty-cart');
+Route::get('shop/update-cart/{rowId}', 'ShopController@updateCart')->name('update-cart');
+Route::get('shop/checkout', 'ShopController@checkout')->name('checkout');
+Route::get('shop/payment', 'ShopController@stripePayment')->name('stripe-payment');
+Route::post('payCash', 'ShopController@payCash')->name('payCash');
+
+//Paypal route
+Route::get('shop/payMoney', array('as' => 'payMoney','uses' => 'PaypalController@index',));
+Route::post('postPaypal', array('as' => 'postPaypal','uses' => 'PaypalController@postPayment',));
+Route::get('shop/status', array('as' => 'status','uses' => 'PaypalController@getPaymentStatus',));
 
 //Error page
 Route::get('/404', function () {

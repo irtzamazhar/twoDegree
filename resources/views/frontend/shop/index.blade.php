@@ -28,8 +28,8 @@
                         <div class="product-image">
                             <img src="{{ asset('storage/app/public/images/'.$product->product_image) }}" />
                         </div>
-                        <a href="{{ url('shop-detail/'.$product->slug) }}" class="Product-name">{{ $product->product_name }}</a>
-                        <a href="{{ url('shop-detail/'.$product->slug) }}" class="product-price">{{ $product->product_price }}</a>
+                        <a href="{{ url('shop/shop-detail/'.$product->slug) }}" class="Product-name">{{ $product->product_name }}</a>
+                        <a href="{{ url('shop/shop-detail/'.$product->slug) }}" class="product-price">{{ $product->product_price }}</a>
                     </div>
                 </div>
             </div>

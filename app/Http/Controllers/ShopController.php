@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\ShopProducts;
 use App\SiteBanner;
+use Cart;
+use Stripe\{Stripe, Charge};
 use File;
 use DB;
+use Session;
 
 class ShopController extends Controller
 {
@@ -239,4 +242,105 @@ class ShopController extends Controller
         $request->session()->flash('success', 'Banner added successfully!');
         return redirect('/admin/shop/addShopBanner');
     }
+    
+    public function shop()
+    {
+        $shopBanner = SiteBanner::where('page_name', '=', 'shop')->get()->toArray();
+        $products = ShopProducts::orderBy('created_at', 'desc')->paginate(5);
+        $data = array(
+            'products' => $products,
+            'shopBanner' => $shopBanner,
+            
+        );
+        return view('frontend.shop.index', $data)->render();
+    }
+    
+    public function shopDetail($slug)
+    {
+        $shopBanner = SiteBanner::where('page_name', '=', 'shop')->get()->toArray();
+        $productss = DB::table('shop_products')->where('slug', '=', $slug)->get();
+        
+        $data = array(
+            'productss' => $productss,
+            'shopBanner' => $shopBanner,
+            
+        );
+//        dd($data);
+        return view('frontend.shop.shop-detail', $data)->render();
+    }
+    
+    public function addToCart($id) {
+        $product = ShopProducts::find($id);
+//        $shopBanner = SiteBanner::where('page_name', '=', 'shop')->get()->toArray();
+        $price = str_replace("$", "", $product->product_price);
+        $var = Cart::add(['id' => $id,
+            'name' => $product->product_name,
+            'qty' => 1,
+            'price' => $price,
+//            'options' => ['size' => 'large']
+        ]);
+        return redirect('/shop')->with('success', 'Product Added in Your Cart!');
+    }
+    
+    public function getCart() {
+//        $rowId = 'a775bac9cff7dec2b984e023b95206aa';
+//        $var = Cart::get($rowId);
+//        $var = Cart::remove($rowId);
+//        $var = Cart::update($rowId, 2); // Will update the quantity
+//        $var = Cart::destroy();
+        $var = Cart::content();
+//        $var = Cart::content()->count();
+//        echo '<pre>';
+//        var_dump($var);
+//        echo '</pre>';
+//        Cart::destroy();
+        dd($var);
+    }
+    
+    public function removeCart() {
+        $var = Cart::destroy();
+        echo 'Cart is emtpy';
+    }
+    
+    public function updateCart($rowId) {
+        $rowId = 'a775bac9cff7dec2b984e023b95206aa';
+        $var = Cart::update($rowId, 10); // Will update the quantity
+        echo 'Cart is updated';
+    }
+    
+    public function stripePayment() {
+        return view('frontend.shop.payment');
+    }
+    
+    public function paycash(Request $request) {
+        Stripe::setApiKey('sk_test_Nn2vVL9o3kq9aoe03stzjqr7');
+        
+        try {
+            Charge::create ( array (
+                    "amount" => 30 * 100,
+                    "currency" => "usd",
+                    "source" => $request->input ( 'stripeToken' ), // obtained with Stripe.js
+                    "description" => "Test payment." 
+            ));
+        } catch ( \Exception $e ) {
+            return redirect()->route('stripe-payment')->with('error', $e->getMessage());
+        }
+        Session::forget('cart');
+        return redirect()->route('shop')->with('success', 'Succesfully purchased.');
+    }
+    
+//    public function addToCart(Request $request, $id)
+//    {
+////        $shopBanner = SiteBanner::where('page_name', '=', 'shop')->get()->toArray();
+//        $product = ShopProducts::find($id);
+//        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+//        $cart = new Cart($oldCart);
+//        $cart->add($product, $product->id);
+//        
+//        $request->session()->put('cart', $cart);
+////        dd(Session::get('cart')->totalQty);
+//        dd($request->session()->get('cart'));
+//        
+//        return view('frontend.shop-detail', $data)->render();
+//    }
 }
