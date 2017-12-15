@@ -15,11 +15,6 @@ use Session;
 
 class ShopController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -269,43 +264,59 @@ class ShopController extends Controller
         return view('frontend.shop.shop-detail', $data)->render();
     }
     
-    public function addToCart($id) {
+    public function addToCart(Request $request, $id) {
         $product = ShopProducts::find($id);
-//        $shopBanner = SiteBanner::where('page_name', '=', 'shop')->get()->toArray();
+        $this->validate($request, [
+            'qty' => 'required',
+        ], [
+            'qty.required' => 'Quantity is Required.',
+        ]);
         $price = str_replace("$", "", $product->product_price);
         $var = Cart::add(['id' => $id,
             'name' => $product->product_name,
-            'qty' => 1,
+            'qty' => $request->input('qty'),
             'price' => $price,
-//            'options' => ['size' => 'large']
+            'options' => [
+                'image' => $product->product_image,
+                'slug' => $product->slug
+            ]
         ]);
-        return redirect('/shop')->with('success', 'Product Added in Your Cart!');
+        return redirect('/shop/view-cart')->with('success', 'Product Added in Your Cart!');
     }
     
     public function getCart() {
 //        $rowId = 'a775bac9cff7dec2b984e023b95206aa';
 //        $var = Cart::get($rowId);
 //        $var = Cart::remove($rowId);
-//        $var = Cart::update($rowId, 2); // Will update the quantity
-//        $var = Cart::destroy();
-        $var = Cart::content();
-//        $var = Cart::content()->count();
-//        echo '<pre>';
-//        var_dump($var);
-//        echo '</pre>';
-//        Cart::destroy();
-        dd($var);
+        $shopBanner = SiteBanner::where('page_name', '=', 'shop')->get()->toArray();
+        $cart = Cart::content();
+//        $count = Cart::content()->count();
+        $data = array(
+            'cart' => $cart,
+            'shopBanner' => $shopBanner,
+//            'count' => $count,
+        );
+        return view('frontend.shop.view-cart', $data)->render();        
     }
     
     public function removeCart() {
         $var = Cart::destroy();
-        echo 'Cart is emtpy';
+        return redirect('/shop')->with('error', 'Cart is Empty Now');
+    }
+    
+    public function removeCartItem($rowId) {
+        Cart::remove($rowId);
+        return redirect('shop/view-cart')->with('error', 'Item is removed');
     }
     
     public function updateCart($rowId) {
         $rowId = 'a775bac9cff7dec2b984e023b95206aa';
         $var = Cart::update($rowId, 10); // Will update the quantity
         echo 'Cart is updated';
+    }
+    
+    public function checkOut() {
+        return view('frontend.shop.checkout');
     }
     
     public function stripePayment() {

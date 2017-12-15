@@ -29,7 +29,14 @@
                         </div>
                         <a>{{ $product->product_name }}</a>
                         <a>{{ $product->product_price }}</a>
-                        <a href="{{ url('shop/add-to-cart/'.$product->id) }}" class="btn btn-success" >Add To Cart</a>
+                        <form method="post" action="{{ url('shop/add-to-cart/'.$product->id) }}" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <input type="hidden" value="{{ $product->product_image }}">
+                            <input type="hidden" value="{{ $product->product_name }}">
+                            <input type="hidden" value="{{ $product->product_price }}">
+                            <input type="number" name="qty" id="qty">
+                            <button type="submit" class="btn btn-success" >Add To Cart</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -37,6 +37,20 @@
                         @foreach($header as $check)
                             <li><a href="{{ url($check['page_url']) }}">{{ $check['page_name'] }}</a></li>
                         @endforeach
+                        @if(Request::is('shop*'))
+                        <li><a href="{{ url('shop/view-cart') }}"><i class="fa fa-shopping-cart fa-2x"></i><span class="badge">
+                        <?php //dd(Session::all()); ?>
+                        @if(Session::get('cart') == null)    
+                            0
+                        @else
+                            @foreach(Session::get('cart') as $items)
+                                    {{ count($items) }}
+                            @endforeach
+                        @endif
+                        </span></a></li>
+                        @endif
+                        
+                        
                     </ul>
                 </div>
 

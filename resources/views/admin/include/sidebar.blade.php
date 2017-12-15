@@ -88,7 +88,7 @@
             </li>
             <li class="{{ Request::is('admin/shop*') ? 'active' : null }}">
               <a href="{!!URL::route('admin/shop')!!}">
-                <i class="fa fa-wrench"></i>
+                <i class="fa fa-shopping-cart"></i>
                 <span>Manage Shop</span>
               </a>
             </li>

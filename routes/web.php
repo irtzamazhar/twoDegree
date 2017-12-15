@@ -88,15 +88,15 @@ Route::get('/admin/profile', 'ProfileController@profile')->name('profile');
 Route::post('/admin/update/{id}', 'ProfileController@update')->name('update');
 
 //Shop Route
-Route::get('/admin/shop', 'ShopController@index')->name('admin/shop');
-Route::get('/admin/shop/createProduct', 'ShopController@create');
-Route::post('createShopProduct', 'ShopController@store')->name('createShopProduct');
-Route::get('/admin/shop/deleteProduct/{id}', 'ShopController@destroy')->name('deleteProduct');
-Route::get('/admin/shop/editProduct/{id}', 'ShopController@edit')->name('editProduct');
-Route::post('/admin/shop/update/{id}', 'ShopController@update')->name('updateShopProduct');
-Route::get('/admin/shop/showProduct/{id}', 'ShopController@show')->name('showProduct');
-Route::get('/admin/shop/addShopBanner', 'ShopController@addBanner')->name('addShopBanner');
-Route::post('/admin/shop/addShopBanner{id}', 'ShopController@storeBanner')->name('storeShopBanner');
+Route::get('/admin/shop', 'ShopController@index')->name('admin/shop')->middleware('auth');
+Route::get('/admin/shop/createProduct', 'ShopController@create')->middleware('auth');
+Route::post('createShopProduct', 'ShopController@store')->name('createShopProduct')->middleware('auth');
+Route::get('/admin/shop/deleteProduct/{id}', 'ShopController@destroy')->name('deleteProduct')->middleware('auth');
+Route::get('/admin/shop/editProduct/{id}', 'ShopController@edit')->name('editProduct')->middleware('auth');
+Route::post('/admin/shop/update/{id}', 'ShopController@update')->name('updateShopProduct')->middleware('auth');
+Route::get('/admin/shop/showProduct/{id}', 'ShopController@show')->name('showProduct')->middleware('auth');
+Route::get('/admin/shop/addShopBanner', 'ShopController@addBanner')->name('addShopBanner')->middleware('auth');
+Route::post('/admin/shop/addShopBanner{id}', 'ShopController@storeBanner')->name('storeShopBanner')->middleware('auth');
 
 
 
@@ -117,9 +117,10 @@ Route::get('event-detail/{slug}', 'FrontendController@eventDetail')->name('event
 //Shop Route
 Route::get('shop/', 'ShopController@shop')->name('shop');
 Route::get('shop/shop-detail/{slug}', 'ShopController@shopDetail');
-Route::get('shop/add-to-cart/{id}', 'ShopController@addToCart')->name('add-to-cart');
+Route::post('shop/add-to-cart/{id}', 'ShopController@addToCart')->name('add-to-cart');
 Route::get('shop/view-cart', 'ShopController@getCart')->name('view-cart');
 Route::get('shop/empty-cart', 'ShopController@removeCart')->name('empty-cart');
+Route::get('shop/remove-item/{rowId}', 'ShopController@removeCartItem')->name('remove-item');
 Route::get('shop/update-cart/{rowId}', 'ShopController@updateCart')->name('update-cart');
 Route::get('shop/checkout', 'ShopController@checkout')->name('checkout');
 Route::get('shop/payment', 'ShopController@stripePayment')->name('stripe-payment');
