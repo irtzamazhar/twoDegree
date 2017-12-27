@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2017 at 03:48 PM
+-- Generation Time: Dec 19, 2017 at 07:27 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -47,6 +47,35 @@ INSERT INTO `blogs` (`id`, `title`, `editor`, `created_at`, `updated_at`, `slug`
 (7, 'Testimonial Tuesday: Why Two Degrees is safer than other networking apps', '<p>I stumbled across this app called Two Degrees a few days after my roommate&rsquo;s tragic bumble date. By definition, Two Degrees is an app that connects you with real people in real life who are nearby based on mutual friends. Sounds simple enough, right? When two people discover that they are only separated by two degrees, new relationships can be made and a smoother transition can take place. I&rsquo;d have to fully agree. If my roommate finds out she has friends in common with the cute guy in our local bar, she&rsquo;s more inclined to feel a sense of security when talking to him and getting to know him. You probably have friends in common with people standing next to you all the time and don&rsquo;t even know it. Two Degrees was made for situations like this.</p>\r\n\r\n<p>I want my roommate to have more success with meeting new people in general. After researching, I suggested that she download this app and start forming friendships with people based on her mutual connections. Why put the pressure of having to date someone you just met for the first time? Two Degrees isn&rsquo;t a dating app, but it&rsquo;s an app that allows you to meet new people and expand your network in a safer way. Whether you use it for friendship, dating, business or to merely pass the time at a specific location, you&rsquo;ll be surprised at how many people around you know people that you do.</p>\r\n\r\n<p>Lets rewind a few days to learn more about why I started researching safer and more effective social networking apps for my roommate.</p>\r\n\r\n<h3><strong>THE STORY</strong></h3>\r\n\r\n<p>A few days ago my roommate went on a date with a guy from bumble. Not only did the guy lie about his job, height and age, he also didn&rsquo;t look anything like his profile photo. Nonetheless, she was bummed. Cue in the song &ldquo;another one bites the dust&rdquo; and it sings the story of her life. This is a pretty regular occurrence for bumble and tinder users. Online dating is tough, there&rsquo;s no doubt about it. However, online dating through an app&mdash; that&rsquo;s even tougher.</p>\r\n\r\n<p>I couldn&#39;t help but think about how much smoother the transition of forming relationships through technology could be. Imagine how different things would be if there was an icebreaker involved when you met someone over the internet. Whether you are looking for new friends, new love interests or new business connections, we can all agree that icebreakers ease the awkwardness of meeting complete strangers.</p>\r\n\r\n<p>As my roommate sat there all dopey eyed and upset, I realized there was a safer way to meet new people through technology. Personally, I&rsquo;m not the kind of person to meet anyone over the internet, unless some of my friends know the person well. *BOOM* &mdash; The lightbulb just went off in my head. What if my roommate could meet new friends and potential love interests with the security of knowing one of her friends is already close with that person? What if her childhood best friend went to college with that person? What if her neighbor played soccer with that person? What if there was a mutual connection bonding those two people together?</p>\r\n\r\n<p>What if you say&hellip;</p>\r\n\r\n<p>My roommate&rsquo;s tragic bumble date ultimately led me to stumbling across Two Degrees.</p>\r\n\r\n<p>Two Degrees is currently the safest and most effective way to meet people online.</p>\r\n\r\n<p>It&rsquo;s time to make your world a little smaller and expand your network two degrees at a time.</p>\r\n\r\n<p>I know I&rsquo;m downloading Two Degrees tonight. Are you? See you there.</p>', '2017-11-10 08:53:05', '2017-11-10 08:53:05', 'testimonial-tuesday-why-two-degrees-is-safer-than-other-networking-apps'),
 (8, 'The top 5 places to use the Two Degrees app', '<p>Top 5 places to use the Two Degrees app</p>\r\n\r\n<p>Not sure where to use the Two Degrees app at? Don&rsquo;t worry, we&rsquo;ve got you covered. Check out the top 10 places to utilize our app!</p>\r\n\r\n<p>1. A NIGHT OUT</p>\r\n\r\n<p>Maybe you&rsquo;re at the local bar or a new trendy restaurant in town. Perhaps you&rsquo;re curious about who&rsquo;s around you. A night out is the perfect time to open up your Two Degrees app. Social networking is one of the best ways to meet new people. Two Degrees breaks the ice and lets you talk to others around you &mdash; all within the comfort of knowing you both share mutual friends with each other.</p>\r\n\r\n<p>2. A BUSINESS OR NETWORKING CONFERENCE</p>\r\n\r\n<p>Have you ever been at a business conference or networking event and wanted to talk to the important CEO behind you but didn&#39;t know how to get the conversation started? Two Degrees was created with the business networking platform in mind. It&rsquo;s a lot easier to start a conversation with someone at a networking event when you can see that you both know some of the same people. Once you open your Two Degrees app and find out that you and the important CEO both know your cousin, the conversation will flow smoothly. Want to take the awkwardness out of business networking? Jump on Two Degrees and start conversations with people you share mutual friends who are nearby.</p>\r\n\r\n<p>3. COLLEGE</p>\r\n\r\n<p>Do you remember your freshman orientation week? Pretty overwhelming, wasn&rsquo;t it? Imagine if you had an app that showed you the people around you that shared mutual friends with you. It&rsquo;s the perfect way to make new friends and bond over the relationships that you both share. At any given time on a college campus there can be around 50,000 students within just a few miles of you. Out of those 50,000 students, you are guaranteed to share friends from back home with at least 5% of them. Two Degrees is the perfect solution for the overwhelming &ldquo;college welcome week&rdquo; that so many new freshmen experience every year.</p>\r\n\r\n<p>4. THE AIRPORT</p>\r\n\r\n<p>Okay, this one is pretty self-explanatory. We all know that sitting at the airport for hours can be one of the most boring, slow-moving experiences of our lives. If you thought there were a lot of people around you on a college campus, there are even more people surrounding you in an airport. Why not check out who around you might know some people you know? I&rsquo;ve always been curious about who around me at the airport might know people that I do. I&rsquo;ve even come across people I had mutual friends with on my specific flights. It&rsquo;s a small world out there. Make a new friend, pass some lonely airport time and get a drink together.</p>\r\n\r\n<p>5. SPORTS AND ENTERTAINMENT EVENTS</p>\r\n\r\n<p>Sporting events and entertainment events such as concerts are great places to meet and interact with new people. Sitting at a country concert tailgate? Open your Two Degrees app and see if you have any mutual friends with people around you. Popular sporting events, such as NFL games are great places to utilize Two Degrees and discover new connections. Not only will you have the same favorite sports team in common&mdash; you&rsquo;ll also now have friends in common too!</p>', '2017-11-24 06:15:19', '2017-11-24 06:30:58', 'the-top-5-places-to-use-the-two-degrees-app'),
 (9, 'fdvnfdvnasiovnoiv', '<p>sdl skl nsd smd sd msdpo nsd iosdn osd sdbo sdpo sd sd nsd sd</p>', '2017-11-24 06:16:26', '2017-11-24 06:16:26', 'fdvnfdvnasiovnoiv');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `checkouts`
+--
+
+CREATE TABLE `checkouts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `method` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subtotal` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tax` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `full_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `street_address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `checkouts`
+--
+
+INSERT INTO `checkouts` (`id`, `method`, `subtotal`, `tax`, `total`, `full_name`, `email`, `phone`, `street_address`, `created_at`, `updated_at`) VALUES
+(16, 'card', '84.99', '17.85', '102.84', 'Irtza Mazhar', 'logics.tester@gmail.com', '1234567890', 'street 10, new york city', '2017-12-18 05:11:47', '2017-12-18 05:11:47'),
+(30, 'paypal', '24.95', '5.24', '30.19', 'John Doe', 'irtza@mail.com', '1234567890', 'street 10, new york city', '2017-12-18 06:19:28', '2017-12-18 06:19:28'),
+(31, 'paypal', '14.97', '3.14', '18.11', 'Irtza Mazhar', 'logics.tester@gmail.com', '1234567890', 'street 10, new york city', '2017-12-18 06:21:56', '2017-12-18 06:21:56');
 
 -- --------------------------------------------------------
 
@@ -156,14 +185,14 @@ CREATE TABLE `menus` (
 --
 
 INSERT INTO `menus` (`id`, `page_place`, `page_name`, `page_url`, `page_value`, `created_at`, `updated_at`) VALUES
-(1, 'header', 'App', '/view/app', 1, '2017-11-30 02:41:44', '2017-11-30 02:41:44'),
-(2, 'header', 'Blog', '/blog', 1, '2017-11-30 02:41:44', '2017-11-30 02:41:44'),
-(3, 'header', 'Shop', '/shop', 1, '2017-11-30 02:41:44', '2017-11-30 02:41:44'),
-(4, 'header', 'Events', '/events', 1, '2017-11-30 02:41:45', '2017-11-30 02:41:45'),
-(5, 'footer', 'Privacy Policy', '/view/privacy', 0, '2017-11-30 02:41:45', '2017-11-30 02:41:45'),
-(6, 'footer', 'Terms and Conditions', '/view/terms', 0, '2017-11-30 02:41:45', '2017-11-30 02:41:45'),
-(7, 'footer', 'FAQ', '/faq', 0, '2017-11-30 02:41:45', '2017-11-30 02:41:45'),
-(8, 'footer', 'Contact Us', '/contact', 0, '2017-11-30 02:41:45', '2017-11-30 02:41:45');
+(1, 'header', 'App', '/view/app', 1, '2017-12-14 01:49:19', '2017-12-14 01:49:19'),
+(2, 'header', 'Blog', '/blog', 1, '2017-12-14 01:49:19', '2017-12-14 01:49:19'),
+(3, 'header', 'Events', '/events', 1, '2017-12-14 01:49:19', '2017-12-14 01:49:19'),
+(4, 'header', 'Shop', '/shop/', 1, '2017-12-14 01:49:19', '2017-12-14 01:49:19'),
+(5, 'footer', 'Privacy Policy', '/view/privacy', 0, '2017-12-14 01:49:19', '2017-12-14 01:49:19'),
+(6, 'footer', 'Terms and Conditions', '/view/terms', 0, '2017-12-14 01:49:19', '2017-12-14 01:49:19'),
+(7, 'footer', 'FAQ', '/faq', 0, '2017-12-14 01:49:19', '2017-12-14 01:49:19'),
+(8, 'footer', 'Contact Us', '/contact', 0, '2017-12-14 01:49:19', '2017-12-14 01:49:19');
 
 -- --------------------------------------------------------
 
@@ -209,7 +238,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (30, '2017_12_05_103948_create_subcribers_table', 24),
 (31, '2017_12_05_111422_create_newsletter_emails_table', 25),
 (32, '2017_12_08_061004_add_braintree_id_to_users_table', 26),
-(33, '2017_12_13_130655_create_orders_table', 27);
+(33, '2017_12_13_130655_create_orders_table', 27),
+(35, '2017_12_18_082852_create_checkouts_table', 28);
 
 -- --------------------------------------------------------
 
@@ -319,7 +349,7 @@ INSERT INTO `sections` (`id`, `section_name`, `section_path`, `created_at`, `upd
 (2, 'Events', '/events', NULL, NULL),
 (3, 'FAQ', '/faq', NULL, NULL),
 (4, 'Contact Us', '/contact', NULL, NULL),
-(5, 'Shop', '/shop', NULL, NULL);
+(5, 'Shop', '/shop/', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -432,7 +462,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Irtza Mazhar', 'logics.tester@gmail.com', '$2y$10$KDna2DkahK1O4ORYji4pU.Y0ayuzpSoc5gXxa.keXW.nglVHJr3wS', 'i9xGOlVp3JMecehE2IE7NIWE9ziXfKxuX2BB9woV.png', 'AMv1IoHbaa8LCUvomDozGzjm2fCAeslWd6MVSaNC5d6C0BvnkjVbwb6av6BO', '2017-10-09 06:21:45', '2017-11-15 07:46:17');
+(1, 'Irtza Mazhar', 'logics.tester@gmail.com', '$2y$10$KDna2DkahK1O4ORYji4pU.Y0ayuzpSoc5gXxa.keXW.nglVHJr3wS', 'i9xGOlVp3JMecehE2IE7NIWE9ziXfKxuX2BB9woV.png', 'xIOU9fANOCuVLU1F1SdyKd7gNh3q4icg1FE8jMjFL43XXThJ8ef2WytVWf34', '2017-10-09 06:21:45', '2017-11-15 07:46:17');
 
 --
 -- Indexes for dumped tables
@@ -442,6 +472,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `image`, `remember_token
 -- Indexes for table `blogs`
 --
 ALTER TABLE `blogs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `checkouts`
+--
+ALTER TABLE `checkouts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -540,6 +576,12 @@ ALTER TABLE `blogs`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `checkouts`
+--
+ALTER TABLE `checkouts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
@@ -567,7 +609,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `newsletter_emails`

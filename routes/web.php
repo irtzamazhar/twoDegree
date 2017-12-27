@@ -122,7 +122,9 @@ Route::get('shop/view-cart', 'ShopController@getCart')->name('view-cart');
 Route::get('shop/empty-cart', 'ShopController@removeCart')->name('empty-cart');
 Route::get('shop/remove-item/{rowId}', 'ShopController@removeCartItem')->name('remove-item');
 Route::get('shop/update-cart/{rowId}', 'ShopController@updateCart')->name('update-cart');
-Route::get('shop/checkout', 'ShopController@checkout')->name('checkout');
+//Route::get('shop/checkout', 'ShopController@checkout')->name('checkout');
+Route::post('shop/Checkout', 'ShopController@postCheckout')->name('postCheckout');
+Route::post('shop/postPaymentMethod', 'ShopController@postPaymentMethod')->name('postPaymentMethod');
 Route::get('shop/payment', 'ShopController@stripePayment')->name('stripe-payment');
 Route::post('payCash', 'ShopController@payCash')->name('payCash');
 

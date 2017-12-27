@@ -30,14 +30,15 @@
                         <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
                     </div>
                     <div class='col-xs-4 form-group expiration required'>
-                        <label class='control-label'> </label>
+                        <label class='control-label'>. </label>
                         <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
                     </div>
                 </div>
                 <div class='form-row'>
                     <div class='col-md-12 form-group'>
+                        <input type="hidden" name="total" value="{{ $total }}">
                         <button class='form-control btn btn-primary submit-button' type='submit' style="margin-top: 10px;">
-                            Pay $30 »
+                            Pay ${{ $total }} »
                         </button>
                     </div>
                 </div>

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\ShopProducts;
 use App\SiteBanner;
 use Cart;
+use App\Checkout;
 use Stripe\{Stripe, Charge};
 use File;
 use DB;
@@ -319,6 +320,51 @@ class ShopController extends Controller
         return view('frontend.shop.checkout');
     }
     
+    public function postCheckOut(Request $request) {
+        $this->validate($request, [
+            'check' => 'required',
+        ]);
+        $check = $request->input('check');
+        $subtotal = $request->input('subtotal');
+        $tax = $request->input('tax');
+        $total = $request->input('total');
+        return view('frontend.shop.checkout', compact('check', 'subtotal', 'tax', 'total'));
+    }
+    
+    public function postPaymentMethod(Request $request) {
+//        dd($request->all());
+        $this->validate($request, [
+            'method' => 'required',
+            'full-name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'street-address' => 'required'
+        ],[
+            'full-name.required' => "You Must Provide Your Name.",
+            'email.required' => "You Must Provide Your Email.",
+            'phone.required' => "You Must Provide Your Phone Number.",
+            'street-address.required' => "You Must Provide Your Street Address."
+        ]);
+        
+        $payment = new Checkout;
+        $payment->full_name = $request->input('full-name');
+        $payment->email = $request->input('email');
+        $payment->phone = $request->input('phone');
+        $payment->street_address = $request->input('street-address');
+        $payment->method = $request->input('method');
+        $payment->subtotal = $request->input('subtotal');
+        $payment->tax = $request->input('tax');
+        $payment->total = $request->input('total');
+        $payment->save();
+        if($request->input('method') == 'card'){
+            $total = $payment->total;
+            return view('frontend.shop.payment', compact('total'));
+        } else if($request->input('method') == 'paypal') {
+            $total = $payment->total;
+            return view('frontend.shop.payMoney', compact('total'));
+        }
+    }
+    
     public function stripePayment() {
         return view('frontend.shop.payment');
     }
@@ -328,7 +374,7 @@ class ShopController extends Controller
         
         try {
             Charge::create ( array (
-                    "amount" => 30 * 100,
+                    "amount" => $request->input('total') * 100,
                     "currency" => "usd",
                     "source" => $request->input ( 'stripeToken' ), // obtained with Stripe.js
                     "description" => "Test payment." 

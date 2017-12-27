@@ -47,7 +47,19 @@
                 <br>
                 <td>Total:</td>
 		<td>$<?php echo Cart::total(); ?></td>
-                <a href="" class="btn btn-success pull-right">CheckOut</a>
+                <br><br>
+                <form class="form-group" action="{{ route('postCheckout') }}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="subtotal" value="{{ Cart::subtotal() }}">
+                    <input type="hidden" name="tax" value="{{ Cart::tax() }}">
+                    <input type="hidden" name="total" value="{{ Cart::total() }}">
+                    <label>Paypal</label>
+                    <input type="radio" name="check" id="paypal" value="paypal" checked="">
+                    <label>Credit Card</label>
+                    <input type="radio" name="check" id="card" value="card">
+                    <button type="submit" class="btn btn-success pull-right">CheckOut</button>
+                </form>            
+                
             @endif
             
         
@@ -61,4 +73,5 @@
     var addres = "../storage/app/public/images/" + image ;
     $(".shop-header2").css('background-image', 'url(' + addres + ')');
 </script>
+<script src="{{ asset('public/frontend/js/checkout.js') }}" type="text/javascript"></script>
 </body>

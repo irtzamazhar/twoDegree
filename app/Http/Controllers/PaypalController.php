@@ -38,6 +38,7 @@ class PaypalController extends Controller
         
         /** setup PayPal api context **/
         $paypal_conf = \Config::get('paypal');
+//        dd($paypal_conf);
         $this->_api_context = new ApiContext(new OAuthTokenCredential($paypal_conf['client_id'], $paypal_conf['secret']));
         $this->_api_context->setConfig($paypal_conf['settings']);
     }
@@ -147,11 +148,11 @@ class PaypalController extends Controller
             /** it's all right **/
             /** Here Write your database logic like that insert record or value in database if you want **/
 
-            \Session::put('success','Payment success');
-            return Redirect::route('payMoney');
+            Session::forget('cart');
+            return redirect()->route('shop')->with('success', 'Payment success.');
         }
         \Session::put('error','Payment failed');
 
-		return Redirect::route('payMoney');
+		return Redirect::route('shop');
     }
 }

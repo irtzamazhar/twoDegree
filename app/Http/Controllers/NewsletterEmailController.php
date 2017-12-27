@@ -16,7 +16,7 @@ class NewsletterEmailController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $newsletterEmails = NewsletterEmail::orderBy('created_at', 'desc')->paginate(5);
+        $newsletterEmails = NewsletterEmail::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.admin.subscriber', ['newsletterEmails' => $newsletterEmails])->render();
     }
     

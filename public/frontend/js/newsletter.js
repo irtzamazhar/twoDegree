@@ -73,39 +73,6 @@ $("#news-submit").click(function(){
     }
 });
 
-//$('#news-submit').click( function(e){
-//    e.preventDefault();
-//    var email = $('#pop-input').val();
-//    var email_valid = validateEmail(email);
-//    var token = $('input[name=_token]').val();
-//    
-//    if(email_valid == true){
-//        $.ajaxSetup({
-//            headers: {
-//              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//            }
-//        });
-//        $.ajax({
-//            url: 'subscribe',
-//            type: 'post',
-//            data: {_token: token, email: email},
-//            success:function(res){
-//                console.log(email);
-//                $('#news-form')[0].reset();
-//                $('#myModal').modal('hide');
-//                $('#thanks').modal('show');
-//            },
-//            error: function(err){
-//                alert(JSON.stringify(err));
-//                console.log('Something went wrong', status, err);
-//            }
-//        });
-//    }else{
-//        validateEmail(email);
-//    }
-//});
-
-
 function validateEmail(email){
     var emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
     var valid = emailReg.test(email);
